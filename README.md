@@ -1,2 +1,2 @@
-# xaas-vra-vro
-For vRA/vRO stuff
+# xaas-vra
+For vRA stuff
