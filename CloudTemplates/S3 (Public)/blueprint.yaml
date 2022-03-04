@@ -38,10 +38,13 @@ inputs:
     type: string
     title: Notification Mail
     default: maciej.macowicz@epfl.ch
-  onboardOnly:
+  versioning:
     type: string
-    title: Onboard only?
-    default: false
+    title: Versioning?
+    enum:
+      - enabled
+      - disabled
+    default: disabled
   requestor:
     type: string
     title: Requestor
@@ -50,12 +53,6 @@ inputs:
     type: string
     title: Reason for request
     default: I need that!
-  targetTenant:
-    type: string
-    title: Target Tenant
-  extraData:
-    type: string
-    title: extraData
 resources:
   Bucket:
     type: Custom.XaasS3.Bucket
@@ -67,12 +64,11 @@ resources:
       deploymentTag: '${input.deploymentTag}'
       data: '${input.data}'
       linkedTo: '${input.linkedTo}'
-      onboardOnly: '${input.onboardOnly}'
+      onboardOnly: 'false'
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
       reasonsForRequest: '${input.reasonsForRequest}'
+      versioning: '${input.versioning}'
       tags:
         - key: environment
           value: '${input.deploymentTag}'
-      targetTenant: '${input.targetTenant}'
-      extraData: '${input.extraData}'
