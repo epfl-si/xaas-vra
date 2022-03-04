@@ -56,7 +56,7 @@ inputs:
     title: extraData
 resources:
   Bucket:
-    type: Custom.s3Bucket
+    type: Custom.XaasS3.Bucket
     properties:
       bucketName: '${input.bucketName}'
       bucketId: '${input.bucketId}'
