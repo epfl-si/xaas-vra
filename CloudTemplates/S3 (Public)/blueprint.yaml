@@ -1,5 +1,5 @@
 name: S3 Bucket
-version: 1.0.0
+version: 1.0.1
 formatVersion: 1
 inputs:
   bucketName:
@@ -8,7 +8,7 @@ inputs:
     default: ''
   bucketId:
     type: string
-    title: Bucket Id
+    title: Bucket ID
     default: ''
   projectName:
     type: string
@@ -16,7 +16,7 @@ inputs:
     default: ''
   projectId:
     type: string
-    title: Project Id
+    title: Project ID
     default: ''
   data:
     type: string
