@@ -1,3 +1,5 @@
+name: S3 Bucket
+version: 1.0.0
 formatVersion: 1
 inputs:
   bucketName:
