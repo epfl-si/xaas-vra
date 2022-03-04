@@ -1,0 +1,76 @@
+formatVersion: 1
+inputs:
+  bucketName:
+    type: string
+    title: Bucket Friendly Name
+    default: ''
+  bucketId:
+    type: string
+    title: Bucket Id
+    default: ''
+  projectName:
+    type: string
+    title: Project name
+    default: ''
+  projectId:
+    type: string
+    title: Project Id
+    default: ''
+  data:
+    type: string
+    title: Data
+    default: ''
+  deploymentTag:
+    type: string
+    title: Environment
+    enum:
+      - Development
+      - Test
+      - Production
+    default: Test
+  linkedTo:
+    type: string
+    title: Linked to
+    default: ''
+  notificationMail:
+    type: string
+    title: Notification Mail
+    default: maciej.macowicz@epfl.ch
+  onboardOnly:
+    type: string
+    title: Onboard only?
+    default: false
+  requestor:
+    type: string
+    title: Requestor
+    default: macowicz
+  reasonsForRequest:
+    type: string
+    title: Reason for request
+    default: I need that!
+  targetTenant:
+    type: string
+    title: Target Tenant
+  extraData:
+    type: string
+    title: extraData
+resources:
+  Bucket:
+    type: Custom.s3Bucket
+    properties:
+      bucketName: '${input.bucketName}'
+      bucketId: '${input.bucketId}'
+      projectId: '${input.projectId}'
+      projectName: '${input.projectName}'
+      deploymentTag: '${input.deploymentTag}'
+      data: '${input.data}'
+      linkedTo: '${input.linkedTo}'
+      onboardOnly: '${input.onboardOnly}'
+      notificationMail: '${input.notificationMail}'
+      requestor: '${input.requestor}'
+      reasonsForRequest: '${input.reasonsForRequest}'
+      tags:
+        - key: environment
+          value: '${input.deploymentTag}'
+      targetTenant: '${input.targetTenant}'
+      extraData: '${input.extraData}'
