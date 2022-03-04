@@ -2,11 +2,11 @@ name: S3 Bucket
 version: 1.0.2
 formatVersion: 1
 inputs:
-  bucketName:
+  friendlyName:
     type: string
     title: Bucket Friendly Name
     default: ''
-  bucketId:
+  bucketName:
     type: string
     title: Bucket ID
     default: ''
@@ -58,7 +58,7 @@ resources:
     type: Custom.XaasS3.Bucket
     properties:
       bucketName: '${input.bucketName}'
-      bucketId: '${input.bucketId}'
+      friendlyName: '${input.friendlyName}'
       projectId: '${input.projectId}'
       projectName: '${input.projectName}'
       deploymentTag: '${input.deploymentTag}'
