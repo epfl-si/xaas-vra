@@ -1,0 +1,378 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_general",
+        "sections": [
+          {
+            "id": "section_bf5dde03",
+            "fields": [
+              {
+                "id": "text_9f7413cf",
+                "display": "text",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_24222bd9",
+            "fields": [
+              {
+                "id": "friendlyName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_53e92709",
+            "fields": [
+              {
+                "id": "linkedTo",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_2dccde79",
+            "fields": [
+              {
+                "id": "notificationMail",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_d12a1b4d",
+            "fields": [
+              {
+                "id": "reasonsForRequest",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_b5ea27b5",
+            "fields": [
+              {
+                "id": "text_de24297e",
+                "display": "text",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_69c9ba0a",
+            "fields": [
+              {
+                "id": "deploymentTag",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_project",
+            "fields": [
+              {
+                "id": "project",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_f55d4e2f",
+            "fields": [
+              {
+                "id": "projectId",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_be228cf0",
+            "fields": [
+              {
+                "id": "projectName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_requestor",
+            "fields": [
+              {
+                "id": "requestor",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "text_9f7413cf": {
+      "type": {
+        "dataType": "string"
+      },
+      "default": "Bucket Information",
+      "constraints": {}
+    },
+    "friendlyName": {
+      "label": "Bucket friendly name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "",
+      "constraints": {
+        "required": true
+      }
+    },
+    "linkedTo": {
+      "label": "Linked to",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "valueList": {
+        "id": "ch.epfl.xaas.s3/getBucketsToLink",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "projectId": "projectId"
+          }
+        ]
+      },
+      "constraints": {}
+    },
+    "notificationMail": {
+      "label": "Notification Mail",
+      "signpost": "List of valid EPFL emails separated by whitespace or newline.",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "id": "ch.epfl.iaas.utils.mail/getUserEmailFromVRAUserPrincipalName",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "userPrincipalName": "_requestedBy"
+          }
+        ]
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "reasonsForRequest": {
+      "label": "Reason for request",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "I need that!",
+      "constraints": {
+        "required": true
+      }
+    },
+    "text_de24297e": {
+      "type": {
+        "dataType": "string"
+      },
+      "default": "vRA information",
+      "constraints": {}
+    },
+    "deploymentTag": {
+      "label": "Environment",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "Test",
+      "valueList": [
+        {
+          "label": "Development",
+          "value": "Development"
+        },
+        {
+          "label": "Test",
+          "value": "Test"
+        },
+        {
+          "label": "Production",
+          "value": "Production"
+        }
+      ],
+      "constraints": {
+        "required": true
+      }
+    },
+    "project": {
+      "label": "Project",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "valueList": {
+        "id": "projects",
+        "type": "scriptAction"
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "projectId": {
+      "label": "Project Id",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "id": "ch.epfl.iaas.utils/getProjectCPfromId",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "cpName": "`ch.epfl.vra.project.id`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "projectId": "project"
+          }
+        ]
+      },
+      "constraints": {}
+    },
+    "projectName": {
+      "label": "Project name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "id": "ch.epfl.iaas.utils/getProjectCPfromId",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "cpName": "`ch.epfl.vra.project.name`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "projectId": "project"
+          }
+        ]
+      }
+    },
+    "requestor": {
+      "label": "Requestor",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": "_requestedBy"
+      },
+      "constraints": {}
+    }
+  },
+  "options": {
+    "externalValidations": [
+      {
+        "label": "Check notification mail",
+        "source": {
+          "id": "ch.epfl.iaas.utils.mail/checkMails",
+          "type": "scriptAction",
+          "parameters": [
+            {
+              "$type": {
+                "dataType": "string",
+                "isMultiple": false
+              },
+              "mails": "notificationMail"
+            }
+          ]
+        },
+        "target": [
+          "notificationMail"
+        ]
+      }
+    ]
+  }
+}
