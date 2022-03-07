@@ -42,9 +42,9 @@ inputs:
     type: string
     title: Versioning?
     enum:
-      - enabled
-      - disabled
-    default: disabled
+      - Suspended
+      - Active
+    default: Suspended
   requestor:
     type: string
     title: Requestor
