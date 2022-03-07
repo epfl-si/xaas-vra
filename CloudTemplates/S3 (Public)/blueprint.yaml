@@ -1,5 +1,5 @@
 name: S3 Bucket
-version: 1.0.3
+version: 1.0.4
 formatVersion: 1
 inputs:
   friendlyName:
@@ -42,9 +42,9 @@ inputs:
     type: string
     title: Versioning?
     enum:
-      - enabled
-      - disabled
-    default: disabled
+      - Suspended
+      - Active
+    default: Suspended
   requestor:
     type: string
     title: Requestor
