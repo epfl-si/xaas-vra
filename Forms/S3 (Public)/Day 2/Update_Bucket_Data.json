@@ -1,0 +1,373 @@
+{
+    "layout": {
+        "pages": [
+            {
+                "id": "page_0h1l2w6l",
+                "sections": [
+                    {
+                        "fields": [
+                            {
+                                "display": "checkbox",
+                                "id": "checkbox_36ca1a6c",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_f963a2fe"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textField",
+                                "id": "friendlyName",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_4eee2875"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textArea",
+                                "id": "reasonsForRequest",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_sld7onqd"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textArea",
+                                "id": "notificationMail",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_cvs780s6"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "radio",
+                                "id": "versioning",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_2x0yz255"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "valuePicker",
+                                "id": "bucket",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": [
+                                        {
+                                            "equals": {
+                                                "checkbox_36ca1a6c": true
+                                            },
+                                            "value": true
+                                        }
+                                    ]
+                                },
+                                "submit": false
+                            }
+                        ],
+                        "id": "section_v4t7lyhe"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textField",
+                                "id": "textArea_8603d51a",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": [
+                                        {
+                                            "equals": {
+                                                "checkbox_36ca1a6c": true
+                                            },
+                                            "value": true
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "id": "section_78526a95"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textField",
+                                "id": "textField_1fde3c24",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": [
+                                        {
+                                            "equals": {
+                                                "checkbox_36ca1a6c": true
+                                            },
+                                            "value": true
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "id": "section_95b0b7c1"
+                    }
+                ],
+                "state": {},
+                "title": "General"
+            }
+        ]
+    },
+    "options": {
+        "externalValidations": [
+            {
+                "label": "Check notification mail",
+                "source": {
+                    "id": "ch.epfl.iaas.utils.mail/checkMails",
+                    "parameters": [
+                        {
+                            "$type": {
+                                "dataType": "string",
+                                "isMultiple": false
+                            },
+                            "mails": "notificationMail"
+                        }
+                    ],
+                    "type": "scriptAction"
+                },
+                "target": [
+                    "notificationMail"
+                ]
+            }
+        ]
+    },
+    "schema": {
+        "bucket": {
+            "constraints": {
+                "required": false
+            },
+            "label": "bucket",
+            "type": {
+                "dataType": "reference",
+                "referenceType": "DynamicTypes:XaasS3.Bucket"
+            }
+        },
+        "checkbox_36ca1a6c": {
+            "constraints": {},
+            "label": "DEBUG",
+            "type": {
+                "dataType": "boolean"
+            }
+        },
+        "friendlyName": {
+            "constraints": {
+                "required": false
+            },
+            "default": {
+                "bind": "_resource.bucketOut.name"
+            },
+            "label": "Bucket friendly name",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "notificationMail": {
+            "constraints": {
+                "required": false
+            },
+            "default": {
+                "bind": "_resource.bucketOut.notificationMail"
+            },
+            "label": "Notification Mail",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "reasonsForRequest": {
+            "constraints": {
+                "required": false
+            },
+            "default": {
+                "bind": "_resource.bucketOut.reasonsForRequest"
+            },
+            "label": "Description",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "textArea_8603d51a": {
+            "constraints": {},
+            "default": {
+                "bind": "_resource.bucketOut.id"
+            },
+            "label": "bucketName",
+            "placeholder": "",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "textField_1fde3c24": {
+            "constraints": {},
+            "default": {
+                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonPath": "`versioning.status`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterValue": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtId": "_resource.bucketOut.id"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtName": "`XaasS3`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterField": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonSubPath": "``"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "Versioning status",
+            "placeholder": "",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "versioning": {
+            "constraints": {
+                "required": false
+            },
+            "default": {
+                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonPath": "`versioning.status`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterValue": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtId": "_resource.bucketOut.id"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtName": "`XaasS3`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterField": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonSubPath": "``"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "Versioning?",
+            "type": {
+                "dataType": "string"
+            },
+            "valueList": [
+                {
+                    "label": "Suspended",
+                    "value": "Suspended"
+                },
+                {
+                    "label": "Active",
+                    "value": "Active"
+                }
+            ]
+        }
+    }
+}
