@@ -1,5 +1,5 @@
 name: K8s Cluster
-version: 1.0.1
+version: 1.0.2
 formatVersion: 1
 inputs:
   clusterName:
@@ -9,11 +9,9 @@ inputs:
   projectName:
     type: string
     title: Project name
-    default: ''
   projectId:
     type: string
-    title: Project ID
-    default: ''
+    title: Project Id
   data:
     type: string
     title: Data
@@ -38,11 +36,11 @@ inputs:
   notificationMail:
     type: string
     title: Notification Mail
-    default: maciej.macowicz@epfl.ch
+    # default: maciej.macowicz@epfl.ch
   requestor:
     type: string
     title: Requestor
-    default: macowicz
+    # default: macowicz
   reasonsForRequest:
     type: string
     title: Reason for request
