@@ -1,0 +1,134 @@
+{
+    "layout": {
+        "pages": [
+            {
+                "id": "page_p0qtwz7f",
+                "sections": [
+                    {
+                        "fields": [
+                            {
+                                "display": "valuePicker",
+                                "id": "volume",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": true
+                                },
+                                "submit": false
+                            }
+                        ],
+                        "id": "section_z0lo4esy"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "decimalField",
+                                "id": "sizeGB",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_66bf3ef3"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "decimalField",
+                                "id": "extension",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_u85ttpam"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textField",
+                                "id": "textField_503312c9",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_4fba217d"
+                    }
+                ],
+                "state": {},
+                "title": "General"
+            }
+        ]
+    },
+    "options": {
+        "externalValidations": []
+    },
+    "schema": {
+        "extension": {
+            "constraints": {
+                "min-value": 1,
+                "required": true
+            },
+            "default": 1,
+            "label": "extension",
+            "step": 1,
+            "type": {
+                "dataType": "decimal"
+            }
+        },
+        "sizeGB": {
+            "default": {
+                "id": "ch.epfl.xaas.nas.customforms/getSizeGb",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "volName": "_resource.volumeOut.name"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "_resource.volumeOut.targetTenant"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "sizeGB",
+            "type": {
+                "dataType": "decimal"
+            }
+        },
+        "textField_503312c9": {
+            "constraints": {},
+            "default": {
+                "bind": "_deploymentId"
+            },
+            "label": "Deployment Id",
+            "placeholder": "",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "volume": {
+            "constraints": {
+                "required": false
+            },
+            "label": "volume",
+            "type": {
+                "dataType": "reference",
+                "referenceType": "DynamicTypes:XaasNas.Volume"
+            }
+        }
+    }
+}

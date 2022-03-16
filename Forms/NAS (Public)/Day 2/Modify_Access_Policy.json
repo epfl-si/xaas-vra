@@ -1,0 +1,276 @@
+{
+    "layout": {
+        "pages": [
+            {
+                "id": "page_88kt0jlc",
+                "sections": [
+                    {
+                        "fields": [
+                            {
+                                "display": "valuePicker",
+                                "id": "volume",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": true
+                                },
+                                "submit": false
+                            }
+                        ],
+                        "id": "section_a3k65nx2"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textArea",
+                                "id": "IPsRoot",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_rmb994je"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textArea",
+                                "id": "IPsRO",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_eafqllf6"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textArea",
+                                "id": "IPsRW",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_whakn99n"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textField",
+                                "id": "textArea_38ecdb72",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_d9f51142"
+                    }
+                ],
+                "state": {},
+                "title": "General"
+            }
+        ]
+    },
+    "options": {
+        "externalValidations": [
+            {
+                "label": "IP_Root",
+                "source": {
+                    "id": "ch.epfl.xaas.nas.customforms/checkIP",
+                    "parameters": [
+                        {
+                            "$type": {
+                                "dataType": "string",
+                                "isMultiple": false
+                            },
+                            "IPs": "IPsRoot"
+                        }
+                    ],
+                    "type": "scriptAction"
+                },
+                "target": [
+                    "IPsRoot"
+                ]
+            },
+            {
+                "label": "IP_RO",
+                "source": {
+                    "id": "ch.epfl.xaas.nas.customforms/checkIP",
+                    "parameters": [
+                        {
+                            "$type": {
+                                "dataType": "string",
+                                "isMultiple": false
+                            },
+                            "IPs": "IPsRO"
+                        }
+                    ],
+                    "type": "scriptAction"
+                },
+                "target": [
+                    "IPsRO"
+                ]
+            },
+            {
+                "label": "IP_RW",
+                "source": {
+                    "id": "ch.epfl.xaas.nas.customforms/checkIP",
+                    "parameters": [
+                        {
+                            "$type": {
+                                "dataType": "string",
+                                "isMultiple": false
+                            },
+                            "IPs": "IPsRW"
+                        }
+                    ],
+                    "type": "scriptAction"
+                },
+                "target": [
+                    "IPsRW"
+                ]
+            }
+        ]
+    },
+    "schema": {
+        "IPsRO": {
+            "constraints": {
+                "required": false
+            },
+            "default": {
+                "id": "ch.epfl.xaas.nas.customforms/getIPs",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "volName": "_resource.volumeOut.name"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "what": "`RO`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "_resource.volumeOut.targetTenant"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "RO Access Policy",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "IPsRW": {
+            "constraints": {
+                "required": false
+            },
+            "default": {
+                "id": "ch.epfl.xaas.nas.customforms/getIPs",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "volName": "_resource.volumeOut.name"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "what": "`RO`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "_resource.volumeOut.targetTenant"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "RW Access Policy",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "IPsRoot": {
+            "constraints": {
+                "required": false
+            },
+            "default": {
+                "id": "ch.epfl.xaas.nas.customforms/getIPs",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "volName": "_resource.volumeOut.name"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "what": "`Root`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "_resource.volumeOut.targetTenant"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "Root Access Policy",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "textArea_38ecdb72": {
+            "constraints": {},
+            "default": {
+                "bind": "_deploymentId"
+            },
+            "label": "Deployment ID",
+            "placeholder": "",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "volume": {
+            "constraints": {
+                "required": false
+            },
+            "label": "volume",
+            "type": {
+                "dataType": "reference",
+                "referenceType": "DynamicTypes:XaasNas.Volume"
+            }
+        }
+    }
+}
