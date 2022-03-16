@@ -1,5 +1,5 @@
 name: NAS Volume
-version: 1.0.0
+version: 1.0.1
 formatVersion: 1
 inputs:
   projectId:
@@ -66,6 +66,10 @@ inputs:
     type: string
     title: Root Access Policy
     default: ''
+  volName:
+    type: string
+    title: Volume Name
+    default: ''
 
 resources:
   Volume:
@@ -81,6 +85,7 @@ resources:
       requestor: '${input.requestor}'
       reasonsForRequest: '${input.reasonsForRequest}'
       volType: '${input.volType}'
+      volName: '${input.volName}'
       svm: '${input.svm}'
       sizeGB: '${input.sizeGB}'
       snapPolicy: '${input.snapPolicy}'
