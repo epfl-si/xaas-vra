@@ -1,0 +1,10 @@
+#text_c35d9646, #text_d48ea13c {
+    font-size: x-large;
+    border-bottom: black 2px dotted;
+    padding: 10px;
+}
+
+#input_sizeGB {
+    text-align: right;
+}
+/* to make all items in dropdown red#input_BackupTag option {    color: red !important;}*/
