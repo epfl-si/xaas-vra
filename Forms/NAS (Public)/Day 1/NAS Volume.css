@@ -4,7 +4,7 @@
     padding: 10px;
 }
 
-#input_sizeGB {
+#input_sizeGB, #input_snapPercent {
     text-align: right;
 }
 /* to make all items in dropdown red#input_BackupTag option {    color: red !important;}*/

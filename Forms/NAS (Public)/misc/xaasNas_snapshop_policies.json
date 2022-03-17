@@ -1,0 +1,38 @@
+{
+  "default": {
+    "Test": {
+      "None": {
+        "value": "none"
+      },
+      "Mid-day and mid-night": {
+        "value": "epfl-archive"
+      },
+      "Hourly on business hours": {
+        "value": "epfl-default"
+      }
+    },
+    "Production": {
+      "None": {
+        "value": "none"
+      },
+      "Mid-day and mid-night": {
+        "value": "epfl-archive"
+      },
+      "Hourly on business hours": {
+        "value": "epfl-default"
+      }
+    },
+    "Development": {
+      "None": {
+        "value": "none"
+      },
+      "Mid-day and mid-night": {
+        "value": "epfl-archive"
+      },
+      "Hourly on business hours": {
+        "value": "epfl-default"
+      }
+    }
+  }
+}
+
