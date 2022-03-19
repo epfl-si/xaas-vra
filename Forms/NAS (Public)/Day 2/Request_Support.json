@@ -12,7 +12,7 @@
                                 "signpostPosition": "right-middle",
                                 "state": {
                                     "read-only": true,
-                                    "visible": false
+                                    "visible": true
                                 },
                                 "submit": false
                             }
