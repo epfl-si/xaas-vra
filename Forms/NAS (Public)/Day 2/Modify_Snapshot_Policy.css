@@ -1,0 +1,15 @@
+#input_snapPercent,
+#input_textField_6794cd88 {
+    text-align: right;
+}
+
+/* price + caution */
+#input_textField_55b02896,
+#input_textField_14f06a31 {
+    font-weight: bold;
+    color: orangered; /* !important; */
+}
+
+input:read-only {
+    color: rgb(179, 179, 179);
+}

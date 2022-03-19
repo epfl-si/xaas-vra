@@ -1,0 +1,21 @@
+#input_sizeGB,
+#input_snapPercent,
+#input_decimalField_cabf6ad9,
+#input_extension,
+#input_decimalField_3217ed60,
+#input_textField_f0a2babf,
+#input_decimalField_8298cbf9 {
+    text-align: right;
+}
+
+/* price */
+#input_textField_52b0d76d,
+#input_decimalField_8298cbf9 {
+    font-weight: bold;
+    color: orangered;
+}
+
+input:read-only {
+    color: rgb(179, 179, 179);
+}
+/* to make all items in dropdown red#input_BackupTag option {    color: red !important;}*/
