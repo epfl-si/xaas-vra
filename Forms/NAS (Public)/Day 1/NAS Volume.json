@@ -177,7 +177,7 @@
                                 }
                             }
                         ],
-                        "id": "section_58c891fe"
+                        "id": "section_4da01c42"
                     },
                     {
                         "fields": [
@@ -203,7 +203,7 @@
                     {
                         "fields": [
                             {
-                                "display": "textField",
+                                "display": "dropDown",
                                 "id": "svm",
                                 "signpostPosition": "right-middle",
                                 "state": {
@@ -238,7 +238,7 @@
                     {
                         "fields": [
                             {
-                                "display": "textField",
+                                "display": "dropDown",
                                 "id": "snapPolicy",
                                 "signpostPosition": "right-middle",
                                 "state": {
@@ -259,11 +259,18 @@
                     {
                         "fields": [
                             {
-                                "display": "textField",
+                                "display": "dropDown",
                                 "id": "snapPercent",
                                 "signpostPosition": "right-middle",
                                 "state": {
-                                    "read-only": false,
+                                    "read-only": [
+                                        {
+                                            "equals": {
+                                                "snapPolicy": "none"
+                                            },
+                                            "value": true
+                                        }
+                                    ],
                                     "visible": [
                                         {
                                             "equals": {
@@ -276,6 +283,27 @@
                             }
                         ],
                         "id": "section_snapPercent"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textField",
+                                "id": "textField_cc9f3d3f",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": [
+                                        {
+                                            "equals": {
+                                                "volType": "col"
+                                            },
+                                            "value": true
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "id": "section_a3967718"
                     },
                     {
                         "fields": [
@@ -589,21 +617,70 @@
             }
         },
         "snapPercent": {
+            "constraints": {},
             "default": "0",
             "label": "Snapshot Percent",
             "type": {
                 "dataType": "string",
                 "isMultiple": false
+            },
+            "valueList": {
+                "id": "ch.epfl.xaas.nas/getSnapPercentList",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "decimal",
+                            "isMultiple": false
+                        },
+                        "initValue": "``"
+                    }
+                ],
+                "type": "scriptAction"
             }
         },
         "snapPolicy": {
             "constraints": {
                 "required": true
             },
+            "default": "none",
             "label": "Snapshot Policy",
             "type": {
                 "dataType": "string",
                 "isMultiple": false
+            },
+            "valueList": {
+                "id": "ch.epfl.iaas.customforms.generic/getList",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "envLabel": "deploymentTag"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "boolean",
+                            "isMultiple": false
+                        },
+                        "isProjectId": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonConfigName": "`XaasNas_snapshot_policies_EPFL`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "project": "project"
+                    }
+                ],
+                "type": "scriptAction"
             }
         },
         "svm": {
@@ -614,6 +691,54 @@
             "type": {
                 "dataType": "string",
                 "isMultiple": false
+            },
+            "valueList": {
+                "id": "ch.epfl.xaas.nas/getSvmList",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "projectId": "projectId"
+                    }
+                ],
+                "type": "scriptAction"
+            }
+        },
+        "textField_cc9f3d3f": {
+            "constraints": {},
+            "default": {
+                "id": "ch.epfl.xaas.nas/getPrice",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonPath": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "sizeGB": "sizeGB"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "snapPercent": "snapPercent"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "Price",
+            "placeholder": "",
+            "type": {
+                "dataType": "string"
             }
         },
         "text_c35d9646": {
