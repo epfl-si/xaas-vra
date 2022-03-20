@@ -1,6 +1,7 @@
 #
-CATEGORY='Forms/NAS (Public)/Day 1'
-FORM_NAME="NAS Volume"
+CATEGORY='Forms/NAS (Public)/Day 2'
+# FORM_NAME="NAS Volume"
+FORM_NAME=$1
 [ -z "$FORM_NAME" ] && echo "Give form name" && exit 255
 echo "going with Forms/NAS (Public)/Day 2/${FORM_NAME}"
 [ -f "$HOME/Downloads/${FORM_NAME}.json" ] && echo "JSON" && python -m json.tool "$HOME/Downloads/${FORM_NAME}.json" > "$CATEGORY/${FORM_NAME}.json"

@@ -1,0 +1,22 @@
+/* SECTIONS */
+#text_dafa24bf, #text_c42edf0f {
+    font-size: large;
+    border-bottom: black 2px dotted;
+    padding: 10px;
+}
+
+/* increase flex sizes
+.clr-col-6 {
+    flex: 0 0 65%;
+}
+
+.clr-col-md-4 {
+    flex: 0 0 25%;
+}
+ */
+/* clr-dropdown
+input:read-only {
+    color: rgb(179, 179, 179);
+    font-style: italic;
+}
+ */
