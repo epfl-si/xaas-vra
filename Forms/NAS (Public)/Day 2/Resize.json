@@ -12,7 +12,7 @@
                                 "signpostPosition": "right-middle",
                                 "state": {
                                     "read-only": false,
-                                    "visible": true
+                                    "visible": false
                                 }
                             }
                         ],
@@ -36,23 +36,16 @@
                     {
                         "fields": [
                             {
-                                "display": "decimalField",
-                                "id": "decimalField_cabf6ad9",
+                                "display": "textField",
+                                "id": "textField_ad8aadd2",
                                 "signpostPosition": "right-middle",
                                 "state": {
                                     "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "checkbox_65a18e22": true
-                                            },
-                                            "value": true
-                                        }
-                                    ]
+                                    "visible": true
                                 }
                             }
                         ],
-                        "id": "section_c163fa7b"
+                        "id": "section_91a2548f"
                     },
                     {
                         "fields": [
@@ -71,8 +64,8 @@
                     {
                         "fields": [
                             {
-                                "display": "decimalField",
-                                "id": "decimalField_8298cbf9",
+                                "display": "textField",
+                                "id": "textField_f500967d",
                                 "signpostPosition": "right-middle",
                                 "state": {
                                     "read-only": true,
@@ -80,28 +73,21 @@
                                 }
                             }
                         ],
-                        "id": "section_804bc420"
+                        "id": "section_97025174"
                     },
                     {
                         "fields": [
                             {
-                                "display": "decimalField",
-                                "id": "decimalField_3217ed60",
+                                "display": "textField",
+                                "id": "textField_be4a7be5",
                                 "signpostPosition": "right-middle",
                                 "state": {
                                     "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "checkbox_65a18e22": true
-                                            },
-                                            "value": true
-                                        }
-                                    ]
+                                    "visible": true
                                 }
                             }
                         ],
-                        "id": "section_a37235ca"
+                        "id": "section_e485f3d3"
                     },
                     {
                         "fields": [
@@ -135,10 +121,126 @@
                 "dataType": "boolean"
             }
         },
-        "decimalField_3217ed60": {
+        "extension": {
+            "constraints": {
+                "min-value": 1,
+                "required": true
+            },
+            "default": 1,
+            "label": "Extension (GB)",
+            "type": {
+                "dataType": "decimal"
+            }
+        },
+        "textField_52b0d76d": {
             "constraints": {},
             "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber",
+                "id": "ch.epfl.xaas.nas/getPrice",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonPath": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "sizeGB": "textField_ad8aadd2"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "decimal",
+                            "isMultiple": false
+                        },
+                        "extension": "extension"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "snapPercent": "textField_be4a7be5"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "Price",
+            "placeholder": "",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "textField_ad8aadd2": {
+            "constraints": {},
+            "default": {
+                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonPath": "`size.user.sizeGB`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterValue": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtId": "_resource.volumeOut.name"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtName": "`XaasNas.Volume`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterField": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonSubPath": "``"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "Volume Size (GB)",
+            "placeholder": "",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "textField_be4a7be5": {
+            "constraints": {},
+            "default": {
+                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
                 "parameters": [
                     {
                         "$type": {
@@ -187,160 +289,40 @@
                             "dataType": "string",
                             "isMultiple": false
                         },
-                        "sizeConversion": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
                         "jsonSubPath": "``"
                     }
                 ],
                 "type": "scriptAction"
             },
             "label": "Snapshot Percent",
-            "step": 1,
+            "placeholder": "",
             "type": {
-                "dataType": "decimal"
+                "dataType": "string"
             }
         },
-        "decimalField_8298cbf9": {
+        "textField_f500967d": {
             "constraints": {},
             "default": {
-                "bind": {
-                    "operator": "add",
-                    "values": [
-                        "decimalField_cabf6ad9",
-                        "extension"
-                    ]
-                }
-            },
-            "label": "New Size (GB)",
-            "step": 1,
-            "type": {
-                "dataType": "decimal"
-            }
-        },
-        "decimalField_cabf6ad9": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber",
+                "id": "ch.epfl.iaas.js/sumAsNumbers",
                 "parameters": [
                     {
                         "$type": {
                             "dataType": "string",
                             "isMultiple": false
                         },
-                        "jsonPath": "`size.user.sizeB`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "sizeConversion": "`GB`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
-            },
-            "label": "Volume Size (GB)",
-            "step": 1,
-            "type": {
-                "dataType": "decimal"
-            }
-        },
-        "extension": {
-            "constraints": {
-                "min-value": 1,
-                "required": true
-            },
-            "default": 1,
-            "label": "Extension (GB)",
-            "type": {
-                "dataType": "decimal"
-            }
-        },
-        "textField_52b0d76d": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.nas/getPriceForResize",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "``"
+                        "a": "textField_ad8aadd2"
                     },
                     {
                         "$type": {
                             "dataType": "decimal",
                             "isMultiple": false
                         },
-                        "extension": "extension"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "reference",
-                            "isMultiple": false,
-                            "referenceType": "DynamicTypes:XaasNas.Volume"
-                        },
-                        "volume": "volume"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "snapPercent": "``"
+                        "b": "extension"
                     }
                 ],
                 "type": "scriptAction"
             },
-            "label": "Price",
+            "label": "New Size (GB)",
             "placeholder": "",
             "type": {
                 "dataType": "string"

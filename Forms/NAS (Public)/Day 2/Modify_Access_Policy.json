@@ -189,6 +189,7 @@
                 "type": "scriptAction"
             },
             "label": "RO Access Policy",
+            "signpost": "<span class=\"red-text\">Read Only</span> access: list of valid IP addresses (simple/with octet mask/with CIDR mask). One address per line.",
             "type": {
                 "dataType": "string"
             }
@@ -253,6 +254,7 @@
                 "type": "scriptAction"
             },
             "label": "RW Access Policy",
+            "signpost": "<span class=\"red-text\">Read/Write</span> access: list of valid IP addresses (simple/with octet mask/with CIDR mask). One address per line.",
             "type": {
                 "dataType": "string"
             }
@@ -317,6 +319,7 @@
                 "type": "scriptAction"
             },
             "label": "Root Access Policy",
+            "signpost": "<span class=\"red-text\">Root</span> access: list of valid IP addresses (simple/with octet mask/with CIDR mask). One address per line.",
             "type": {
                 "dataType": "string"
             }
