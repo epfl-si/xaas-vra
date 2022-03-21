@@ -1,10 +1,10 @@
 name: NAS Volume
-version: 1.0.2
+version: 1.0.3
 formatVersion: 1
 inputs:
   projectId:
     type: string
-    title: Project Id
+    title: Project Ident
   projectName:
     type: string
     title: Project Name
