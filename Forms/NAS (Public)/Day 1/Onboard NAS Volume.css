@@ -1,0 +1,10 @@
+#vraHeader, #volHeader {
+    font-size: x-large;
+    border-bottom: black 2px dotted;
+    padding: 10px;
+}
+
+#input_sizeGB, #input_snapPercent {
+    text-align: right;
+}
+/* to make all items in dropdown red#input_BackupTag option {    color: red !important;}*/
