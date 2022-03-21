@@ -1,5 +1,5 @@
-name: NAS Volume (Onboard)
-version: 1.0.0
+name: Onboard NAS Volume
+version: 1.0.1
 formatVersion: 1
 inputs:
   projectId:
