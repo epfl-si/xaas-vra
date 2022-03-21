@@ -1,5 +1,5 @@
 name: Onboard NAS Volume
-version: 1.0.2
+version: 1.0.3
 formatVersion: 1
 inputs:
   projectId:
@@ -70,6 +70,10 @@ inputs:
     type: string
     title: Volume Name
     default: ''
+  volId:
+    type: string
+    title: Volume Id
+
 
 resources:
   Volume:
@@ -86,6 +90,7 @@ resources:
       reasonsForRequest: '${input.reasonsForRequest}'
       volType: '${input.volType}'
       volName: '${input.volName}'
+      volId: '${input.volId}'
       svm: '${input.svm}'
       sizeGB: '${input.sizeGB}'
       snapPolicy: '${input.snapPolicy}'
