@@ -1,0 +1,95 @@
+name: NAS Volume (Onboard)
+version: 1.0.0
+formatVersion: 1
+inputs:
+  projectId:
+    type: string
+    title: Project Id
+  projectName:
+    type: string
+    title: Project Name
+  requestor:
+    type: string
+    title: Requestor
+    # default: macowicz
+  notificationMail:
+    type: string
+    title: Notification Mail
+  reasonsForRequest:
+    type: string
+    title: Reason for request
+    default: I need that!
+  deploymentTag:
+    type: string
+    title: Environment
+    enum:
+      - Development
+      - Test
+      - Production
+    default: Test
+  volType:
+    type: string
+    title: Volume Type
+    enum:
+      - col
+      - app
+  svm:
+    type: string
+    name: vServer
+  sizeGB:
+    type: string
+    name: Volume Size (GB)
+    default: 1
+  access:
+    type: string
+    name: Access protocol
+  snapPolicy:
+    type: string
+    title: Snapshot Policy
+  snapPercent:
+    type: string
+    title: Snapshot Percent
+    default: '0'
+  data:
+    type: string
+    title: Data
+    default: ''
+  IPsRO:
+    type: string
+    title: RO Access Policy
+    default: ''
+  IPsRW:
+    type: string
+    title: RW Access Policy
+    default: ''
+  IPsRoot:
+    type: string
+    title: Root Access Policy
+    default: ''
+  volName:
+    type: string
+    title: Volume Name
+    default: ''
+
+resources:
+  Volume:
+    type: Custom.XaasNas.Volume
+    properties:
+      access: '${input.access}'
+      projectId: '${input.projectId}'
+      projectName: '${input.projectName}'
+      deploymentTag: '${input.deploymentTag}'
+      data: '${input.data}'
+      whatToDo: 'request'
+      notificationMail: '${input.notificationMail}'
+      requestor: '${input.requestor}'
+      reasonsForRequest: '${input.reasonsForRequest}'
+      volType: '${input.volType}'
+      volName: '${input.volName}'
+      svm: '${input.svm}'
+      sizeGB: '${input.sizeGB}'
+      snapPolicy: '${input.snapPolicy}'
+      snapPercent: '${input.snapPercent}'
+      IPsRoot: '${input.IPsRoot}'
+      IPsRO: '${input.IPsRO}'
+      IPsRW: '${input.IPsRW}'
