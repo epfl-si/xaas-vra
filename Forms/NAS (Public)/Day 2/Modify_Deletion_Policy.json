@@ -1,0 +1,105 @@
+{
+    "layout": {
+        "pages": [
+            {
+                "id": "page_zwew9o07",
+                "sections": [
+                    {
+                        "fields": [
+                            {
+                                "display": "valuePicker",
+                                "id": "volume",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": true
+                                },
+                                "submit": false
+                            }
+                        ],
+                        "id": "section_4k8y8pbu"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "dropDown",
+                                "id": "action",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_yzzxaueb"
+                    }
+                ],
+                "state": {},
+                "title": "General"
+            }
+        ]
+    },
+    "options": {
+        "externalValidations": []
+    },
+    "schema": {
+        "action": {
+            "constraints": {
+                "required": false
+            },
+            "default": {
+                "id": "ch.epfl.xaas.nas/getDataValue",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonPath": "`deletionPolicy`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "reference",
+                            "isMultiple": false,
+                            "referenceType": "DynamicTypes:XaasNas.Volume"
+                        },
+                        "volume": "volume"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "defaultValue": "`delete`"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "Deletion Policy",
+            "signpost": "Indicates deletion policy for the new deletion of volume: \n<ul>\n  <li>'<b>Delete</b>' -> delete the volume completely, \n  <li>'<b>Outboard</b>' -> delete only from vRA, will remain on the backend.\n</ul>",
+            "type": {
+                "dataType": "string"
+            },
+            "valueList": [
+                {
+                    "label": "Delete",
+                    "value": "delete"
+                },
+                {
+                    "label": "Outboard",
+                    "value": "outboard"
+                }
+            ]
+        },
+        "volume": {
+            "constraints": {
+                "required": false
+            },
+            "label": "Volume",
+            "type": {
+                "dataType": "reference",
+                "referenceType": "DynamicTypes:XaasNas.Volume"
+            }
+        }
+    }
+}

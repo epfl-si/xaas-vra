@@ -7,4 +7,12 @@
 #input_sizeGB, #input_snapPercent {
     text-align: right;
 }
+
+/*
+.clr-col-6 {
+    flex: 0 0 80%;
+}
+.cf-form .cf-form-group .cf-form-control {
+    width: 200%;
+}
 /* to make all items in dropdown red#input_BackupTag option {    color: red !important;}*/

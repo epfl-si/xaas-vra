@@ -64,6 +64,20 @@
                     {
                         "fields": [
                             {
+                                "display": "textField",
+                                "id": "textField_b9415738",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_dff647bc"
+                    },
+                    {
+                        "fields": [
+                            {
                                 "display": "textArea",
                                 "id": "textArea_6144bb89",
                                 "signpostPosition": "right-middle",
@@ -240,6 +254,33 @@
                         "fields": [
                             {
                                 "display": "textArea",
+                                "id": "textArea_cd78175f",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": [
+                                        {
+                                            "equals": {
+                                                "_resource.volumeOut.volType": "app"
+                                            },
+                                            "value": true
+                                        },
+                                        {
+                                            "equals": {
+                                                "textField_c0601ac5": "nfs3"
+                                            },
+                                            "value": true
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "id": "section_28322e30"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textArea",
                                 "id": "textArea_3db382c3",
                                 "signpostPosition": "right-middle",
                                 "state": {
@@ -289,33 +330,6 @@
                             }
                         ],
                         "id": "section_faf18976"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "textArea_cd78175f",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "_resource.volumeOut.volType": "app"
-                                            },
-                                            "value": true
-                                        },
-                                        {
-                                            "equals": {
-                                                "textField_c0601ac5": "nfs3"
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "id": "section_4ab102e1"
                     }
                 ],
                 "state": {},
@@ -802,6 +816,17 @@
                 "type": "scriptAction"
             },
             "label": "Snapshot Policy",
+            "placeholder": "",
+            "type": {
+                "dataType": "string"
+            }
+        },
+        "textField_b9415738": {
+            "constraints": {},
+            "default": {
+                "bind": "_resource.volumeOut.deploymentTag"
+            },
+            "label": "Environment",
             "placeholder": "",
             "type": {
                 "dataType": "string"

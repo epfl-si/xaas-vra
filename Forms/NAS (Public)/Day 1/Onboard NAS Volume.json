@@ -87,6 +87,20 @@
                     {
                         "fields": [
                             {
+                                "display": "dropDown",
+                                "id": "deploymentTag",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_88dbe135"
+                    },
+                    {
+                        "fields": [
+                            {
                                 "display": "textArea",
                                 "id": "notificationMail",
                                 "signpostPosition": "right-middle",
@@ -144,6 +158,20 @@
                         "fields": [
                             {
                                 "display": "textField",
+                                "id": "volId",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_2638682e"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textField",
                                 "id": "volType",
                                 "signpostPosition": "right-middle",
                                 "state": {
@@ -153,20 +181,6 @@
                             }
                         ],
                         "id": "section_083dfd51"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "dropDown",
-                                "id": "deploymentTag",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_d092d08f"
                     },
                     {
                         "fields": [
@@ -195,6 +209,20 @@
                             }
                         ],
                         "id": "section_e6f6720a"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textField",
+                                "id": "textArea_501fa3a2",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_e4805c2a"
                     },
                     {
                         "fields": [
@@ -255,6 +283,33 @@
                         "fields": [
                             {
                                 "display": "textArea",
+                                "id": "IPsRoot",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": true,
+                                    "visible": [
+                                        {
+                                            "equals": {
+                                                "volType": "app"
+                                            },
+                                            "value": true
+                                        },
+                                        {
+                                            "equals": {
+                                                "access": "nfs3"
+                                            },
+                                            "value": true
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "id": "section_a0a7f0eb"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textArea",
                                 "id": "IPsRO",
                                 "signpostPosition": "right-middle",
                                 "state": {
@@ -304,33 +359,6 @@
                             }
                         ],
                         "id": "section_dc0298fc"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "IPsRoot",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "volType": "app"
-                                            },
-                                            "value": true
-                                        },
-                                        {
-                                            "equals": {
-                                                "access": "nfs3"
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "id": "section_0858d322"
                     }
                 ],
                 "state": {},
@@ -339,7 +367,27 @@
         ]
     },
     "options": {
-        "externalValidations": []
+        "externalValidations": [
+            {
+                "label": "Check notification mail",
+                "source": {
+                    "id": "ch.epfl.iaas.utils.mail/checkMails",
+                    "parameters": [
+                        {
+                            "$type": {
+                                "dataType": "string",
+                                "isMultiple": false
+                            },
+                            "mails": "notificationMail"
+                        }
+                    ],
+                    "type": "scriptAction"
+                },
+                "target": [
+                    "notificationMail"
+                ]
+            }
+        ]
     },
     "schema": {
         "IPsRO": {
@@ -627,6 +675,26 @@
             "constraints": {
                 "required": true
             },
+            "default": {
+                "id": "ch.epfl.xaas.nas/getNotificationMailForOnboarding",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "requestor": "_requestedBy"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "volName": "volName"
+                    }
+                ],
+                "type": "scriptAction"
+            },
             "label": "Notification Mail",
             "type": {
                 "dataType": "string",
@@ -708,7 +776,22 @@
             }
         },
         "reasonsForRequest": {
-            "default": "I need that!",
+            "constraints": {
+                "required": true
+            },
+            "default": {
+                "id": "ch.epfl.xaas.nas/getReasonsForRequestForOnboarding",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "volName": "volName"
+                    }
+                ],
+                "type": "scriptAction"
+            },
             "label": "Reason for request",
             "type": {
                 "dataType": "string",
@@ -729,7 +812,61 @@
             }
         },
         "sizeGB": {
-            "default": 1,
+            "default": {
+                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonPath": "`size.user.sizeGB`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterValue": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtId": "volName"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtName": "`XaasNas.Volume`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterField": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonSubPath": "``"
+                    }
+                ],
+                "type": "scriptAction"
+            },
             "label": "Volume Size (GB)",
             "type": {
                 "dataType": "string",
@@ -928,11 +1065,139 @@
                 "isMultiple": false
             }
         },
+        "textArea_501fa3a2": {
+            "constraints": {},
+            "default": {
+                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonPath": "`access.rootMountPath`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterValue": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtId": "volName"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtName": "`XaasNas.Volume`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterField": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonSubPath": "``"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "Mount Path",
+            "placeholder": "",
+            "type": {
+                "dataType": "string"
+            }
+        },
         "volHeader": {
             "constraints": {},
             "default": "Volume Information",
             "type": {
                 "dataType": "string"
+            }
+        },
+        "volId": {
+            "constraints": {
+                "required": true
+            },
+            "default": {
+                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+                "parameters": [
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonPath": "`volume.uuid`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterValue": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtId": "volName"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "targetTenant": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "dtName": "`XaasNas.Volume`"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "filterField": "``"
+                    },
+                    {
+                        "$type": {
+                            "dataType": "string",
+                            "isMultiple": false
+                        },
+                        "jsonSubPath": "``"
+                    }
+                ],
+                "type": "scriptAction"
+            },
+            "label": "Volume Id",
+            "type": {
+                "dataType": "string",
+                "isMultiple": false
             }
         },
         "volName": {

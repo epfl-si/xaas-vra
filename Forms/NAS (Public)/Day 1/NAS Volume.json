@@ -112,6 +112,20 @@
                     {
                         "fields": [
                             {
+                                "display": "dropDown",
+                                "id": "deploymentTag",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": true
+                                }
+                            }
+                        ],
+                        "id": "section_618ec773"
+                    },
+                    {
+                        "fields": [
+                            {
                                 "display": "textArea",
                                 "id": "notificationMail",
                                 "signpostPosition": "right-middle",
@@ -150,20 +164,6 @@
                             }
                         ],
                         "id": "section_8255b173"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "dropDown",
-                                "id": "deploymentTag",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_deploymentTag"
                     },
                     {
                         "fields": [
@@ -323,6 +323,33 @@
                         "fields": [
                             {
                                 "display": "textArea",
+                                "id": "IPsRoot",
+                                "signpostPosition": "right-middle",
+                                "state": {
+                                    "read-only": false,
+                                    "visible": [
+                                        {
+                                            "equals": {
+                                                "volType": "app"
+                                            },
+                                            "value": true
+                                        },
+                                        {
+                                            "equals": {
+                                                "access": "nfs3"
+                                            },
+                                            "value": true
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "id": "section_f8b31a2e"
+                    },
+                    {
+                        "fields": [
+                            {
+                                "display": "textArea",
                                 "id": "IPsRO",
                                 "signpostPosition": "right-middle",
                                 "state": {
@@ -372,33 +399,6 @@
                             }
                         ],
                         "id": "section_IPsRW"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "IPsRoot",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "volType": "app"
-                                            },
-                                            "value": true
-                                        },
-                                        {
-                                            "equals": {
-                                                "access": "nfs3"
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "id": "section_IPsRoot"
                     }
                 ],
                 "state": {},
