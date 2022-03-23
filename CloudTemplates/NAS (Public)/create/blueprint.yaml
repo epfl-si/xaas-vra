@@ -1,5 +1,5 @@
 name: NAS Volume
-version: 1.0.3
+version: 1.1.0
 formatVersion: 1
 inputs:
   projectId:
@@ -11,14 +11,12 @@ inputs:
   requestor:
     type: string
     title: Requestor
-    # default: macowicz
   notificationMail:
     type: string
     title: Notification Mail
   reasonsForRequest:
     type: string
     title: Reason for request
-    default: I need that!
   deploymentTag:
     type: string
     title: Environment
@@ -26,7 +24,7 @@ inputs:
       - Development
       - Test
       - Production
-    default: Test
+    default: Production
   volType:
     type: string
     title: Volume Type
@@ -39,7 +37,7 @@ inputs:
   sizeGB:
     type: string
     name: Volume Size (GB)
-    default: 1
+    default: '10'
   access:
     type: string
     name: Access protocol
@@ -70,6 +68,21 @@ inputs:
     type: string
     title: Volume Name
     default: ''
+  deletionPolicy:
+    type: string
+    title: Deletion Policy
+    enum:
+      - delete
+      - outboard
+    defaul: delete
+  fnsPrjName:
+    type: string
+    title: FNS Project Name
+    default: ''
+  fnsPrjNo:
+    type: string
+    title: FNS Project Number
+    default: ''
 
 resources:
   Volume:
@@ -93,3 +106,7 @@ resources:
       IPsRoot: '${input.IPsRoot}'
       IPsRO: '${input.IPsRO}'
       IPsRW: '${input.IPsRW}'
+      deletionPolicy: '${input.deletionPolicy}'
+      fnsPrjName: '${input.fnsPrjName}'
+      fnsPrjNo: '${input.fnsPrjNo}'
+
