@@ -1,5 +1,5 @@
 name: Onboard NAS Volume
-version: 1.1.2
+version: 1.1.3
 formatVersion: 1
 inputs:
   projectId:
@@ -11,7 +11,6 @@ inputs:
   requestor:
     type: string
     title: Requestor
-    # default: macowicz
   notificationMail:
     type: string
     title: Notification Mail
@@ -50,10 +49,6 @@ inputs:
     type: string
     title: Snapshot Percent
     default: '0'
-  data:
-    type: string
-    title: Data
-    default: ''
   IPsRO:
     type: string
     title: RO Access Policy
@@ -73,13 +68,6 @@ inputs:
   volId:
     type: string
     title: Volume Id
-  deletionPolicy:
-    type: string
-    title: Deletion Policy
-    enum:
-      - delete
-      - outboard
-    default: delete
   fnsPrjName:
     type: string
     title: FNS Project Name
@@ -93,15 +81,20 @@ resources:
   Volume:
     type: Custom.XaasNas.Volume
     properties:
-      access: '${input.access}'
+      # vRA fields
       projectId: '${input.projectId}'
       projectName: '${input.projectName}'
       deploymentTag: '${input.deploymentTag}'
-      data: '${input.data}'
       creationPolicy: 'onboard'
+      deletionPolicy: 'delete'
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
       reasonsForRequest: '${input.reasonsForRequest}'
+      # funding (optional):
+      fnsPrjName: '${input.fnsPrjName}'
+      fnsPrjNo: '${input.fnsPrjNo}'
+      # volume fields
+      access: '${input.access}'
       volType: '${input.volType}'
       volName: '${input.volName}'
       volId: '${input.volId}'
@@ -112,7 +105,6 @@ resources:
       IPsRoot: '${input.IPsRoot}'
       IPsRO: '${input.IPsRO}'
       IPsRW: '${input.IPsRW}'
-      deletionPolicy: '${input.deletionPolicy}'
-      fnsPrjName: '${input.fnsPrjName}'
-      fnsPrjNo: '${input.fnsPrjNo}'
       webwebdavAccess: 'disabled'
+      data: ''
+
