@@ -1,10 +1,10 @@
 name: NAS Volume
-version: 1.1.2
+version: 1.1.3
 formatVersion: 1
 inputs:
   projectId:
     type: string
-    title: Project Ident
+    title: Project Id
   projectName:
     type: string
     title: Project Name
@@ -14,9 +14,6 @@ inputs:
   notificationMail:
     type: string
     title: Notification Mail
-  reasonsForRequest:
-    type: string
-    title: Reason for request
   deploymentTag:
     type: string
     title: Environment
@@ -33,11 +30,11 @@ inputs:
       - app
   svm:
     type: string
-    name: vServer
+    name: SVM
   sizeGB:
     type: string
     name: Volume Size (GB)
-    default: '10'
+    default: 10
   access:
     type: string
     name: Access protocol
@@ -85,15 +82,18 @@ resources:
     type: Custom.XaasNas.Volume
     properties:
       # vRA fields
-      access: '${input.access}'
       projectId: '${input.projectId}'
       projectName: '${input.projectName}'
       deploymentTag: '${input.deploymentTag}'
-      reasonsForRequest: '${input.reasonsForRequest}'
-      data: ''
-      creationPolicy: 'request'
+      creationPolicy: request
+      deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
+      # funding (optional):
+      fnsPrjName: '${input.fnsPrjName}'
+      fnsPrjNo: '${input.fnsPrjNo}'
+      # volume fields
+      access: '${input.access}'
       volType: '${input.volType}'
       volName: '${input.volName}'
       svm: '${input.svm}'
@@ -103,7 +103,5 @@ resources:
       IPsRoot: '${input.IPsRoot}'
       IPsRO: '${input.IPsRO}'
       IPsRW: '${input.IPsRW}'
-      deletionPolicy: '${input.deletionPolicy}'
-      fnsPrjName: '${input.fnsPrjName}'
-      fnsPrjNo: '${input.fnsPrjNo}'
-      webwebdavAccess: 'disabled'
+      webdavAccess: disabled
+

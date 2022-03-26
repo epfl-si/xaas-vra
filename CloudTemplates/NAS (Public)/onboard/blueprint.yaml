@@ -79,7 +79,7 @@ resources:
       projectName: '${input.projectName}'
       deploymentTag: '${input.deploymentTag}'
       creationPolicy: onboard
-      deletionPolicy: delete
+      deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
       # funding (optional):
