@@ -19,14 +19,16 @@ GIT_JSON=$CATEGORY/$FORM_NAME
   exit 255
 
 /bin/echo -n " * Comparing $GIT_JSON with download: "
-python3 -m json.tool "$DOWNLOAD" | diff -w - "$GIT_JSON" 2> /dev/null
+# python3 -m json.tool "$DOWNLOAD" | diff -w - "$GIT_JSON" 2> /dev/null
+jq < "$DOWNLOAD" | diff -w - "$GIT_JSON" 2> /dev/null
 DIFFS=$?
 [ $DIFFS -eq 0 ] &&\
   echo "no differences found" &&\
   rm -f "$DOWNLOAD" &&\
   exit 0;
 
-python3 -m json.tool "$DOWNLOAD" > "$GIT_JSON"
+# python3 -m json.tool "$DOWNLOAD" > "$GIT_JSON"
+jq < "$DOWNLOAD" > "$GIT_JSON"
 echo " * Copied to $GIT_JSON"
 echo " * git commit !!!"
 rm -f "$DOWNLOAD"
