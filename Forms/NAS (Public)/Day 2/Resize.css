@@ -1,6 +1,12 @@
-#input_extension,
-#input_textField_ad8aadd2,
-#input_textField_f500967d,
-#input_textField_be4a7be5 {
+/*
+#input_extension {
     text-align: right;
+}
+*/
+.clr-col-6 {
+    flex: 0 0 55%;
+    max-width: 55%;
+}
+.clr-col-md-4 {
+    flex: 0 0 30% !important;
 }

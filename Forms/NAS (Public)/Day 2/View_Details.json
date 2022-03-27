@@ -1,1021 +1,1102 @@
 {
-    "layout": {
-        "pages": [
-            {
-                "id": "page_zwew9o07",
-                "sections": [
+  "layout": {
+    "pages": [
+      {
+        "id": "page_deployment_properties",
+        "sections": [
+          {
+            "id": "section_DEBUG_D",
+            "fields": [
+              {
+                "id": "DEBUG_D",
+                "display": "checkbox",
+                "state": {
+                  "visible": false,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_volume",
+            "fields": [
+              {
+                "id": "volume",
+                "display": "valuePicker",
+                "state": {
+                  "visible": false,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_vraHeader",
+            "fields": [
+              {
+                "id": "vRAHeader",
+                "display": "text",
+                "state": {
+                  "visible": false,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_projectName",
+            "fields": [
+              {
+                "id": "projectName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentTag",
+            "fields": [
+              {
+                "id": "deploymentTag",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_requestor",
+            "fields": [
+              {
+                "id": "requestor",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_notificationMail",
+            "fields": [
+              {
+                "id": "notificationMail",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "Deployment properties",
+        "state": {}
+      },
+      {
+        "id": "page_volume_properties",
+        "title": "Volume properties",
+        "sections": [
+          {
+            "id": "section_DEBUG_V",
+            "fields": [
+              {
+                "id": "DEBUG_V",
+                "display": "checkbox",
+                "state": {
+                  "visible": false,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_volInfoHeader",
+            "fields": [
+              {
+                "id": "volInfoHeader",
+                "display": "text",
+                "state": {
+                  "visible": false,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_volName",
+            "fields": [
+              {
+                "id": "volName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_volType",
+            "fields": [
+              {
+                "id": "volType",
+                "display": "textField",
+                "state": {
+                  "visible": [
                     {
-                        "fields": [
-                            {
-                                "display": "checkbox",
-                                "id": "checkbox_7f905c1b",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": false
-                                }
-                            }
-                        ],
-                        "id": "section_2071e46c"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "valuePicker",
-                                "id": "volume",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                },
-                                "submit": false
-                            }
-                        ],
-                        "id": "section_4a3e09a8"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "text",
-                                "id": "text_dafa24bf",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_49d16286"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_90a084f8",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_d3b5f29a"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_b9415738",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_dff647bc"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "textArea_6144bb89",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_ded7bb6e"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_7d672514",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_4e6ee7d1"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "text",
-                                "id": "text_c42edf0f",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_9b9ac971"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_88ee35cf",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "checkbox_7f905c1b": true
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "id": "section_ed23ca23"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_ba0aee10",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_f0559ac4"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_9ed3a9b2",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_b319fe2d"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_6ef66e17",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "checkbox_7f905c1b": true
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "id": "section_b8152014"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_b1cd239b",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_b1a7fb5a"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_59e99673",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_9e6a1086"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_beba164a",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "_resource.volumeOut.volType": "col"
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "id": "section_b2d1179d"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textField",
-                                "id": "textField_c0601ac5",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_86cbc099"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "textArea_cd78175f",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "_resource.volumeOut.volType": "app"
-                                            },
-                                            "value": true
-                                        },
-                                        {
-                                            "equals": {
-                                                "textField_c0601ac5": "nfs3"
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "id": "section_28322e30"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "textArea_3db382c3",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "_resource.volumeOut.volType": "app"
-                                            },
-                                            "value": true
-                                        },
-                                        {
-                                            "equals": {
-                                                "textField_c0601ac5": "nfs3"
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "id": "section_007884ac"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "textArea_ab914cae",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": [
-                                        {
-                                            "equals": {
-                                                "_resource.volumeOut.volType": "app"
-                                            },
-                                            "value": true
-                                        },
-                                        {
-                                            "equals": {
-                                                "textField_c0601ac5": "nfs3"
-                                            },
-                                            "value": true
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "id": "section_faf18976"
+                      "value": true,
+                      "equals": {
+                        "DEBUG_V": true
+                      }
                     }
-                ],
-                "state": {},
-                "title": "General"
-            }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_sizeGB",
+            "fields": [
+              {
+                "id": "sizeGB",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_snapPolicyValue",
+            "fields": [
+              {
+                "id": "snapPolicyValue",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG_V": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_snapPolicy",
+            "fields": [
+              {
+                "id": "snapPolicy",
+                "display": "textField",
+                "state": {
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_snapPercent",
+            "fields": [
+              {
+                "id": "snapPercent",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "notEqual": {
+                        "snapPolicy": "None"
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_price",
+            "fields": [
+              {
+                "id": "price",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "_resource.volumeOut.volType": "col"
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_volAccessHeader",
+            "fields": [
+              {
+                "id": "volAccessHeader",
+                "display": "text",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_mountPath",
+            "fields": [
+              {
+                "id": "mountPath",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_access",
+            "fields": [
+              {
+                "id": "access",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_IPsRoot",
+            "fields": [
+              {
+                "id": "IPsRoot",
+                "display": "textArea",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "_resource.volumeOut.volType": "app"
+                      }
+                    },
+                    {
+                      "value": true,
+                      "equals": {
+                        "access": "nfs3"
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_IPsRO",
+            "fields": [
+              {
+                "id": "IPsRO",
+                "display": "textArea",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "_resource.volumeOut.volType": "app"
+                      }
+                    },
+                    {
+                      "value": true,
+                      "equals": {
+                        "access": "nfs3"
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_IPsRW",
+            "fields": [
+              {
+                "id": "IPsRW",
+                "display": "textArea",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "_resource.volumeOut.volType": "app"
+                      }
+                    },
+                    {
+                      "value": true,
+                      "equals": {
+                        "access": "nfs3"
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+
         ]
+      }
+    ]
+  },
+  "schema": {
+    "DEBUG_D": {
+      "label": "DEBUG (d)",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": false,
+      "constraints": {}
     },
-    "options": {
-        "externalValidations": []
+    "DEBUG_V": {
+      "label": "DEBUG (v)",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": false,
+      "constraints": {}
     },
-    "schema": {
-        "checkbox_7f905c1b": {
-            "constraints": {},
-            "default": false,
-            "label": "DEBUG",
-            "type": {
-                "dataType": "boolean"
-            }
-        },
-        "textArea_3db382c3": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`access.rules.RO`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+    "volume": {
+      "label": "Volume",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasNas.Volume"
+      },
+      "constraints": {
+        "required": false
+      }
+    },
+    "vRAHeader": {
+      "type": {
+        "dataType": "string"
+      },
+      "default": "vRA Information",
+      "constraints": {}
+    },
+    "deploymentTag": {
+      "label": "Environment",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.volumeOut.deploymentTag"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "requestor": {
+      "label": "Requestor",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.volumeOut.requestor"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "notificationMail": {
+      "label": "Notification Mail",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.volumeOut.notificationMail"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "projectName": {
+      "label": "Project Name",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.volumeOut.projectName"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "volInfoHeader": {
+      "type": {
+        "dataType": "string"
+      },
+      "default": "Volume Information",
+      "constraints": {}
+    },
+    "volName": {
+      "label": "Volume Name",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.volumeOut.name"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "volType": {
+      "label": "Volume Type",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.volumeOut.volType"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "sizeGB": {
+      "label": "Volume Size (GB)",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "RO Access Policy",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textArea_6144bb89": {
-            "constraints": {},
-            "default": {
-                "bind": "_resource.volumeOut.notificationMail"
+            "jsonPath": "`size.user.sizeGB`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Notification Mail",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             }
-        },
-        "textArea_ab914cae": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`access.rules.RW`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "RW Access Policy",
-            "placeholder": "",
-            "signpost": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textArea_cd78175f": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`access.rules.Root`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Root Access Policy",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_59e99673": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`snapshots.reservePercent`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Snapshot Percent",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_6ef66e17": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`snapshots.policy`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Snapshot Policy (value)",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_7d672514": {
-            "constraints": {},
-            "default": {
-                "bind": "_resource.volumeOut.projectName"
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "snapPolicyValue": {
+      "label": "Snapshot Policy (value)",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Project Name",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_88ee35cf": {
-            "constraints": {},
-            "default": {
-                "bind": "_resource.volumeOut.volType"
+            "jsonPath": "`snapshots.policy`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Volume Type",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             }
-        },
-        "textField_90a084f8": {
-            "constraints": {},
-            "default": {
-                "bind": "_resource.volumeOut.requestor"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Requestor",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_9ed3a9b2": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`access.rootMountPath`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Mount Path",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_b1cd239b": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.iaas.customforms.generic/getLabel",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "envLabel": "_resource.volumeOut.deploymentTag"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "value": "textField_6ef66e17"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "boolean",
-                            "isMultiple": false
-                        },
-                        "isProjectId": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonConfigName": "`XaasNas_snapshot_policies_EPFL`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "project": "textField_7d672514"
-                    }
-                ],
-                "type": "scriptAction"
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Snapshot Policy",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_b9415738": {
-            "constraints": {},
-            "default": {
-                "bind": "_resource.volumeOut.deploymentTag"
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Environment",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_ba0aee10": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`size.user.sizeGB`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "snapPolicy": {
+      "label": "Snapshot Policy",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.iaas.customforms.generic/getLabel",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Volume Size (GB)",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_beba164a": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.nas/getPrice",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "sizeGB": "textField_ba0aee10"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "snapPercent": "textField_59e99673"
-                    }
-                ],
-                "type": "scriptAction"
+            "envLabel": "_resource.volumeOut.deploymentTag"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Price",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "textField_c0601ac5": {
-            "constraints": {},
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`access.protocol`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+            "value": "snapPolicyValue"
+          },
+          {
+            "$type": {
+              "dataType": "boolean",
+              "isMultiple": false
             },
-            "label": "Access Protocol",
-            "placeholder": "",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "text_c42edf0f": {
-            "constraints": {},
-            "default": "Volume Information",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "text_dafa24bf": {
-            "constraints": {},
-            "default": "vRA Information",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "volume": {
-            "constraints": {
-                "required": false
+            "isProjectId": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Volume",
-            "type": {
-                "dataType": "reference",
-                "referenceType": "DynamicTypes:XaasNas.Volume"
+            "jsonConfigName": "`XaasNas_snapshot_policies_EPFL`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "project": "projectName"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "snapPercent": {
+      "label": "Snapshot Percent",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`snapshots.reservePercent`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             }
-        }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "price": {
+      "label": "Price",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.nas/getPrice",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "sizeGB": "sizeGB"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "snapPercent": "snapPercent"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "volAccessHeader": {
+      "type": {
+        "dataType": "string"
+      },
+      "default": "Volume Access",
+      "constraints": {}
+    },
+    "mountPath": {
+      "label": "Mount Path",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`access.rootMountPath`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "access": {
+      "label": "Access Protocol",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`access.protocol`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "IPsRoot": {
+      "label": "Root Access Policy",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`access.rules.Root`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "IPsRO": {
+      "label": "RO Access Policy",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`access.rules.RO`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "IPsRW": {
+      "label": "RW Access Policy",
+      "signpost": "",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`access.rules.RW`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
     }
+  },
+  "options": {
+    "externalValidations": []
+  }
 }

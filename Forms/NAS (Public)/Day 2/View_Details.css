@@ -1,18 +1,27 @@
-/* SECTIONS */
-#text_dafa24bf, #text_c42edf0f {
-    font-size: large;
-    border-bottom: black 2px dotted;
-    padding: 10px;
+/* SECTIONS text_volInfoHeader */
+#vRAHeader, #volInfoHeader, #volAccessHeader {
+    font-weight: bold;
+    border-bottom: grey 1px dotted;
+    padding: 5px 0;
 }
 
+.nav-link.active {
+    font-weight: bold !important;
+}
+
+.clr-col-6 {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+.clr-col-md-4 {
+    flex: 0 0 30% !important;
+}
 /* increase flex sizes
+
 .clr-col-6 {
     flex: 0 0 65%;
 }
 
-.clr-col-md-4 {
-    flex: 0 0 25%;
-}
  */
 /* clr-dropdown
 input:read-only {

@@ -1,146 +1,146 @@
 {
-    "layout": {
-        "pages": [
-            {
-                "id": "page_kim8ki9y",
-                "sections": [
-                    {
-                        "fields": [
-                            {
-                                "display": "valuePicker",
-                                "id": "volume",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                },
-                                "submit": false
-                            }
-                        ],
-                        "id": "section_a143072e"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "dropDown",
-                                "id": "supportCategory",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_62a11938"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "content",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_yc75fz2i"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "checkbox",
-                                "id": "wantCC",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_vcjrb805"
-                    }
-                ],
-                "state": {},
-                "title": "General"
-            }
-        ]
+  "layout": {
+    "pages": [
+      {
+        "id": "page_kim8ki9y",
+        "sections": [
+          {
+            "id": "section_volume",
+            "fields": [
+              {
+                "display": "valuePicker",
+                "id": "volume",
+                "signpostPosition": "right-middle",
+                "state": {
+                  "read-only": true,
+                  "visible": true
+                },
+                "submit": false
+              }
+            ]
+          },
+          {
+            "id": "section_supportCategory",
+            "fields": [
+              {
+                "display": "dropDown",
+                "id": "supportCategory",
+                "signpostPosition": "right-middle",
+                "state": {
+                  "read-only": false,
+                  "visible": true
+                }
+              }
+            ]
+          },
+          {
+            "id": "section_content",
+            "fields": [
+              {
+                "display": "textArea",
+                "id": "content",
+                "signpostPosition": "right-middle",
+                "state": {
+                  "read-only": false,
+                  "visible": true
+                }
+              }
+            ]
+          },
+          {
+            "id": "section_wantCC",
+            "fields": [
+              {
+                "display": "checkbox",
+                "id": "wantCC",
+                "signpostPosition": "right-middle",
+                "state": {
+                  "read-only": false,
+                  "visible": true
+                }
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "volume": {
+      "constraints": {
+        "required": false
+      },
+      "label": "Volume",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasNas.Volume"
+      }
     },
-    "options": {
-        "externalValidations": []
+    "supportCategory": {
+      "constraints": {
+        "required": false
+      },
+      "label": "Category",
+      "type": {
+        "dataType": "string"
+      },
+      "valueList": {
+        "id": "ch.epfl.iaas.customforms.generic/getList",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "envLabel": "``"
+          },
+          {
+            "$type": {
+              "dataType": "boolean",
+              "isMultiple": false
+            },
+            "isProjectId": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonConfigName": "`Support_category_s3`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "project": "``"
+          }
+        ],
+        "type": "scriptAction"
+      }
     },
-    "schema": {
-        "content": {
-            "constraints": {
-                "required": false
-            },
-            "label": "Problem Description",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "supportCategory": {
-            "constraints": {
-                "required": false
-            },
-            "label": "Category",
-            "type": {
-                "dataType": "string"
-            },
-            "valueList": {
-                "id": "ch.epfl.iaas.customforms.generic/getList",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "envLabel": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "boolean",
-                            "isMultiple": false
-                        },
-                        "isProjectId": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonConfigName": "`Support_category_s3`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "project": "``"
-                    }
-                ],
-                "type": "scriptAction"
-            }
-        },
-        "volume": {
-            "constraints": {
-                "required": false
-            },
-            "label": "Volume",
-            "type": {
-                "dataType": "reference",
-                "referenceType": "DynamicTypes:XaasNas.Volume"
-            }
-        },
-        "wantCC": {
-            "constraints": {
-                "required": false
-            },
-            "label": "Copy of request?",
-            "type": {
-                "dataType": "boolean"
-            }
-        }
+    "content": {
+      "constraints": {
+        "required": false
+      },
+      "label": "Problem Description",
+      "type": {
+        "dataType": "string"
+      }
+    },
+    "wantCC": {
+      "constraints": {
+        "required": false
+      },
+      "label": "Copy of request?",
+      "type": {
+        "dataType": "boolean"
+      }
     }
+  },
+  "options": {
+    "externalValidations": []
+  }
 }

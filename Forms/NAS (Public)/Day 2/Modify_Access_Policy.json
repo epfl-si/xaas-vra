@@ -1,338 +1,338 @@
 {
-    "layout": {
-        "pages": [
-            {
-                "id": "page_88kt0jlc",
-                "sections": [
-                    {
-                        "fields": [
-                            {
-                                "display": "valuePicker",
-                                "id": "volume",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": true,
-                                    "visible": true
-                                },
-                                "submit": false
-                            }
-                        ],
-                        "id": "section_a3k65nx2"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "IPsRoot",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_rmb994je"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "IPsRO",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_eafqllf6"
-                    },
-                    {
-                        "fields": [
-                            {
-                                "display": "textArea",
-                                "id": "IPsRW",
-                                "signpostPosition": "right-middle",
-                                "state": {
-                                    "read-only": false,
-                                    "visible": true
-                                }
-                            }
-                        ],
-                        "id": "section_whakn99n"
-                    }
-                ],
-                "state": {},
-                "title": "General"
-            }
-        ]
+  "layout": {
+    "pages": [
+      {
+        "id": "page_88kt0jlc",
+        "sections": [
+          {
+            "id": "section_volume",
+            "fields": [
+              {
+                "id": "volume",
+                "display": "valuePicker",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_IPsRoot",
+            "fields": [
+              {
+                "id": "IPsRoot",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_IPsRO",
+            "fields": [
+              {
+                "id": "IPsRO",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_IPsRW",
+            "fields": [
+              {
+                "id": "IPsRW",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "volume": {
+      "label": "volume",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasNas.Volume"
+      },
+      "constraints": {
+        "required": false
+      }
     },
-    "options": {
-        "externalValidations": [
-            {
-                "label": "IP_Root",
-                "source": {
-                    "id": "ch.epfl.xaas.nas/checkIP",
-                    "parameters": [
-                        {
-                            "$type": {
-                                "dataType": "string",
-                                "isMultiple": false
-                            },
-                            "IPs": "IPsRoot"
-                        }
-                    ],
-                    "type": "scriptAction"
-                },
-                "target": [
-                    "IPsRoot"
-                ]
+    "IPsRoot": {
+      "label": "Root Access Policy",
+      "signpost": "<span class=\"red-text\">Root</span> access: list of valid IP addresses (simple/with octet mask/with CIDR mask). One address per line.",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            {
-                "label": "IP_RO",
-                "source": {
-                    "id": "ch.epfl.xaas.nas/checkIP",
-                    "parameters": [
-                        {
-                            "$type": {
-                                "dataType": "string",
-                                "isMultiple": false
-                            },
-                            "IPs": "IPsRO"
-                        }
-                    ],
-                    "type": "scriptAction"
-                },
-                "target": [
-                    "IPsRO"
-                ]
+            "jsonPath": "`access.rules.Root`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            {
-                "label": "IP_RW",
-                "source": {
-                    "id": "ch.epfl.xaas.nas/checkIP",
-                    "parameters": [
-                        {
-                            "$type": {
-                                "dataType": "string",
-                                "isMultiple": false
-                            },
-                            "IPs": "IPsRW"
-                        }
-                    ],
-                    "type": "scriptAction"
-                },
-                "target": [
-                    "IPsRW"
-                ]
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
         ]
+      },
+      "constraints": {
+        "required": false
+      }
     },
-    "schema": {
-        "IPsRO": {
-            "constraints": {
-                "required": false
+    "IPsRO": {
+      "label": "RO Access Policy",
+      "signpost": "<span class=\"red-text\">Read Only</span> access: list of valid IP addresses (simple/with octet mask/with CIDR mask). One address per line.",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`access.rules.RO`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+            "jsonPath": "`access.rules.RO`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "RO Access Policy",
-            "signpost": "<span class=\"red-text\">Read Only</span> access: list of valid IP addresses (simple/with octet mask/with CIDR mask). One address per line.",
-            "type": {
-                "dataType": "string"
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             }
-        },
-        "IPsRW": {
-            "constraints": {
-                "required": false
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`access.rules.RW`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "RW Access Policy",
-            "signpost": "<span class=\"red-text\">Read/Write</span> access: list of valid IP addresses (simple/with octet mask/with CIDR mask). One address per line.",
-            "type": {
-                "dataType": "string"
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "constraints": {
+        "required": false
+      }
+    },
+    "IPsRW": {
+      "label": "RW Access Policy",
+      "signpost": "<span class=\"red-text\">Read/Write</span> access: list of valid IP addresses (simple/with octet mask/with CIDR mask). One address per line.",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`access.rules.RW`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.volumeOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             }
-        },
-        "IPsRoot": {
-            "constraints": {
-                "required": false
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "default": {
-                "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsMultilineString",
-                "parameters": [
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonPath": "`access.rules.Root`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterValue": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtId": "_resource.volumeOut.name"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "targetTenant": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "dtName": "`XaasNas.Volume`"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "filterField": "``"
-                    },
-                    {
-                        "$type": {
-                            "dataType": "string",
-                            "isMultiple": false
-                        },
-                        "jsonSubPath": "``"
-                    }
-                ],
-                "type": "scriptAction"
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "Root Access Policy",
-            "signpost": "<span class=\"red-text\">Root</span> access: list of valid IP addresses (simple/with octet mask/with CIDR mask). One address per line.",
-            "type": {
-                "dataType": "string"
-            }
-        },
-        "volume": {
-            "constraints": {
-                "required": false
+            "dtName": "`XaasNas.Volume`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
             },
-            "label": "volume",
-            "type": {
-                "dataType": "reference",
-                "referenceType": "DynamicTypes:XaasNas.Volume"
-            }
-        }
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "constraints": {
+        "required": false
+      }
     }
+  },
+  "options": {
+    "externalValidations": [
+      {
+        "label": "IP_Root",
+        "source": {
+          "id": "ch.epfl.xaas.nas/checkIP",
+          "type": "scriptAction",
+          "parameters": [
+            {
+              "$type": {
+                "dataType": "string",
+                "isMultiple": false
+              },
+              "IPs": "IPsRoot"
+            }
+          ]
+        },
+        "target": [
+          "IPsRoot"
+        ]
+      },
+      {
+        "label": "IP_RO",
+        "source": {
+          "id": "ch.epfl.xaas.nas/checkIP",
+          "type": "scriptAction",
+          "parameters": [
+            {
+              "$type": {
+                "dataType": "string",
+                "isMultiple": false
+              },
+              "IPs": "IPsRO"
+            }
+          ]
+        },
+        "target": [
+          "IPsRO"
+        ]
+      },
+      {
+        "label": "IP_RW",
+        "source": {
+          "id": "ch.epfl.xaas.nas/checkIP",
+          "type": "scriptAction",
+          "parameters": [
+            {
+              "$type": {
+                "dataType": "string",
+                "isMultiple": false
+              },
+              "IPs": "IPsRW"
+            }
+          ]
+        },
+        "target": [
+          "IPsRW"
+        ]
+      }
+    ]
+  }
 }
