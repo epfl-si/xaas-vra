@@ -1,10 +1,30 @@
 #text_c35d9646, #text_d48ea13c {
     font-size: x-large;
     border-bottom: black 2px dotted;
-    padding: 10px;
+    padding: 5px 0;
 }
 
+.nav-link.active {
+    font-weight: bold !important;
+}
+
+#input_snapPercent {
+    text-align: right;
+}
+
+/*
+DOESN'T WORK ...
+div.clr-col-6:has(.cf-form-control) {
+    color: red;
+}
+.clr-col-6 {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+.clr-col-md-4 {
+    flex: 0 0 30% !important;
+}
 #input_sizeGB, #input_snapPercent {
     text-align: right;
 }
-/* to make all items in dropdown red#input_BackupTag option {    color: red !important;}*/
+*/
