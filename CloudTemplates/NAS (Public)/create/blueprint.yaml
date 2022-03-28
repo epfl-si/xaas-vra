@@ -1,19 +1,14 @@
 name: NAS Volume
-version: 1.1.5
+version: 1.1.6
 formatVersion: 1
 inputs:
-  projectId:
-    type: string
-    title: Project Id
+  # vRA fields
   projectName:
     type: string
     title: Project Name
-  requestor:
+  projectId:
     type: string
-    title: Requestor
-  notificationMail:
-    type: string
-    title: Notification Mail
+    title: Project Id
   deploymentTag:
     type: string
     title: Environment
@@ -21,7 +16,25 @@ inputs:
       - Development
       - Test
       - Production
-    default: Production
+    default: Test
+  notificationMail:
+    type: string
+    title: Notification Mail
+  requestor:
+    type: string
+    title: Requestor
+
+  # funding (optional)
+  fnsPrjName:
+    type: string
+    title: FNS Project Name
+    default: ''
+  fnsPrjNo:
+    type: string
+    title: FNS Project Number
+    default: ''
+
+  # volume
   volType:
     type: string
     title: Volume Type
@@ -34,7 +47,7 @@ inputs:
   sizeGB:
     type: string
     name: Volume Size (GB)
-    default: 10
+    default: '10'
   access:
     type: string
     name: Access protocol
@@ -57,25 +70,6 @@ inputs:
     type: string
     title: Root Access Policy
     default: ''
-  volName:
-    type: string
-    title: Volume Name
-    default: ''
-  deletionPolicy:
-    type: string
-    title: Deletion Policy
-    enum:
-      - delete
-      - outboard
-    defaul: delete
-  fnsPrjName:
-    type: string
-    title: FNS Project Name
-    default: ''
-  fnsPrjNo:
-    type: string
-    title: FNS Project Number
-    default: ''
 
 resources:
   Volume:
@@ -92,10 +86,10 @@ resources:
       # funding (optional):
       fnsPrjName: '${input.fnsPrjName}'
       fnsPrjNo: '${input.fnsPrjNo}'
-      # volume fields
+      # volume
       access: '${input.access}'
       volType: '${input.volType}'
-      volName: '${input.volName}'
+      volName: ''
       svm: '${input.svm}'
       sizeGB: '${input.sizeGB}'
       snapPolicy: '${input.snapPolicy}'

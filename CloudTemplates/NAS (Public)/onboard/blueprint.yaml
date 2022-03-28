@@ -1,19 +1,14 @@
 name: Onboard NAS Volume
-version: 1.1.5
+version: 1.1.6
 formatVersion: 1
 inputs:
-  projectId:
-    type: string
-    title: Project Id
+  # vRA fields
   projectName:
     type: string
     title: Project Name
-  requestor:
+  projectId:
     type: string
-    title: Requestor
-  notificationMail:
-    type: string
-    title: Notification Mail
+    title: Project Id
   deploymentTag:
     type: string
     title: Environment
@@ -22,6 +17,24 @@ inputs:
       - Test
       - Production
     default: Test
+  notificationMail:
+    type: string
+    title: Notification Mail
+  requestor:
+    type: string
+    title: Requestor
+
+  # funding (optional)
+  fnsPrjName:
+    type: string
+    title: FNS Project Name
+    default: ''
+  fnsPrjNo:
+    type: string
+    title: FNS Project Number
+    default: ''
+
+  # volume
   volType:
     type: string
     title: Volume Type
@@ -34,7 +47,7 @@ inputs:
   sizeGB:
     type: string
     name: Volume Size (GB)
-    default: 10
+    default: '10'
   access:
     type: string
     name: Access protocol
@@ -57,17 +70,10 @@ inputs:
     type: string
     title: Root Access Policy
     default: ''
+  # volName used for onboarding
   volName:
     type: string
     title: Volume Name
-    default: ''
-  fnsPrjName:
-    type: string
-    title: FNS Project Name
-    default: ''
-  fnsPrjNo:
-    type: string
-    title: FNS Project Number
     default: ''
 
 resources:
@@ -82,10 +88,10 @@ resources:
       deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
-      # funding (optional):
+      # funding (optional)
       fnsPrjName: '${input.fnsPrjName}'
       fnsPrjNo: '${input.fnsPrjNo}'
-      # volume fields
+      # volume
       access: '${input.access}'
       volType: '${input.volType}'
       volName: '${input.volName}'
@@ -97,4 +103,3 @@ resources:
       IPsRO: '${input.IPsRO}'
       IPsRW: '${input.IPsRW}'
       webdavAccess: disabled
-
