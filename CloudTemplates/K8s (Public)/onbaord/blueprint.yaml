@@ -1,4 +1,4 @@
-name: K8s Cluster
+name: Onboard K8s Cluster
 version: 1.1.2
 formatVersion: 1
 inputs:
@@ -45,6 +45,10 @@ inputs:
       - Large
     default: Tiny
 
+  clusterName: # used for onboarding
+    type: string
+    title: Cluster Name
+
 resources:
   Cluster:
     type: Custom.XaasK8s.Cluster
@@ -53,7 +57,7 @@ resources:
       projectId: '${input.projectId}'
       projectName: '${input.projectName}'
       deploymentTag: '${input.deploymentTag}'
-      creationPolicy: request
+      creationPolicy: onboard
       deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
@@ -61,5 +65,5 @@ resources:
       fnsPrjName: '${input.fnsPrjName}'
       fnsPrjNo: '${input.fnsPrjNo}'
       # cluster
-      clusterName: ''
+      clusterName: '${input.clusterName}'
       plan: '${input.plan}'
