@@ -1,0 +1,72 @@
+name: K8s Cluster
+version: 1.1.0
+formatVersion: 1
+inputs:
+  # vRA fields
+  projectName:
+    type: string
+    title: Project name
+    default: ''
+  projectId:
+    type: string
+    title: Project ID
+    default: ''
+  deploymentTag:
+    type: string
+    title: Environment
+    enum:
+      - Development
+      - Test
+      - Production
+    default: Test
+  notificationMail:
+    type: string
+    title: Notification Mail
+    default: maciej.macowicz@epfl.ch
+  requestor:
+    type: string
+    title: Requestor
+    default: macowicz
+  # funding (optional):
+  fnsPrjName:
+    type: string
+    title: FNS Project Name
+    default: ''
+  fnsPrjNo:
+    type: string
+    title: FNS Project Number
+    default: ''
+  # cluster properties
+  clusterName:
+    type: string
+    title: Cluster Name
+    default: ''
+  plan:
+    type: string
+    title: Cluster Plan
+    enum:
+      - Tiny
+      - Small
+      - Medium
+      - Large
+    default: Tiny
+resources:
+  Cluster:
+    type: Custom.XaasK8s.Cluster
+    properties:
+      # vRA fields
+      projectId: '${input.projectId}'
+      projectName: '${input.projectName}'
+      deploymentTag: '${input.deploymentTag}'
+      creationPolicy: request
+      deletionPolicy: outboard
+      notificationMail: '${input.notificationMail}'
+      requestor: '${input.requestor}'
+      # funding (optional):
+      fnsPrjName: '${input.fnsPrjName}'
+      fnsPrjNo: '${input.fnsPrjNo}'
+      # cluster properties
+      clusterName: '${input.clusterName}'
+      plan: '${input.plan}'
+      # reserve
+      data: ''
