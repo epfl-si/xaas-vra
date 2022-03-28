@@ -2,7 +2,7 @@
 # FORM_NAME="Onboard NAS Volume"
 # FORM_NAME=$1
 FORM_NAME=${1:-Modify_Deletion_Policy}.json
-CATEGORY="Forms/NAS (Public)/Day ${2:-2}"
+CATEGORY="Forms/K8s (Public)/Day ${2:-2}"
 # echo "Going with: $CATEGORY/$FORM_NAME"
 
 DOWNLOAD=$HOME/Downloads/$FORM_NAME
