@@ -1,0 +1,17 @@
+.nav-link.active {
+    font-weight: bold !important;
+}
+
+#datagrid_clusterParameters,
+#multiSelect_namespaces {
+    width: 800px !important;
+}
+
+#text_namespace_parameters,
+#text_cluster_parameters {
+    font-size: larger;
+    font-weight: bold;
+    border-bottom: black 1px dotted;
+    padding: 0 0 2px 0;
+    color: red !important;
+}
