@@ -1,5 +1,18 @@
-#text_58056afc, #text_7fae2c69 {
-    font-size: x-large;
-    border-bottom: black 2px dotted;
-    padding: 10px;
+.nav-link.active {
+    font-weight: bold !important;
+}
+
+cf-checkbox,
+cf-dropdown,
+cf-text-field,
+cf-textarea {
+    width: 800px !important;
+}
+
+.clr-col-6 {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+.clr-col-md-4 {
+    flex: 0 0 30% !important;
 }

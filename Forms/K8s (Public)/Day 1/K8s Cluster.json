@@ -216,20 +216,6 @@
             ]
           },
           {
-            "id": "section_clusterName",
-            "fields": [
-              {
-                "id": "clusterName",
-                "display": "textField",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
             "id": "section_plan",
             "fields": [
               {
@@ -398,8 +384,7 @@
       "default": {
         "bind": {
           "values": [
-            "sizeGB",
-            "`GB volume for `",
+            "`New K8s cluster for `",
             "projectName"
           ],
           "operator": "concatenate"
@@ -464,14 +449,6 @@
       },
       "default": true,
       "constraints": {}
-    },
-    "clusterName": {
-      "label": "Cluster Name",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": ""
     },
     "plan": {
       "label": "Cluster Plan",
