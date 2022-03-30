@@ -1,0 +1,244 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_namespace_properties",
+        "sections": [
+          {
+            "id": "section_cluster",
+            "fields": [
+              {
+                "id": "cluster",
+                "display": "valuePicker",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_radio_namespace",
+            "fields": [
+              {
+                "id": "radio_namespace",
+                "display": "radio",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_namespaceParameters",
+            "fields": [
+              {
+                "id": "datagrid_namespaceParameters",
+                "display": "datagrid",
+                "state": {
+                  "visible": true,
+                  "read-only": true,
+                  "hidden-fields": []
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_caution",
+            "fields": [
+              {
+                "id": "textField_caution",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "cluster": {
+      "label": "cluster",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasK8s.Cluster",
+        "isMultiple": false
+      },
+      "constraints": {}
+    },
+    "radio_namespace": {
+      "label": "Namespace",
+      "signpost": "Choose the namespace to display information on",
+      "type": {
+        "dataType": "string"
+      },
+      "valueList": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsStringArray",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`namespacesNames`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtId": "_resource.clusterOut.name"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "_resource.clusterOut.targetTenant"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasK8s.Cluster`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "constraints": {}
+    },
+    "datagrid_namespaceParameters": {
+      "label": "Namespace parameters",
+      "type": {
+        "dataType": "complex",
+        "fields": [
+          {
+            "label": "Key",
+            "type": {
+              "dataType": "string"
+            },
+            "constraints": {},
+            "id": "key"
+          },
+          {
+            "label": "Value (absent =0)",
+            "type": {
+              "dataType": "integer"
+            },
+            "constraints": {},
+            "id": "value"
+          }
+        ],
+        "isMultiple": true
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsProperties",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`namespaces`"
+          },
+          {
+            "dtId": "_resource.clusterOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "_resource.clusterOut.targetTenant"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasK8s.Cluster`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "radio_namespace"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "`name`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "`resourceQuota.spec.hard`"
+          }
+        ]
+      },
+      "placeholder": "Namespace parameters will appear in this area",
+      "constraints": {}
+    },
+    "textField_caution": {
+      "label": "Caution",
+      "type": {
+        "dataType": "string"
+      },
+      "default": "Nothing to submit here",
+      "placeholder": "",
+      "constraints": {
+        "pattern": {
+          "value": "^$",
+          "message": "Nothing to submit here"
+        }
+      }
+    }
+  },
+  "options": {
+    "externalValidations": []
+  }
+}
