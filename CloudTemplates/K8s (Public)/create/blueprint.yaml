@@ -23,6 +23,9 @@ inputs:
   requestor:
     type: string
     title: Requestor
+  reasonsForRequest:
+    type: string
+    title: Requestor
 
   # funding (optional)
   fnsPrjName:
@@ -57,6 +60,7 @@ resources:
       deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
+      reasonsForRequest: '${input.reasonsForRequest}'
       # funding (optional):
       fnsPrjName: '${input.fnsPrjName}'
       fnsPrjNo: '${input.fnsPrjNo}'
