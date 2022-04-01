@@ -4,6 +4,11 @@
     padding: 5px 0;
 }
 
+#input_deploymentName {
+    width: 800%;
+    padding-left: 0;
+}
+
 .nav-link.active {
     font-weight: bold !important;
 }

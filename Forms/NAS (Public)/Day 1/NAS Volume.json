@@ -19,6 +19,76 @@
             ]
           },
           {
+            "id": "section_deploymentNameHash",
+            "fields": [
+              {
+                "id": "textField_deploymentNameHash",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "checkbox_DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentName",
+            "fields": [
+              {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "checkbox_DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_description",
+            "fields": [
+              {
+                "id": "description",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_reasonsForRequest",
+            "fields": [
+              {
+                "id": "reasonsForRequest",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
             "id": "section_project",
             "fields": [
               {
@@ -43,12 +113,7 @@
                   "read-only": true
                 },
                 "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_projectId",
-            "fields": [
+              },
               {
                 "id": "projectId",
                 "display": "textField",
@@ -103,45 +168,10 @@
             ]
           },
           {
-            "id": "section_deploymentName",
-            "fields": [
-              {
-                "id": "deploymentName",
-                "display": "textField",
-                "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "checkbox_DEBUG_D": true
-                      }
-                    }
-                  ],
-                  "read-only": true
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_description",
-            "fields": [
-              {
-                "id": "description",
-                "display": "textArea",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
             "id": "section_funding",
             "fields": [
               {
-                "id": "dropDown_funding",
+                "id": "funding",
                 "display": "dropDown",
                 "state": {
                   "visible": true,
@@ -162,19 +192,14 @@
                     {
                       "value": true,
                       "equals": {
-                        "dropDown_funding": "fns"
+                        "funding": "fns"
                       }
                     }
                   ],
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_fnsPrjNo",
-            "fields": [
+              },
               {
                 "id": "fnsPrjNo",
                 "display": "textField",
@@ -183,7 +208,7 @@
                     {
                       "value": true,
                       "equals": {
-                        "dropDown_funding": "fns"
+                        "funding": "fns"
                       }
                     }
                   ],
@@ -194,7 +219,7 @@
             ]
           }
         ],
-        "title": "Deployment properties",
+        "title": "Deployment",
         "state": {}
       },
       {
@@ -221,7 +246,14 @@
                 "id": "deletionPolicy",
                 "display": "dropDown",
                 "state": {
-                  "visible": true,
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "checkbox_DEBUG_V": true
+                      }
+                    }
+                  ],
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
@@ -443,7 +475,7 @@
             ]
           }
         ],
-        "title": "Volume Properties",
+        "title": "Volume",
         "state": {}
       }
     ]
@@ -454,8 +486,102 @@
       "type": {
         "dataType": "boolean"
       },
-      "default": true,
+      "default": false,
       "constraints": {}
+    },
+    "textField_deploymentNameHash": {
+      "label": "deploymentNameHash",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.iaas.js/randomHash",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "s3": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s4": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s5": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s1": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s2": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "deploymentName": {
+      "label": "Deployment Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": {
+          "values": [
+            "sizeGB",
+            "`GB volume for `",
+            "projectName",
+            "` [`",
+            "textField_deploymentNameHash",
+            "`]`"
+          ],
+          "operator": "concatenate"
+        }
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 80
+      }
+    },
+    "description": {
+      "label": "Description",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 256
+      }
+    },
+    "reasonsForRequest": {
+      "label": "Reasons for request",
+      "type": {
+        "dataType": "string"
+      },
+      "placeholder": "",
+      "constraints": {
+        "required": true
+      }
     },
     "project": {
       "label": "Project",
@@ -564,7 +690,10 @@
           "label": "Production",
           "value": "Production"
         }
-      ]
+      ],
+      "constraints": {
+        "required": true
+      }
     },
     "notificationMail": {
       "label": "Notification Mail",
@@ -590,38 +719,7 @@
         "required": true
       }
     },
-    "deploymentName": {
-      "label": "Deployment Name",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": {
-        "bind": {
-          "values": [
-            "sizeGB",
-            "`GB volume for `",
-            "projectName"
-          ],
-          "operator": "concatenate"
-        }
-      },
-      "constraints": {
-        "required": true,
-        "max-value": 80
-      }
-    },
-    "description": {
-      "label": "Description",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "constraints": {
-        "max-value": 256
-      }
-    },
-    "dropDown_funding": {
+    "funding": {
       "label": "Funding",
       "type": {
         "dataType": "string"
@@ -648,7 +746,17 @@
         "dataType": "string",
         "isMultiple": false
       },
-      "default": ""
+      "default": "",
+      "constraints": {
+        "required": [
+          {
+            "value": true,
+            "equals": {
+              "funding": "fns"
+            }
+          }
+        ]
+      }
     },
     "fnsPrjNo": {
       "label": "FNS Project Number",
@@ -656,14 +764,24 @@
         "dataType": "string",
         "isMultiple": false
       },
-      "default": ""
+      "default": "",
+      "constraints": {
+        "required": [
+          {
+            "value": true,
+            "equals": {
+              "funding": "fns"
+            }
+          }
+        ]
+      }
     },
     "checkbox_DEBUG_V": {
       "label": "DEBUG (V)",
       "type": {
         "dataType": "boolean"
       },
-      "default": true,
+      "default": false,
       "constraints": {}
     },
     "deletionPolicy": {
@@ -728,7 +846,40 @@
         "dataType": "string",
         "isMultiple": false
       },
-      "default": "none",
+      "default": {
+        "id": "ch.epfl.iaas.customforms.generic/getDefaultValue",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "envLabel": "deploymentTag"
+          },
+          {
+            "$type": {
+              "dataType": "boolean",
+              "isMultiple": false
+            },
+            "isProjectId": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonConfigName": "`XaasNas_snapshot_policies_EPFL`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "project": "projectName"
+          }
+        ]
+      },
       "valueList": {
         "id": "ch.epfl.iaas.customforms.generic/getList",
         "type": "scriptAction",
