@@ -1,0 +1,102 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_1",
+        "sections": [
+          {
+            "id": "section_general",
+            "fields": [
+              {
+                "id": "cluster",
+                "display": "valuePicker",
+                "state": {
+                  "visible": false,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_textField_clusterName",
+            "fields": [
+              {
+                "id": "textField_clusterName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_cb6ef48b",
+            "fields": [
+              {
+                "id": "robotType",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "cluster": {
+      "label": "cluster",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasK8s.Cluster",
+        "isMultiple": false
+      },
+      "constraints": {}
+    },
+    "textField_clusterName": {
+      "label": "Cluster Name",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.clusterOut.name"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "robotType": {
+      "label": "Robot Type",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "pull",
+      "valueList": [
+        {
+          "label": "Pull",
+          "value": "pull"
+        },
+        {
+          "label": "Push",
+          "value": "push"
+        }
+      ],
+      "constraints": {
+        "required": true
+      }
+    }
+  },
+  "options": {
+    "externalValidations": []
+  }
+}

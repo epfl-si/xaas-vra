@@ -1,0 +1,199 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_1",
+        "sections": [
+          {
+            "id": "section_general",
+            "fields": [
+              {
+                "id": "cluster",
+                "display": "valuePicker",
+                "state": {
+                  "visible": false,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_textField_clusterName",
+            "fields": [
+              {
+                "id": "textField_clusterName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_radio_namespace",
+            "fields": [
+              {
+                "id": "radio_namespace",
+                "display": "radio",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_1",
+            "fields": [
+              {
+                "id": "namespace",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "cluster": {
+      "label": "Cluster",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasK8s.Cluster",
+        "isMultiple": false
+      },
+      "constraints": {}
+    },
+    "textField_clusterName": {
+      "label": "Cluster Name",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.clusterOut.name"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "radio_namespace": {
+      "label": "Namespaces",
+      "type": {
+        "dataType": "string"
+      },
+      "valueList": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsStringArray",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`namespacesNames`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtId": "textField_clusterName"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "`epfl`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasK8s`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "constraints": {}
+    },
+    "namespace": {
+      "label": "New namespace",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "placeholder": "enter new namespace name",
+      "constraints": {
+        "pattern": {
+          "value": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+          "message": "new namespace name must begin and end with letter/digit and must contain letters/digits or minus sign (-)."
+        },
+        "required": true
+      }
+    }
+  },
+  "options": {
+    "externalValidations": [
+      {
+        "label": "Namespace name already taken",
+        "source": {
+          "id": "ch.epfl.xaas.k8s/isNsNameAvailable",
+          "type": "scriptAction",
+          "parameters": [
+            {
+              "$type": {
+                "dataType": "string",
+                "isMultiple": false
+              },
+              "clusterName": "textField_clusterName"
+            },
+            {
+              "$type": {
+                "dataType": "string",
+                "isMultiple": false
+              },
+              "nsName": "namespace"
+            }
+          ]
+        },
+        "target": [
+          "namespace"
+        ]
+      }
+    ]
+  }
+}
