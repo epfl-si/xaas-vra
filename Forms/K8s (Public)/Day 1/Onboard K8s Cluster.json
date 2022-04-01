@@ -71,6 +71,34 @@
             "id": "section_project",
             "fields": [
               {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_86bf51fe",
+            "fields": [
+              {
+                "id": "description",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_19ef77b8",
+            "fields": [
+              {
                 "id": "project",
                 "display": "dropDown",
                 "state": {
@@ -147,34 +175,6 @@
             ]
           },
           {
-            "id": "section_deploymentName",
-            "fields": [
-              {
-                "id": "deploymentName",
-                "display": "textField",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_description",
-            "fields": [
-              {
-                "id": "description",
-                "display": "textArea",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
             "id": "section_funding",
             "fields": [
               {
@@ -226,7 +226,7 @@
             ]
           }
         ],
-        "title": "Deployment properties",
+        "title": "Deployment",
         "state": {
           "visible": [
             {
@@ -363,7 +363,7 @@
             ]
           }
         ],
-        "title": "Cluster Properties",
+        "title": "Cluster",
         "state": {
           "visible": [
             {
@@ -431,6 +431,30 @@
       },
       "default": true,
       "constraints": {}
+    },
+    "deploymentName": {
+      "label": "Deployment Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": "clusterName"
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 80
+      }
+    },
+    "description": {
+      "label": "Description",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "constraints": {
+        "max-value": 256
+      }
     },
     "project": {
       "label": "Project",
@@ -569,30 +593,6 @@
       },
       "constraints": {
         "required": true
-      }
-    },
-    "deploymentName": {
-      "label": "Deployment Name",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": {
-        "bind": "clusterName"
-      },
-      "constraints": {
-        "required": true,
-        "max-value": 80
-      }
-    },
-    "description": {
-      "label": "Description",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "constraints": {
-        "max-value": 256
       }
     },
     "funding": {
