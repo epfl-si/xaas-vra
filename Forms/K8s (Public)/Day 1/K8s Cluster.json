@@ -3,7 +3,6 @@
     "pages": [
       {
         "id": "page_deployment_properties",
-        "title": "Deployment properties",
         "sections": [
           {
             "id": "section_DEBUG_D",
@@ -11,6 +10,41 @@
               {
                 "id": "checkbox_DEBUG_D",
                 "display": "checkbox",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_cec2a946",
+            "fields": [
+              {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "checkbox_DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_3def6fba",
+            "fields": [
+              {
+                "id": "description",
+                "display": "textArea",
                 "state": {
                   "visible": true,
                   "read-only": false
@@ -44,12 +78,7 @@
                   "read-only": true
                 },
                 "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_projectId",
-            "fields": [
+              },
               {
                 "id": "projectId",
                 "display": "textField",
@@ -104,31 +133,10 @@
             ]
           },
           {
-            "id": "section_deploymentName",
+            "id": "section_reasonsForRequest",
             "fields": [
               {
-                "id": "deploymentName",
-                "display": "textField",
-                "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "checkbox_DEBUG_D": true
-                      }
-                    }
-                  ],
-                  "read-only": true
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_description",
-            "fields": [
-              {
-                "id": "description",
+                "id": "reasonsForRequest",
                 "display": "textArea",
                 "state": {
                   "visible": true,
@@ -170,12 +178,7 @@
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_fnsPrjNo",
-            "fields": [
+              },
               {
                 "id": "fnsPrjNo",
                 "display": "textField",
@@ -195,11 +198,11 @@
             ]
           }
         ],
+        "title": "Deployment",
         "state": {}
       },
       {
         "id": "page_volume_properties",
-        "title": "Cluster properties",
         "sections": [
           {
             "id": "section_DEBUG_C",
@@ -229,7 +232,9 @@
               }
             ]
           }
-        ]
+        ],
+        "title": "Cluster",
+        "state": {}
       }
     ]
   },
@@ -241,6 +246,36 @@
       },
       "default": true,
       "constraints": {}
+    },
+    "deploymentName": {
+      "label": "Deployment Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": {
+          "values": [
+            "`New K8s cluster for `",
+            "projectName"
+          ],
+          "operator": "concatenate"
+        }
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 80
+      }
+    },
+    "description": {
+      "label": "Description",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "constraints": {
+        "max-value": 256
+      }
     },
     "project": {
       "label": "Project",
@@ -349,11 +384,14 @@
           "label": "Production",
           "value": "Production"
         }
-      ]
+      ],
+      "constraints": {
+        "required": true
+      }
     },
     "notificationMail": {
       "label": "Notification Mail",
-      "signpost": "List of valid EPFL emails separated by whitespace or newline.",
+      "signpost": "List of valid EPFL emails, one email per line",
       "type": {
         "dataType": "string",
         "isMultiple": false
@@ -375,34 +413,14 @@
         "required": true
       }
     },
-    "deploymentName": {
-      "label": "Deployment Name",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": {
-        "bind": {
-          "values": [
-            "`New K8s cluster for `",
-            "projectName"
-          ],
-          "operator": "concatenate"
-        }
-      },
-      "constraints": {
-        "required": true,
-        "max-value": 80
-      }
-    },
-    "description": {
-      "label": "Description",
+    "reasonsForRequest": {
+      "label": "Reasons for request",
       "type": {
         "dataType": "string",
         "isMultiple": false
       },
       "constraints": {
-        "max-value": 256
+        "required": true
       }
     },
     "dropDown_funding": {
@@ -432,7 +450,17 @@
         "dataType": "string",
         "isMultiple": false
       },
-      "default": ""
+      "default": "",
+      "constraints": {
+        "required": [
+          {
+            "value": true,
+            "equals": {
+              "dropDown_funding": "fns"
+            }
+          }
+        ]
+      }
     },
     "fnsPrjNo": {
       "label": "FNS Project Number",
@@ -440,7 +468,17 @@
         "dataType": "string",
         "isMultiple": false
       },
-      "default": ""
+      "default": "",
+      "constraints": {
+        "required": [
+          {
+            "value": true,
+            "equals": {
+              "dropDown_funding": "fns"
+            }
+          }
+        ]
+      }
     },
     "checkbox_DEBUG_C": {
       "label": "DEBUG (V)",
@@ -459,22 +497,25 @@
       "default": "Tiny",
       "valueList": [
         {
-          "value": "Tiny",
-          "label": "Tiny"
+          "label": "Tiny",
+          "value": "Tiny"
         },
         {
-          "value": "Small",
-          "label": "Small"
+          "label": "Small",
+          "value": "Small"
         },
         {
-          "value": "Medium",
-          "label": "Medium"
+          "label": "Medium",
+          "value": "Medium"
         },
         {
-          "value": "Large",
-          "label": "Large"
+          "label": "Large",
+          "value": "Large"
         }
-      ]
+      ],
+      "constraints": {
+        "required": true
+      }
     }
   },
   "options": {

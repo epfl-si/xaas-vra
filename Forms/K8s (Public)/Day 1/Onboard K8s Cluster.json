@@ -256,20 +256,6 @@
             ]
           },
           {
-            "id": "section_378c59a2",
-            "fields": [
-              {
-                "id": "text_cluster_parameters",
-                "display": "text",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
             "id": "section_clusterId",
             "fields": [
               {
@@ -318,21 +304,23 @@
                 "signpostPosition": "right-middle"
               }
             ]
-          },
-          {
-            "id": "section_d836d325",
-            "fields": [
-              {
-                "id": "text_namespace_parameters",
-                "display": "text",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
+          }
+        ],
+        "title": "Cluster",
+        "state": {
+          "visible": [
+            {
+              "value": true,
+              "equals": {
+                "onboardStatus": "Ok"
               }
-            ]
-          },
+            }
+          ]
+        }
+      },
+      {
+        "id": "page_namespace_properties",
+        "sections": [
           {
             "id": "section_radio_namespace",
             "fields": [
@@ -363,7 +351,7 @@
             ]
           }
         ],
-        "title": "Cluster",
+        "title": "Namespaces",
         "state": {
           "visible": [
             {
@@ -563,7 +551,10 @@
           "label": "Production",
           "value": "Production"
         }
-      ]
+      ],
+      "constraints": {
+        "required": true
+      }
     },
     "notificationMail": {
       "label": "Notification Mail",
@@ -587,7 +578,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "clusterName": "clusterName"
+            "clusterId": "clusterId"
           }
         ]
       },
@@ -637,13 +628,6 @@
       "type": {
         "dataType": "boolean"
       },
-      "constraints": {}
-    },
-    "text_cluster_parameters": {
-      "type": {
-        "dataType": "string"
-      },
-      "default": "Cluster",
       "constraints": {}
     },
     "clusterId": {
@@ -852,13 +836,6 @@
         ]
       },
       "placeholder": "",
-      "constraints": {}
-    },
-    "text_namespace_parameters": {
-      "type": {
-        "dataType": "string"
-      },
-      "default": "Namespaces",
       "constraints": {}
     },
     "radio_namespace": {
