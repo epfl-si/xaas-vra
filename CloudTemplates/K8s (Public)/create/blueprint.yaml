@@ -1,5 +1,5 @@
 name: K8s Cluster
-version: 1.1.2
+version: 1.1.3
 formatVersion: 1
 inputs:
   # vRA fields
@@ -25,7 +25,7 @@ inputs:
     title: Requestor
   reasonsForRequest:
     type: string
-    title: Requestor
+    title: Reasons for request
 
   # funding (optional)
   fnsPrjName:
