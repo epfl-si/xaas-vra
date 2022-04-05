@@ -5,30 +5,16 @@
         "id": "page_1",
         "sections": [
           {
-            "id": "section_general",
+            "id": "section_cluster",
             "fields": [
               {
                 "id": "cluster",
                 "display": "valuePicker",
                 "state": {
-                  "visible": false,
-                  "read-only": true
-                },
-                "submit": false,
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_textField_clusterName",
-            "fields": [
-              {
-                "id": "textField_clusterName",
-                "display": "textField",
-                "state": {
                   "visible": true,
                   "read-only": true
                 },
+                "submit": false,
                 "signpostPosition": "right-middle"
               }
             ]
@@ -48,15 +34,14 @@
             ]
           },
           {
-            "id": "section_namespaceParameters",
+            "id": "section_nbLoadBalacers",
             "fields": [
               {
-                "id": "datagrid_namespaceParameters",
-                "display": "datagrid",
+                "id": "decimalField_nbLoadBalacers",
+                "display": "decimalField",
                 "state": {
                   "visible": true,
-                  "read-only": true,
-                  "hidden-fields": []
+                  "read-only": true
                 },
                 "signpostPosition": "right-middle"
               }
@@ -84,23 +69,12 @@
   },
   "schema": {
     "cluster": {
-      "label": "cluster",
+      "label": "Cluster",
       "type": {
         "dataType": "reference",
         "referenceType": "DynamicTypes:XaasK8s.Cluster",
         "isMultiple": false
       },
-      "constraints": {}
-    },
-    "textField_clusterName": {
-      "label": "Cluster Name",
-      "type": {
-        "dataType": "string"
-      },
-      "default": {
-        "bind": "_resource.clusterOut.name"
-      },
-      "placeholder": "",
       "constraints": {}
     },
     "namespace": {
@@ -131,7 +105,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtId": "textField_clusterName"
+            "dtId": "_resource.clusterOut.name"
           },
           {
             "$type": {
@@ -163,34 +137,18 @@
           }
         ]
       },
-      "constraints": {}
+      "constraints": {
+        "required": true
+      }
     },
-    "datagrid_namespaceParameters": {
-      "label": "Parameters",
+    "decimalField_nbLoadBalacers": {
+      "label": "# LoadBalancers",
       "type": {
-        "dataType": "complex",
-        "fields": [
-          {
-            "label": "Key",
-            "type": {
-              "dataType": "string"
-            },
-            "constraints": {},
-            "id": "key"
-          },
-          {
-            "label": "Value (empty = 0)",
-            "type": {
-              "dataType": "integer"
-            },
-            "constraints": {},
-            "id": "value"
-          }
-        ],
-        "isMultiple": true
+        "dataType": "decimal"
       },
+      "step": 1,
       "default": {
-        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsProperties",
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber",
         "type": "scriptAction",
         "parameters": [
           {
@@ -201,7 +159,7 @@
             "jsonPath": "`namespaces`"
           },
           {
-            "dtId": "textField_clusterName",
+            "dtId": "_resource.clusterOut.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -212,7 +170,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "targetTenant": "`epfl`"
+            "targetTenant": "``"
           },
           {
             "$type": {
@@ -221,6 +179,14 @@
             },
             "dtName": "`XaasK8s`"
           },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "sizeConversion": "``"
+          },
+
           {
             "$type": {
               "dataType": "string",
@@ -240,11 +206,11 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "jsonSubPath": "`resourceQuota.spec.hard`"
+            "jsonSubPath": "`resourceQuota.spec.hard.services.loadbalancers`"
           }
         ]
       },
-      "placeholder": "Namespace parameters will appear in this area",
+
       "constraints": {}
     },
     "textField_status": {
@@ -268,7 +234,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "clusterName": "textField_clusterName"
+            "clusterName": "_resource.clusterOut.name"
           },
           {
             "$type": {

@@ -25,24 +25,10 @@
                 "id": "cluster",
                 "display": "valuePicker",
                 "state": {
-                  "visible": false,
-                  "read-only": true
-                },
-                "submit": false,
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_textField_clusterName",
-            "fields": [
-              {
-                "id": "textField_clusterName",
-                "display": "textField",
-                "state": {
                   "visible": true,
                   "read-only": true
                 },
+                "submit": false,
                 "signpostPosition": "right-middle"
               }
             ]
@@ -204,7 +190,7 @@
                 "display": "textArea",
                 "state": {
                   "visible": true,
-                  "read-only": false
+                  "read-only": true
                 },
                 "signpostPosition": "right-middle"
               }
@@ -402,22 +388,12 @@
       "constraints": {}
     },
     "cluster": {
-      "label": "cluster",
+      "label": "Cluster",
       "type": {
         "dataType": "reference",
-        "referenceType": "DynamicTypes:XaasK8s"
+        "referenceType": "DynamicTypes:XaasK8s.Cluster",
+        "isMultiple": false
       },
-      "constraints": {}
-    },
-    "textField_clusterName": {
-      "label": "Cluster Name",
-      "type": {
-        "dataType": "string"
-      },
-      "default": {
-        "bind": "_resource.clusterOut.name"
-      },
-      "placeholder": "",
       "constraints": {}
     },
     "checkbox_clusterInBackend": {
@@ -434,7 +410,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "clusterName": "textField_clusterName"
+            "clusterName": "_resource.clusterOut.name"
           }
         ]
       },
@@ -669,7 +645,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "textField_clusterName",
+            "dtId": "_resource.clusterOut.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -731,7 +707,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "textField_clusterName",
+            "dtId": "_resource.clusterOut.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -813,7 +789,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "textField_clusterName",
+            "dtId": "_resource.clusterOut.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -880,7 +856,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtId": "textField_clusterName"
+            "dtId": "_resource.clusterOut.name"
           },
           {
             "$type": {
@@ -950,7 +926,7 @@
             "jsonPath": "`namespaces`"
           },
           {
-            "dtId": "textField_clusterName",
+            "dtId": "_resource.clusterOut.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false

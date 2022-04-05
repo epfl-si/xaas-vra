@@ -5,30 +5,16 @@
         "id": "page_1",
         "sections": [
           {
-            "id": "section_general",
+            "id": "section_cluster",
             "fields": [
               {
                 "id": "cluster",
                 "display": "valuePicker",
                 "state": {
-                  "visible": false,
-                  "read-only": true
-                },
-                "submit": false,
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_textField_clusterName",
-            "fields": [
-              {
-                "id": "textField_clusterName",
-                "display": "textField",
-                "state": {
                   "visible": true,
                   "read-only": true
                 },
+                "submit": false,
                 "signpostPosition": "right-middle"
               }
             ]
@@ -60,6 +46,20 @@
                 "signpostPosition": "right-middle"
               }
             ]
+          },
+          {
+            "id": "section_textFied_status",
+            "fields": [
+              {
+                "id": "textField_status",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
           }
         ],
         "title": "General",
@@ -75,17 +75,6 @@
         "referenceType": "DynamicTypes:XaasK8s.Cluster",
         "isMultiple": false
       },
-      "constraints": {}
-    },
-    "textField_clusterName": {
-      "label": "Cluster Name",
-      "type": {
-        "dataType": "string"
-      },
-      "default": {
-        "bind": "_resource.clusterOut.name"
-      },
-      "placeholder": "",
       "constraints": {}
     },
     "radio_namespace": {
@@ -116,7 +105,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtId": "textField_clusterName"
+            "dtId": "_resource.clusterOut.name"
           },
           {
             "$type": {
@@ -160,40 +149,47 @@
       "constraints": {
         "pattern": {
           "value": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
-          "message": "new namespace name must begin and end with letter/digit and must contain letters/digits or minus sign (-)."
+          "message": "New namespace name must begin and end with letter/digit and must contain letters/digits or minus sign (-)."
+        },
+        "required": true
+      }
+    },
+    "textField_status": {
+      "label": "Status",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.k8s/isNsNameAvailable",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "clusterName": "_resource.clusterOut.name"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "nsName": "namespace"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {
+        "pattern": {
+          "value": "^Ok$",
+          "message": ""
         },
         "required": true
       }
     }
   },
   "options": {
-    "externalValidations": [
-      {
-        "label": "Namespace name already taken",
-        "source": {
-          "id": "ch.epfl.xaas.k8s/isNsNameAvailable",
-          "type": "scriptAction",
-          "parameters": [
-            {
-              "$type": {
-                "dataType": "string",
-                "isMultiple": false
-              },
-              "clusterName": "textField_clusterName"
-            },
-            {
-              "$type": {
-                "dataType": "string",
-                "isMultiple": false
-              },
-              "nsName": "namespace"
-            }
-          ]
-        },
-        "target": [
-          "namespace"
-        ]
-      }
-    ]
+    "externalValidations": []
   }
 }

@@ -34,15 +34,28 @@
             ]
           },
           {
-            "id": "section_namespaceParameters",
+            "id": "section_crtSizeGB",
             "fields": [
               {
-                "id": "datagrid_namespaceParameters",
-                "display": "datagrid",
+                "id": "decimalField_crtSizeGB",
+                "display": "decimalField",
                 "state": {
                   "visible": true,
-                  "read-only": true,
-                  "hidden-fields": []
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_extSizeGB",
+            "fields": [
+              {
+                "id": "extSizeGB",
+                "display": "decimalField",
+                "state": {
+                  "visible": true,
+                  "read-only": false
                 },
                 "signpostPosition": "right-middle"
               }
@@ -126,32 +139,14 @@
       },
       "constraints": {}
     },
-    "datagrid_namespaceParameters": {
-      "label": "Parameters",
+    "decimalField_crtSizeGB": {
+      "label": "Current NS Storage",
       "type": {
-        "dataType": "complex",
-        "fields": [
-          {
-            "label": "Key",
-            "type": {
-              "dataType": "string"
-            },
-            "constraints": {},
-            "id": "key"
-          },
-          {
-            "label": "Value (empty = 0)",
-            "type": {
-              "dataType": "integer"
-            },
-            "constraints": {},
-            "id": "value"
-          }
-        ],
-        "isMultiple": true
+        "dataType": "decimal"
       },
+      "step": 1,
       "default": {
-        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsProperties",
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber",
         "type": "scriptAction",
         "parameters": [
           {
@@ -201,12 +196,23 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "jsonSubPath": "`resourceQuota.spec.hard`"
+            "jsonSubPath": "`resourceQuota.spec.hard.requests.storage`"
           }
         ]
       },
-      "placeholder": "Namespace parameters will appear in this area",
       "constraints": {}
+    },
+    "extSizeGB": {
+      "label": "NS Storage extent",
+      "type": {
+        "dataType": "decimal",
+        "isMultiple": false
+      },
+      "default": 1,
+      "constraints": {
+        "required": true,
+        "min-value": 1
+      }
     }
   },
   "options": {

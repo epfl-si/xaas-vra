@@ -19,11 +19,11 @@
             ]
           },
           {
-            "id": "section_deletionPolicy",
+            "id": "section_notificationMail",
             "fields": [
               {
-                "id": "deletionPolicy",
-                "display": "dropDown",
+                "id": "notificationMail",
+                "display": "textArea",
                 "state": {
                   "visible": true,
                   "read-only": false
@@ -39,6 +39,19 @@
     ]
   },
   "schema": {
+    "notificationMail": {
+      "label": "notificationMail",
+      "type": {
+        "dataType": "string"
+      },
+      "constraints": {
+        "required": false
+      },
+      "default": {
+        "bind": "_resource.clusterOut.notificationMail"
+      },
+      "signpost": "EPFL email addresses only, one email per line.\nSupports groups mail addresses defined on http://groups.epfl.ch \nEmails must be visible in LDAP."
+    },
     "object": {
       "label": "Cluster",
       "type": {
@@ -47,32 +60,29 @@
         "isMultiple": false
       },
       "constraints": {}
-    },
-    "deletionPolicy": {
-      "label": "Deletion Policy",
-      "signpost": "Indicates deletion policy for the new deletion of cluster: \n<ul>\n  <li>'<b>Delete</b>' -> delete the cluster completely, \n  <li>'<b>Outboard</b>' -> delete only from vRA, will remain on the backend.\n</ul>",
-      "type": {
-        "dataType": "string"
-      },
-      "default": {
-        "bind": "_resource.clusterOut.deletionPolicy"
-      },
-      "valueList": [
-        {
-          "label": "Delete",
-          "value": "delete"
-        },
-        {
-          "label": "Outboard",
-          "value": "outboard"
-        }
-      ],
-      "constraints": {
-        "required": true
-      }
     }
   },
   "options": {
-    "externalValidations": []
+    "externalValidations": [
+      {
+        "label": "Check notification mail",
+        "source": {
+          "id": "ch.epfl.iaas.utils.mail/checkMails",
+          "parameters": [
+            {
+              "$type": {
+                "dataType": "string",
+                "isMultiple": false
+              },
+              "mails": "notificationMail"
+            }
+          ],
+          "type": "scriptAction"
+        },
+        "target": [
+          "notificationMail"
+        ]
+      }
+    ]
   }
 }

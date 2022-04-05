@@ -5,13 +5,13 @@
         "id": "page_1",
         "sections": [
           {
-            "id": "section_general",
+            "id": "section_cluster",
             "fields": [
               {
                 "id": "cluster",
                 "display": "valuePicker",
                 "state": {
-                  "visible": false,
+                  "visible": true,
                   "read-only": true
                 },
                 "submit": false,
@@ -20,21 +20,7 @@
             ]
           },
           {
-            "id": "section_textField_clusterName",
-            "fields": [
-              {
-                "id": "textField_clusterName",
-                "display": "textField",
-                "state": {
-                  "visible": true,
-                  "read-only": true
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_cb6ef48b",
+            "id": "section_robotType",
             "fields": [
               {
                 "id": "robotType",
@@ -55,23 +41,12 @@
   },
   "schema": {
     "cluster": {
-      "label": "cluster",
+      "label": "Cluster",
       "type": {
         "dataType": "reference",
         "referenceType": "DynamicTypes:XaasK8s.Cluster",
         "isMultiple": false
       },
-      "constraints": {}
-    },
-    "textField_clusterName": {
-      "label": "Cluster Name",
-      "type": {
-        "dataType": "string"
-      },
-      "default": {
-        "bind": "_resource.clusterOut.name"
-      },
-      "placeholder": "",
       "constraints": {}
     },
     "robotType": {
