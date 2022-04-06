@@ -2,19 +2,18 @@
   "layout": {
     "pages": [
       {
-        "id": "page_zwew9o07",
+        "id": "page_general",
         "sections": [
           {
-            "id": "section_volume",
+            "id": "section_object",
             "fields": [
               {
-                "id": "volume",
+                "id": "object",
                 "display": "valuePicker",
                 "state": {
                   "visible": true,
                   "read-only": true
                 },
-                "submit": false,
                 "signpostPosition": "right-middle"
               }
             ]
@@ -40,19 +39,18 @@
     ]
   },
   "schema": {
-    "volume": {
+    "object": {
       "label": "Volume",
       "type": {
         "dataType": "reference",
-        "referenceType": "DynamicTypes:XaasNas.Volume"
+        "referenceType": "DynamicTypes:XaasNas.Volume",
+        "isMultiple": false
       },
-      "constraints": {
-        "required": false
-      }
+      "constraints": {}
     },
     "deletionPolicy": {
       "label": "Deletion Policy",
-      "signpost": "Indicates deletion policy for the new deletion of volume: \n<ul>\n  <li>'<b>Delete</b>' -> delete the volume completely, \n  <li>'<b>Outboard</b>' -> delete only from vRA, will remain on the backend.\n</ul>",
+      "signpost": "Deletion policy for the volume: \n<ul>\n  <li>'<b>Delete</b>' -> delete the volume completely, \n  <li>'<b>Outboard</b>' -> delete only from vRA, will remain on the backend.\n</ul>",
       "type": {
         "dataType": "string"
       },

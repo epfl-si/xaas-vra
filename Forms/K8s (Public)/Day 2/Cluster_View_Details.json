@@ -34,11 +34,11 @@
             ]
           },
           {
-            "id": "section_clusterInBackend",
+            "id": "section_status",
             "fields": [
               {
-                "id": "checkbox_clusterInBackend",
-                "display": "checkbox",
+                "id": "status",
+                "display": "textField",
                 "state": {
                   "visible": true,
                   "read-only": true
@@ -75,7 +75,7 @@
                 "id": "DEBUG_D",
                 "display": "checkbox",
                 "state": {
-                  "visible": true,
+                  "visible": false,
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
@@ -83,10 +83,25 @@
             ]
           },
           {
-            "id": "section_a73590a8",
+            "id": "section_cluster_D",
             "fields": [
               {
-                "id": "textField_36a651b1",
+                "id": "cluster_D",
+                "display": "valuePicker",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentId",
+            "fields": [
+              {
+                "id": "textField_deploymentId",
                 "display": "textField",
                 "state": {
                   "visible": [
@@ -104,7 +119,7 @@
             ]
           },
           {
-            "id": "section_693c805f",
+            "id": "section_deploymentName",
             "fields": [
               {
                 "id": "deploymentName",
@@ -118,7 +133,7 @@
             ]
           },
           {
-            "id": "section_5b8678b5",
+            "id": "section_description",
             "fields": [
               {
                 "id": "description",
@@ -132,7 +147,7 @@
             ]
           },
           {
-            "id": "section_cbc7bc74",
+            "id": "section_projectName",
             "fields": [
               {
                 "id": "projectName",
@@ -269,6 +284,21 @@
             ]
           },
           {
+            "id": "section_cluster_C",
+            "fields": [
+              {
+                "id": "cluster_C",
+                "display": "valuePicker",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
             "id": "section_clusterId",
             "fields": [
               {
@@ -320,12 +350,13 @@
           }
         ],
         "title": "Cluster",
+
         "state": {
           "visible": [
             {
               "value": true,
               "equals": {
-                "checkbox_clusterInBackend": true
+                "status": "Ok"
               }
             }
           ]
@@ -334,6 +365,35 @@
       {
         "id": "page_namespace_properties",
         "sections": [
+          {
+            "id": "section_DEBUG_N",
+            "fields": [
+              {
+                "id": "DEBUG_N",
+                "display": "checkbox",
+                "state": {
+                  "visible": false,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_cluster_N",
+            "fields": [
+              {
+                "id": "cluster_N",
+                "display": "valuePicker",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
           {
             "id": "section_radio_namespace",
             "fields": [
@@ -370,7 +430,7 @@
             {
               "value": true,
               "equals": {
-                "checkbox_clusterInBackend": true
+                "status": "Ok"
               }
             }
           ]
@@ -387,6 +447,14 @@
       "default": true,
       "constraints": {}
     },
+    "DEBUG_N": {
+      "label": "DEBUG (N)",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": true,
+      "constraints": {}
+    },
     "cluster": {
       "label": "Cluster",
       "type": {
@@ -396,13 +464,40 @@
       },
       "constraints": {}
     },
-    "checkbox_clusterInBackend": {
-      "label": "Cluster in backend?",
+    "cluster_C": {
+      "label": "Cluster",
       "type": {
-        "dataType": "boolean"
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasK8s.Cluster",
+        "isMultiple": false
+      },
+      "constraints": {}
+    },
+    "cluster_D": {
+      "label": "Cluster",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasK8s.Cluster",
+        "isMultiple": false
+      },
+      "constraints": {}
+    },
+    "cluster_N": {
+      "label": "Cluster",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasK8s.Cluster",
+        "isMultiple": false
+      },
+      "constraints": {}
+    },
+    "status": {
+      "label": "Status",
+      "type": {
+        "dataType": "string"
       },
       "default": {
-        "id": "ch.epfl.xaas.k8s/isClusterInBackend",
+        "id": "ch.epfl.xaas.k8s/isClusterBackendMsg",
         "type": "scriptAction",
         "parameters": [
           {
@@ -438,7 +533,7 @@
       "default": false,
       "constraints": {}
     },
-    "textField_36a651b1": {
+    "textField_deploymentId": {
       "label": "deploymentId",
       "type": {
         "dataType": "string"
@@ -471,7 +566,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "deploymentId": "textField_36a651b1"
+            "deploymentId": "textField_deploymentId"
           }
         ]
       },
@@ -499,7 +594,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "deploymentId": "textField_36a651b1"
+            "deploymentId": "textField_deploymentId"
           }
         ]
       },

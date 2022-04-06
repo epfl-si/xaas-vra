@@ -170,7 +170,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas.Volume`"
+            "dtName": "`XaasNas`"
           },
           {
             "$type": {
@@ -272,7 +272,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas.Volume`"
+            "dtName": "`XaasNas`"
           },
           {
             "$type": {

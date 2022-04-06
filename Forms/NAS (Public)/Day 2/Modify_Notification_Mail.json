@@ -2,25 +2,24 @@
   "layout": {
     "pages": [
       {
-        "id": "page_7jknnfxh",
+        "id": "page_general",
         "sections": [
           {
-            "id": "section_8iwanyu9",
+            "id": "section_object",
             "fields": [
               {
-                "id": "volume",
+                "id": "object",
                 "display": "valuePicker",
                 "state": {
                   "visible": true,
                   "read-only": true
                 },
-                "submit": false,
                 "signpostPosition": "right-middle"
               }
             ]
           },
           {
-            "id": "section_1y2n2jt3",
+            "id": "section_notificationMail",
             "fields": [
               {
                 "id": "notificationMail",
@@ -40,28 +39,27 @@
     ]
   },
   "schema": {
-    "volume": {
-      "label": "Volume",
+    "notificationMail": {
+      "label": "notificationMail",
       "type": {
-        "dataType": "reference",
-        "referenceType": "DynamicTypes:XaasNas.Volume"
+        "dataType": "string"
       },
       "constraints": {
         "required": false
-      }
-    },
-    "notificationMail": {
-      "label": "Notification Mail",
-      "signpost": "Email addresses of the EPFL only.\nSupports groups mail addresses defined on http://groups.epfl.ch \nHave to be visible in LDAP.",
-      "type": {
-        "dataType": "string"
       },
       "default": {
         "bind": "_resource.volumeOut.notificationMail"
       },
-      "constraints": {
-        "required": true
-      }
+      "signpost": "EPFL email addresses only, one email per line.\nSupports groups mail addresses defined on http://groups.epfl.ch \nEmails must be visible in LDAP."
+    },
+    "object": {
+      "label": "Volume",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasNas.Volume",
+        "isMultiple": false
+      },
+      "constraints": {}
     }
   },
   "options": {
@@ -70,7 +68,6 @@
         "label": "Check notification mail",
         "source": {
           "id": "ch.epfl.iaas.utils.mail/checkMails",
-          "type": "scriptAction",
           "parameters": [
             {
               "$type": {
@@ -79,7 +76,8 @@
               },
               "mails": "notificationMail"
             }
-          ]
+          ],
+          "type": "scriptAction"
         },
         "target": [
           "notificationMail"

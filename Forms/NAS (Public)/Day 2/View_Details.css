@@ -1,8 +1,8 @@
 /* SECTIONS text_volInfoHeader */
-#vRAHeader, #volInfoHeader, #volAccessHeader {
+#section_caution label,
+#section_caution input {
     font-weight: bold;
-    border-bottom: grey 1px dotted;
-    padding: 5px 0;
+    color: red;
 }
 
 .nav-link.active {
@@ -16,16 +16,3 @@
 .clr-col-md-4 {
     flex: 0 0 30% !important;
 }
-/* increase flex sizes
-
-.clr-col-6 {
-    flex: 0 0 65%;
-}
-
- */
-/* clr-dropdown
-input:read-only {
-    color: rgb(179, 179, 179);
-    font-style: italic;
-}
- */

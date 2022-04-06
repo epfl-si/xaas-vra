@@ -50,7 +50,7 @@
     },
     "deletionPolicy": {
       "label": "Deletion Policy",
-      "signpost": "Indicates deletion policy for the new deletion of cluster: \n<ul>\n  <li>'<b>Delete</b>' -> delete the cluster completely, \n  <li>'<b>Outboard</b>' -> delete only from vRA, will remain on the backend.\n</ul>",
+      "signpost": "Deletion policy for the cluster: \n<ul>\n  <li>'<b>Delete</b>' -> delete the cluster completely, \n  <li>'<b>Outboard</b>' -> delete only from vRA, will remain on the backend.\n</ul>",
       "type": {
         "dataType": "string"
       },
