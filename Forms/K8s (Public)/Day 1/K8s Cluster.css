@@ -6,7 +6,12 @@ cf-checkbox,
 cf-dropdown,
 cf-text-field,
 cf-textarea {
-    width: 800px !important;
+    width: 700px !important;
+}
+
+cf-text-field#projectId .clr-col-6 {
+    flex: 0 0 25%;
+    max-width: 25%;
 }
 
 .clr-col-6 {
@@ -14,5 +19,5 @@ cf-textarea {
     max-width: 60%;
 }
 .clr-col-md-4 {
-    flex: 0 0 30% !important;
+    flex: 0 0 25% !important;
 }

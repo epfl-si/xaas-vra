@@ -386,7 +386,7 @@
     },
     "onboardStatus": {
       "label": "Status",
-      "signpost": "Volume cannot be onboarded yet",
+      "signpost": "Cluster cannot be onboarded yet",
       "type": {
         "dataType": "string"
       },

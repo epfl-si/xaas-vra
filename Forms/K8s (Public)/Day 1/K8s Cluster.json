@@ -40,10 +40,24 @@
             ]
           },
           {
-            "id": "section_3def6fba",
+            "id": "section_description",
             "fields": [
               {
                 "id": "description",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_reasonsForRequest",
+            "fields": [
+              {
+                "id": "reasonsForRequest",
                 "display": "textArea",
                 "state": {
                   "visible": true,
@@ -64,17 +78,12 @@
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_projectName",
-            "fields": [
+              },
               {
                 "id": "projectName",
                 "display": "textField",
                 "state": {
-                  "visible": true,
+                  "visible": false,
                   "read-only": true
                 },
                 "signpostPosition": "right-middle"
@@ -123,20 +132,6 @@
             "fields": [
               {
                 "id": "notificationMail",
-                "display": "textArea",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_reasonsForRequest",
-            "fields": [
-              {
-                "id": "reasonsForRequest",
                 "display": "textArea",
                 "state": {
                   "visible": true,
@@ -274,6 +269,7 @@
         "isMultiple": false
       },
       "constraints": {
+        "required": true,
         "max-value": 256
       }
     },
