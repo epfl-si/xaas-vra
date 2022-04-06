@@ -1,22 +1,20 @@
-#vraHeader, #volHeader {
-    font-size: x-large;
-    border-bottom: black 2px dotted;
-    padding: 10px;
+cf-checkbox,
+cf-dropdown,
+cf-text-field,
+cf-textarea {
+    width: 700px !important;
 }
 
-#input_sizeGB, #input_snapPercent {
-    text-align: right;
+cf-text-field#projectId .clr-col-6,
+cf-dropdown#snapPercent .clr-col-6 {
+    flex: 0 0 30%;
+    max-width: 30%;
 }
 
-#text_38736157 {
-    font-size: x-large;
-    color: orangered;
-}
-/*
 .clr-col-6 {
-    flex: 0 0 80%;
+    flex: 0 0 60%;
+    max-width: 60%;
 }
-.cf-form .cf-form-group .cf-form-control {
-    width: 200%;
+.clr-col-md-4 {
+    flex: 0 0 25% !important;
 }
-/* to make all items in dropdown red#input_BackupTag option {    color: red !important;}*/

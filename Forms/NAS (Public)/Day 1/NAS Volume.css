@@ -1,35 +1,24 @@
-#text_c35d9646, #text_d48ea13c {
-    font-size: x-large;
-    border-bottom: black 2px dotted;
-    padding: 5px 0;
-}
-
-#input_deploymentName {
-    width: 800%;
-    padding-left: 0;
-}
-
 .nav-link.active {
     font-weight: bold !important;
 }
 
-#input_snapPercent {
-    text-align: right;
+cf-checkbox,
+cf-dropdown,
+cf-text-field,
+cf-textarea {
+    width: 700px !important;
 }
 
-/*
-DOESN'T WORK ...
-div.clr-col-6:has(.cf-form-control) {
-    color: red;
+cf-text-field#projectId .clr-col-6,
+cf-dropdown#snapPercent .clr-col-6 {
+    flex: 0 0 30%;
+    max-width: 30%;
 }
+
 .clr-col-6 {
     flex: 0 0 60%;
     max-width: 60%;
 }
 .clr-col-md-4 {
-    flex: 0 0 30% !important;
+    flex: 0 0 25% !important;
 }
-#input_sizeGB, #input_snapPercent {
-    text-align: right;
-}
-*/

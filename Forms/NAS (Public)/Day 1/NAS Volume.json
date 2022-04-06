@@ -99,17 +99,12 @@
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_projectName",
-            "fields": [
+              },
               {
                 "id": "projectName",
                 "display": "textField",
                 "state": {
-                  "visible": true,
+                  "visible": false,
                   "read-only": true
                 },
                 "signpostPosition": "right-middle"
@@ -267,8 +262,15 @@
                 "id": "volType",
                 "display": "textField",
                 "state": {
-                  "visible": true,
-                  "read-only": true
+                  "read-only": true,
+                  "visible": [
+                    {
+                      "equals": {
+                        "checkbox_DEBUG_V": true
+                      },
+                      "value": true
+                    }
+                  ]
                 },
                 "signpostPosition": "right-middle"
               }
@@ -289,21 +291,7 @@
             ]
           },
           {
-            "id": "section_snapPolicy",
-            "fields": [
-              {
-                "id": "snapPolicy",
-                "display": "dropDown",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_minSnapPercent",
+            "id": "section_65c59462",
             "fields": [
               {
                 "id": "text_minSnapPercent",
@@ -324,8 +312,17 @@
             ]
           },
           {
-            "id": "section_snapPercent",
+            "id": "section_snapPolicy",
             "fields": [
+              {
+                "id": "snapPolicy",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              },
               {
                 "id": "snapPercent",
                 "display": "dropDown",
@@ -475,7 +472,7 @@
             ]
           }
         ],
-        "title": "Volume",
+        "title": "Volume ",
         "state": {}
       }
     ]
@@ -840,6 +837,52 @@
         }
       }
     },
+    "text_minSnapPercent": {
+      "label": "minSnapPercent",
+      "type": {
+        "dataType": "string"
+      },
+      "default": [
+        {
+          "value": "0",
+          "equals": {
+            "snapPolicy": "none"
+          }
+        },
+        {
+          "value": "5",
+          "notEqual": {
+            "snapPolicy": "none"
+          }
+        }
+      ],
+      "placeholder": "",
+      "constraints": {}
+    },
+    "snapPercent": {
+      "label": "Snapshot Percent",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": "text_minSnapPercent"
+      },
+      "valueList": {
+        "id": "ch.epfl.xaas.nas/getSnapPercentList",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "initValue": "text_minSnapPercent"
+          }
+        ]
+      },
+      "constraints": {}
+    },
     "snapPolicy": {
       "label": "Snapshot Policy",
       "type": {
@@ -917,52 +960,6 @@
       "constraints": {
         "required": true
       }
-    },
-    "text_minSnapPercent": {
-      "label": "minSnapPercent",
-      "type": {
-        "dataType": "string"
-      },
-      "default": [
-        {
-          "value": "0",
-          "equals": {
-            "snapPolicy": "none"
-          }
-        },
-        {
-          "value": "5",
-          "notEqual": {
-            "snapPolicy": "none"
-          }
-        }
-      ],
-      "placeholder": "",
-      "constraints": {}
-    },
-    "snapPercent": {
-      "label": "Snapshot Percent",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": {
-        "bind": "text_minSnapPercent"
-      },
-      "valueList": {
-        "id": "ch.epfl.xaas.nas/getSnapPercentList",
-        "type": "scriptAction",
-        "parameters": [
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "initValue": "text_minSnapPercent"
-          }
-        ]
-      },
-      "constraints": {}
     },
     "textField_price": {
       "label": "Price",
