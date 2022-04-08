@@ -18,3 +18,7 @@
 * **[Namespace] Details**: Namespace_Details
 * **[Namespace] Add**: Namespace_Add
 * **[Namespace] Delete**: Namespace_Delete
+
+### Support
+* **[Support] Request**: Request_Support
+

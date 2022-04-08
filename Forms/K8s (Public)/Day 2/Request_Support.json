@@ -5,10 +5,10 @@
         "id": "page_general",
         "sections": [
           {
-            "id": "section_volume",
+            "id": "section_cluster",
             "fields": [
               {
-                "id": "volume",
+                "id": "cluster",
                 "display": "valuePicker",
                 "state": {
                   "visible": true,
@@ -86,7 +86,7 @@
             "$type": {
               "dataType": "string"
             },
-            "elementName": "`Support_category_XaasNas`"
+            "elementName": "`Support_category_XaasK8s`"
           },
           {
             "$type": {
@@ -124,11 +124,11 @@
         "required": false
       }
     },
-    "volume": {
-      "label": "Volume",
+    "cluster": {
+      "label": "Cluster",
       "type": {
         "dataType": "reference",
-        "referenceType": "DynamicTypes:XaasNas.Volume",
+        "referenceType": "DynamicTypes:XaasK8s.Cluster",
         "isMultiple": false
       }
     }
