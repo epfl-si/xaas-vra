@@ -152,7 +152,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -170,7 +170,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {
@@ -254,7 +254,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -272,7 +272,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {

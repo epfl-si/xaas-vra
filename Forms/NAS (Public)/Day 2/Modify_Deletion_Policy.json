@@ -55,7 +55,7 @@
         "dataType": "string"
       },
       "default": {
-        "bind": "_resource.volumeOut.deletionPolicy"
+        "bind": "_resource.object.deletionPolicy"
       },
       "valueList": [
         {

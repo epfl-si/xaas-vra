@@ -398,7 +398,7 @@
                     {
                       "value": true,
                       "equals": {
-                        "_resource.volumeOut.volType": "col"
+                        "_resource.object.volType": "col"
                       }
                     }
                   ],
@@ -505,7 +505,7 @@
                     {
                       "value": true,
                       "equals": {
-                        "_resource.volumeOut.volType": "app"
+                        "_resource.object.volType": "app"
                       }
                     },
                     {
@@ -532,7 +532,7 @@
                     {
                       "value": true,
                       "equals": {
-                        "_resource.volumeOut.volType": "app"
+                        "_resource.object.volType": "app"
                       }
                     },
                     {
@@ -559,7 +559,7 @@
                     {
                       "value": true,
                       "equals": {
-                        "_resource.volumeOut.volType": "app"
+                        "_resource.object.volType": "app"
                       }
                     },
                     {
@@ -623,7 +623,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "volName": "_resource.volumeOut.name"
+            "volName": "_resource.object.name"
           }
         ]
       },
@@ -736,7 +736,7 @@
         "dataType": "string"
       },
       "default": {
-        "bind": "_resource.volumeOut.projectName"
+        "bind": "_resource.object.projectName"
       },
       "placeholder": "",
       "constraints": {}
@@ -758,7 +758,7 @@
         "dataType": "string"
       },
       "default": {
-        "bind": "_resource.volumeOut.requestor"
+        "bind": "_resource.object.requestor"
       },
       "placeholder": "",
       "constraints": {}
@@ -769,7 +769,7 @@
         "dataType": "string"
       },
       "default": {
-        "bind": "_resource.volumeOut.deploymentTag"
+        "bind": "_resource.object.deploymentTag"
       },
       "placeholder": "",
       "constraints": {}
@@ -780,7 +780,7 @@
         "dataType": "string"
       },
       "default": {
-        "bind": "_resource.volumeOut.notificationMail"
+        "bind": "_resource.object.notificationMail"
       },
       "placeholder": "",
       "constraints": {}
@@ -799,7 +799,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "fnsPrjName": "_resource.volumeOut.fnsPrjName"
+            "fnsPrjName": "_resource.object.fnsPrjName"
           }
         ]
       },
@@ -823,7 +823,7 @@
         "isMultiple": false
       },
       "default": {
-        "bind": "_resource.volumeOut.fnsPrjName"
+        "bind": "_resource.object.fnsPrjName"
       }
     },
     "fnsPrjNo": {
@@ -833,7 +833,7 @@
         "isMultiple": false
       },
       "default": {
-        "bind": "_resource.volumeOut.fnsPrjNo"
+        "bind": "_resource.object.fnsPrjNo"
       }
     },
     "DEBUG_V": {
@@ -860,7 +860,7 @@
         "dataType": "string"
       },
       "default": {
-        "bind": "_resource.volumeOut.volType"
+        "bind": "_resource.object.volType"
       },
       "placeholder": "",
       "constraints": {}
@@ -889,7 +889,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -907,7 +907,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {
@@ -952,7 +952,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -970,7 +970,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {
@@ -1005,7 +1005,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "deploymentTag": "_resource.volumeOut.deploymentTag"
+            "deploymentTag": "_resource.object.deploymentTag"
           },
           {
             "$type": {
@@ -1057,7 +1057,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -1075,7 +1075,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {
@@ -1174,7 +1174,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -1192,7 +1192,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {
@@ -1236,7 +1236,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -1254,7 +1254,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {
@@ -1299,7 +1299,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -1317,7 +1317,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {
@@ -1362,7 +1362,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -1380,7 +1380,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {
@@ -1425,7 +1425,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -1443,7 +1443,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {
@@ -1489,7 +1489,7 @@
             "filterValue": "``"
           },
           {
-            "dtId": "_resource.volumeOut.name",
+            "dtId": "_resource.object.name",
             "$type": {
               "dataType": "string",
               "isMultiple": false
@@ -1507,7 +1507,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "_resource.volumeOut.namespace"
+            "dtName": "_resource.object.namespace"
           },
           {
             "$type": {

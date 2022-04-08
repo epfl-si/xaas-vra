@@ -48,7 +48,7 @@
         "required": false
       },
       "default": {
-        "bind": "_resource.volumeOut.notificationMail"
+        "bind": "_resource.object.notificationMail"
       },
       "signpost": "EPFL email addresses only, one email per line.\nSupports groups mail addresses defined on http://groups.epfl.ch \nEmails must be visible in LDAP."
     },
