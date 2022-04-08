@@ -890,7 +890,7 @@
         "isMultiple": false
       },
       "default": {
-        "id": "ch.epfl.iaas.customforms.generic/getDefaultValue",
+        "id": "ch.epfl.config/getDefaultValue",
         "type": "scriptAction",
         "parameters": [
           {
@@ -898,33 +898,26 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "envLabel": "deploymentTag"
-          },
-          {
-            "$type": {
-              "dataType": "boolean",
-              "isMultiple": false
-            },
-            "isProjectId": "``"
+            "deploymentTag": "deploymentTag"
           },
           {
             "$type": {
               "dataType": "string",
               "isMultiple": false
             },
-            "jsonConfigName": "`XaasNas_snapshot_policies_EPFL`"
+            "elementName": "`XaasNas_snapshot_policies_EPFL`"
           },
           {
             "$type": {
               "dataType": "string",
               "isMultiple": false
             },
-            "project": "projectName"
+            "projectName": "projectName"
           }
         ]
       },
       "valueList": {
-        "id": "ch.epfl.iaas.customforms.generic/getList",
+        "id": "ch.epfl.config/getList",
         "type": "scriptAction",
         "parameters": [
           {
@@ -932,28 +925,21 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "envLabel": "deploymentTag"
-          },
-          {
-            "$type": {
-              "dataType": "boolean",
-              "isMultiple": false
-            },
-            "isProjectId": "``"
+            "deploymentTag": "deploymentTag"
           },
           {
             "$type": {
               "dataType": "string",
               "isMultiple": false
             },
-            "jsonConfigName": "`XaasNas_snapshot_policies_EPFL`"
+            "elementName": "`XaasNas_snapshot_policies_EPFL`"
           },
           {
             "$type": {
               "dataType": "string",
               "isMultiple": false
             },
-            "project": "project"
+            "projectName": "projectName"
           }
         ]
       },

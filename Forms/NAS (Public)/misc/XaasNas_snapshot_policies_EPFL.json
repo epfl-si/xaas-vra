@@ -5,7 +5,8 @@
         "value": "none"
       },
       "Mid-day and mid-night": {
-        "value": "epfl-archive"
+        "value": "epfl-archive",
+        "default": true
       },
       "Hourly on business hours": {
         "value": "epfl-default"
@@ -19,7 +20,8 @@
         "value": "epfl-archive"
       },
       "Hourly on business hours": {
-        "value": "epfl-default"
+        "value": "epfl-default",
+        "default": true
       }
     },
     "Development": {
@@ -35,4 +37,3 @@
     }
   }
 }
-

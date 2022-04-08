@@ -121,7 +121,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -186,7 +186,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -251,7 +251,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {

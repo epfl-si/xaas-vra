@@ -907,7 +907,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -970,7 +970,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -997,7 +997,7 @@
         "dataType": "string"
       },
       "default": {
-        "id": "ch.epfl.iaas.customforms.generic/getLabel",
+        "id": "ch.epfl.config/getLabel",
         "type": "scriptAction",
         "parameters": [
           {
@@ -1005,7 +1005,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "envLabel": "_resource.volumeOut.deploymentTag"
+            "deploymentTag": "_resource.volumeOut.deploymentTag"
           },
           {
             "$type": {
@@ -1016,24 +1016,17 @@
           },
           {
             "$type": {
-              "dataType": "boolean",
+              "dataType": "string",
               "isMultiple": false
             },
-            "isProjectId": "``"
+            "elementName": "`XaasNas_snapshot_policies_EPFL`"
           },
           {
             "$type": {
               "dataType": "string",
               "isMultiple": false
             },
-            "jsonConfigName": "`XaasNas_snapshot_policies_EPFL`"
-          },
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "project": "projectName"
+            "projectName": "projectName"
           }
         ]
       },
@@ -1082,7 +1075,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -1199,7 +1192,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -1261,7 +1254,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -1324,7 +1317,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -1387,7 +1380,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -1450,7 +1443,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
@@ -1514,7 +1507,7 @@
               "dataType": "string",
               "isMultiple": false
             },
-            "dtName": "`XaasNas`"
+            "dtName": "_resource.volumeOut.namespace"
           },
           {
             "$type": {
