@@ -1,5 +1,5 @@
 name: NAS Volume
-version: 1.1.7
+version: 1.1.8
 formatVersion: 1
 inputs:
   # vRA fields
@@ -41,6 +41,11 @@ inputs:
     enum:
       - col
       - app
+  volName:
+    type: string
+    title: Volume Name
+    default: ''
+
   svm:
     type: string
     name: SVM
@@ -91,7 +96,7 @@ resources:
       # volume
       access: '${input.access}'
       volType: '${input.volType}'
-      volName: ''
+      volName: '${input.volName}'
       svm: '${input.svm}'
       sizeGB: '${input.sizeGB}'
       snapPolicy: '${input.snapPolicy}'
