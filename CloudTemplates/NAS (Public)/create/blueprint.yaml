@@ -1,5 +1,5 @@
 name: NAS Volume
-version: 1.1.6
+version: 1.1.7
 formatVersion: 1
 inputs:
   # vRA fields
@@ -44,6 +44,7 @@ inputs:
   svm:
     type: string
     name: SVM
+    default: ''
   sizeGB:
     type: string
     name: Volume Size (GB)
@@ -54,6 +55,7 @@ inputs:
   snapPolicy:
     type: string
     title: Snapshot Policy
+    default: ''
   snapPercent:
     type: string
     title: Snapshot Percent
