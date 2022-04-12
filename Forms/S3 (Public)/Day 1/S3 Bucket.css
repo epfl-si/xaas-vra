@@ -1,7 +1,24 @@
-#text_9f7413cf, #text_de24297e {
-    font-size: x-large;
-    border-bottom: black 2px dotted;
-    padding: 10px;
+.nav-link.active {
+    font-weight: bold !important;
 }
 
-/* to make all items in dropdown red#input_BackupTag option {    color: red !important;}*/
+cf-checkbox,
+cf-dropdown,
+cf-text-field,
+cf-textarea {
+    width: 700px !important;
+}
+
+cf-text-field#projectId .clr-col-6,
+cf-dropdown#snapPercent .clr-col-6 {
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+
+.clr-col-6 {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+.clr-col-md-4 {
+    flex: 0 0 25% !important;
+}

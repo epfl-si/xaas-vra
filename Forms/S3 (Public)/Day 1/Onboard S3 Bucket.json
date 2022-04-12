@@ -5,6 +5,55 @@
         "id": "page_general",
         "sections": [
           {
+            "id": "section_DEBUG_G",
+            "fields": [
+              {
+                "id": "DEBUG_G",
+                "display": "checkbox",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_bucketName",
+            "fields": [
+              {
+                "id": "name",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_onboardStatus",
+            "fields": [
+              {
+                "id": "onboardStatus",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      },
+      {
+        "id": "page_deployment_properties",
+        "sections": [
+          {
             "id": "section_DEBUG_D",
             "fields": [
               {
@@ -163,11 +212,11 @@
             ]
           }
         ],
-        "title": "General",
+        "title": "Deployment",
         "state": {}
       },
       {
-        "id": "page_object_properties",
+        "id": "page_bucket_properties",
         "sections": [
           {
             "id": "section_linkedTo",
@@ -204,8 +253,16 @@
     ]
   },
   "schema": {
+    "DEBUG_G": {
+      "label": "DEBUG (G)",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": true,
+      "constraints": {}
+    },
     "DEBUG_D": {
-      "label": "DEBUG",
+      "label": "DEBUG (D)",
       "type": {
         "dataType": "boolean"
       },
@@ -473,6 +530,44 @@
       "constraints": {
         "required": true,
         "max-value": 256
+      }
+    },
+    "name": {
+      "label": "Bucket Name",
+      "signpost": "Enter the name of the bucket to be onboarded. It must be\n<ul>\n<li> present in the backend </li>\n<li> not already onboarded</li>\n</ul>",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "",
+      "constraints": {}
+    },
+    "onboardStatus": {
+      "label": "Status",
+      "signpost": "Volume cannot be onboarded yet",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.s3/readyToOnboardMsg",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "bucketName": "name"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {
+        "pattern": {
+          "value": "^Ok$",
+          "message": ""
+        },
+        "required": true
       }
     }
   },
