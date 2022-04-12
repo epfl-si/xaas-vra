@@ -1,4 +1,4 @@
-name: S3 Bucket
+name: Onboard S3 Bucket
 version: 1.1.0
 formatVersion: 1
 inputs:
@@ -26,6 +26,7 @@ inputs:
   reasonsForRequest:
     type: string
     title: Reasons for request
+    default: ''
 
   # funding (optional)
   fnsPrjName:
@@ -37,7 +38,10 @@ inputs:
     title: FNS Project Number
     default: ''
 
-  # buc,ket
+  # bucket
+  name:
+    type: string
+    title: Bucket name
   linkedTo:
     type: string
     title: Linked to
@@ -45,11 +49,6 @@ inputs:
   versioning:
     type: string
     title: Versioning?
-    enum:
-      - Suspended
-      - Active
-    default: Suspended
-
 
 resources:
   Bucket:
@@ -59,7 +58,7 @@ resources:
       projectId: '${input.projectId}'
       projectName: '${input.projectName}'
       deploymentTag: '${input.deploymentTag}'
-      creationPolicy: request
+      creationPolicy: onboard
       deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
@@ -68,5 +67,6 @@ resources:
       fnsPrjName: '${input.fnsPrjName}'
       fnsPrjNo: '${input.fnsPrjNo}'
       # bucket
+      name: '${input.name}'
       linkedTo: '${input.linkedTo}'
       versioning: '${input.versioning}'
