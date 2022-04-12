@@ -1,5 +1,5 @@
 name: S3 Bucket
-version: 1.0.4
+version: 1.0.5
 formatVersion: 1
 inputs:
   friendlyName:
@@ -64,7 +64,8 @@ resources:
       deploymentTag: '${input.deploymentTag}'
       data: '${input.data}'
       linkedTo: '${input.linkedTo}'
-      onboardOnly: 'false'
+      creationPolicy: request
+      deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
       reasonsForRequest: '${input.reasonsForRequest}'
