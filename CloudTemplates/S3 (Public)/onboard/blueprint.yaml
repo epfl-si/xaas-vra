@@ -1,8 +1,14 @@
 name: Onboard S3 Bucket
-version: 1.1.0
+version: 1.1.1
 formatVersion: 1
 inputs:
   # vRA fields
+  dplyName:
+    type: string
+    title: Deployment name
+  dplyDescription:
+    type: string
+    title: Deployment Description
   projectName:
     type: string
     title: Project name
@@ -55,6 +61,8 @@ resources:
     type: Custom.XaasS3.Bucket
     properties:
       # vRA fields
+      dplyName: '${input.dplyName}'
+      dplyDescription: '${input.dplyDescription}'
       projectId: '${input.projectId}'
       projectName: '${input.projectName}'
       deploymentTag: '${input.deploymentTag}'
