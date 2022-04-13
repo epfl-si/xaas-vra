@@ -93,10 +93,44 @@
             ]
           },
           {
+            "id": "section_dplyName",
+            "fields": [
+              {
+                "id": "dplyName",
+                "display": "textField",
+                "state": {
+                  "visible": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
             "id": "section_description",
             "fields": [
               {
                 "id": "description",
+                "display": "textArea",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_dplyDescription",
+            "fields": [
+              {
+                "id": "dplyDescription",
                 "display": "textArea",
                 "state": {
                   "visible": true,
@@ -106,6 +140,7 @@
               }
             ]
           },
+
           {
             "id": "section_reasonsForRequest",
             "fields": [
@@ -156,6 +191,57 @@
                 "display": "textArea",
                 "state": {
                   "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_funding",
+            "fields": [
+              {
+                "id": "funding",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_fnsPrjName",
+            "fields": [
+              {
+                "id": "fnsPrjName",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "funding": "fns"
+                      }
+                    }
+                  ],
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              },
+              {
+                "id": "fnsPrjNo",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "funding": "fns"
+                      }
+                    }
+                  ],
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
@@ -317,6 +403,63 @@
         "required": true
       }
     },
+    "fnsPrjName": {
+      "label": "FNS Project Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "",
+      "constraints": {
+        "required": [
+          {
+            "value": true,
+            "equals": {
+              "funding": "fns"
+            }
+          }
+        ]
+      }
+    },
+    "fnsPrjNo": {
+      "label": "FNS Project Number",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "",
+      "constraints": {
+        "required": [
+          {
+            "value": true,
+            "equals": {
+              "funding": "fns"
+            }
+          }
+        ]
+      }
+    },
+    "funding": {
+      "label": "Funding",
+      "type": {
+        "dataType": "string"
+      },
+      "default": "epfl",
+      "valueList": [
+        {
+          "label": "EPFL",
+          "value": "epfl"
+        },
+        {
+          "label": "FNS",
+          "value": "fns"
+        }
+      ],
+      "placeholder": "",
+      "constraints": {
+        "required": true
+      }
+    },
     "linkedTo": {
       "label": "Linked to",
       "type": {
@@ -442,7 +585,7 @@
     },
 
     "deploymentName": {
-      "label": "Deployment Name",
+      "label": "(tmp) Deployment Name",
       "type": {
         "dataType": "string",
         "isMultiple": false
@@ -450,7 +593,7 @@
       "default": {
         "bind": {
           "values": [
-            "`New K8s cluster for `",
+            "`New S3 bucket for `",
             "projectName",
             "` [`",
             "deploymentNameHash",
@@ -465,10 +608,33 @@
       }
     },
     "description": {
-      "label": "Description",
+      "label": "(tmp) Description",
       "type": {
         "dataType": "string",
         "isMultiple": false
+      },
+      "default": {
+        "bind": "dplyDescription"
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 256
+      }
+    },
+    "dplyName": {
+      "label": "Deployment Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "dplyDescription":{
+      "label": "Description",
+      "type": {
+        "dataType": "string"
       },
       "constraints": {
         "required": true,
