@@ -11,6 +11,35 @@
                 "id": "volume",
                 "display": "valuePicker",
                 "state": {
+                  "visible": false,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentName",
+            "fields": [
+              {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_volumeName",
+            "fields": [
+              {
+                "id": "volumeName",
+                "display": "textField",
+                "state": {
                   "visible": true,
                   "read-only": true
                 },
@@ -77,6 +106,28 @@
       "constraints": {
         "required": false
       }
+    },
+    "deploymentName": {
+      "label": "Deployment",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": "_resource.object.deploymentName"
+      },
+      "constraints": {}
+    },
+    "volumeName": {
+      "label": "Volume",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": "_resource.object.name"
+      },
+      "constraints": {}
     },
     "IPsRoot": {
       "label": "Root Access Policy",

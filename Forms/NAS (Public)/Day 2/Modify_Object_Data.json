@@ -1,0 +1,143 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_general",
+        "sections": [
+          {
+            "id": "section_object",
+            "fields": [
+              {
+                "id": "object",
+                "display": "valuePicker",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentName",
+            "fields": [
+              {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentDescription",
+            "fields": [
+              {
+                "id": "deploymentDescription",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_notificationMail",
+            "fields": [
+              {
+                "id": "notificationMail",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "deploymentName": {
+      "label": "Deployment name",
+      "type": {
+        "dataType": "string"
+      },
+      "constraints": {
+        "required": true
+      },
+      "default": {
+        "bind": "_resource.object.deploymentName"
+      }
+    },
+    "deploymentDescription": {
+      "label": "Description",
+      "type": {
+        "dataType": "string"
+      },
+      "constraints": {
+        "required": true
+      },
+      "default": {
+        "bind": "_resource.object.deploymentDescription"
+      }
+    },
+
+    "notificationMail": {
+      "label": "Notification Mail",
+      "type": {
+        "dataType": "string"
+      },
+      "constraints": {
+        "required": true
+      },
+      "default": {
+        "bind": "_resource.object.notificationMail"
+      },
+      "signpost": "EPFL email addresses only, one email per line.\nSupports groups mail addresses defined on http://groups.epfl.ch \nEmails must be visible in LDAP."
+    },
+    "object": {
+      "label": "Volume",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasNas.Volume",
+        "isMultiple": false
+      },
+      "constraints": {
+        "required": false
+      }
+    }
+  },
+  "options": {
+    "externalValidations": [
+      {
+        "label": "Check notification mail",
+        "source": {
+          "id": "ch.epfl.iaas.utils.mail/checkMails",
+          "parameters": [
+            {
+              "$type": {
+                "dataType": "string",
+                "isMultiple": false
+              },
+              "mails": "notificationMail"
+            }
+          ],
+          "type": "scriptAction"
+        },
+        "target": [
+          "notificationMail"
+        ]
+      }
+    ]
+  }
+}
