@@ -1,19 +1,23 @@
 ## Additional Actions in custom resource
+* **Modify_Object_Data** (Modify Object Data) - generic
 * **Modify_Deletion_Policy** (Modify Deletion Policy)
-* **Request_Support** (Request Support)
-* **Resize** (Resize)
+* **View_Details** (View Details)
+* **Request_Support** (Request Support) - generic
+* **Resize** (Resize) - app/ and ... col
+
 * **Modify_Access_Policy** (Modify Access Policy):
-    ````yaml
-  matchExpression:
-  - or:
-      - key: '${properties.access}'
-        operator: eq
-        value: nfs3
-      - key: '${properties.volType}'
-        operator: eq
-        value: app
-    ````
-* **Modify_Snapshot_Policy** (Modify Snapshot Policy):
+  * for col volumes only:
+      ````yaml
+    matchExpression:
+    - or:
+        - key: '${properties.access}'
+          operator: eq
+          value: nfs3
+        - key: '${properties.volType}'
+          operator: eq
+          value: app
+      ````
+* **Modify_Snapshot_Policy** (Modify Snapshot Policy): for col volumes only
     ````yaml
   matchExpression:
   - and:
@@ -21,5 +25,6 @@
         operator: eq
         value: col
       ````
-* **View_Details** (View Details)
+
+Obsolete 
 * **Modify_Notification_Mail** (Modify Notification Mail)

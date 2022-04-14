@@ -5,10 +5,38 @@
         "id": "page_general",
         "sections": [
           {
-            "id": "section_volume",
+            "id": "section_serviceName",
             "fields": [
               {
-                "id": "volume",
+                "id": "serviceName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentName",
+            "fields": [
+              {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_object",
+            "fields": [
+              {
+                "id": "object",
                 "display": "valuePicker",
                 "state": {
                   "visible": true,
@@ -67,6 +95,35 @@
     ]
   },
   "schema": {
+    "serviceName": {
+      "label": "serviceName",
+      "type": {
+        "dataType": "string"
+      },
+      "default": "Stockage NAS",
+      "constraints": {}
+    },
+    "deploymentName": {
+      "label": "Deployment name",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.object.deploymentName"
+      },
+      "constraints": {}
+    },
+    "object": {
+      "label": "Volume",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasNas.Volume",
+        "isMultiple": false
+      },
+      "constraints": {
+        "required": false
+      }
+    },
     "supportCategory": {
       "label": "Category",
       "type": {
@@ -122,14 +179,6 @@
       },
       "constraints": {
         "required": false
-      }
-    },
-    "volume": {
-      "label": "Volume",
-      "type": {
-        "dataType": "reference",
-        "referenceType": "DynamicTypes:XaasNas.Volume",
-        "isMultiple": false
       }
     }
   },
