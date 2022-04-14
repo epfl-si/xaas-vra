@@ -1,5 +1,5 @@
 name: Onboard NAS Volume
-version: 1.1.7
+version: 1.1.8
 formatVersion: 1
 inputs:
   # vRA fields
@@ -69,6 +69,7 @@ inputs:
   snapPolicy:
     type: string
     title: Snapshot Policy
+    default: 'none'
   snapPercent:
     type: string
     title: Snapshot Percent
