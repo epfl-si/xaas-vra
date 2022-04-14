@@ -1,11 +1,18 @@
 name: NAS Volume
-version: 1.1.8
+version: 1.1.9
 formatVersion: 1
 inputs:
   # vRA fields
+  dplyName:
+    type: string
+    title: Deployment name
+  dplyDescription:
+    type: string
+    title: Deployment Description
+
   projectName:
     type: string
-    title: Project Name
+    title: Project name
   projectId:
     type: string
     title: Project Id
@@ -23,6 +30,9 @@ inputs:
   requestor:
     type: string
     title: Requestor
+  reasonsForRequest:
+    type: string
+    title: Reasons for request
 
   # funding (optional)
   fnsPrjName:
@@ -83,6 +93,8 @@ resources:
     type: Custom.XaasNas.Volume
     properties:
       # vRA fields
+      dplyName: '${input.dplyName}'
+      dplyDescription: '${input.dplyDescription}'
       projectId: '${input.projectId}'
       projectName: '${input.projectName}'
       deploymentTag: '${input.deploymentTag}'
@@ -90,6 +102,7 @@ resources:
       deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
+      reasonsForRequest: '${input.reasonsForRequest}'
       # funding (optional):
       fnsPrjName: '${input.fnsPrjName}'
       fnsPrjNo: '${input.fnsPrjNo}'

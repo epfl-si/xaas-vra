@@ -1,11 +1,17 @@
 name: Onboard NAS Volume
-version: 1.1.6
+version: 1.1.7
 formatVersion: 1
 inputs:
   # vRA fields
+  dplyName:
+    type: string
+    title: Deployment name
+  dplyDescription:
+    type: string
+    title: Deployment Description
   projectName:
     type: string
-    title: Project Name
+    title: Project name
   projectId:
     type: string
     title: Project Id
@@ -23,6 +29,10 @@ inputs:
   requestor:
     type: string
     title: Requestor
+  reasonsForRequest:
+    type: string
+    title: Reasons for request
+    default: ''
 
   # funding (optional)
   fnsPrjName:
@@ -35,6 +45,11 @@ inputs:
     default: ''
 
   # volume
+  # name used for onboarding
+  name:
+    type: string
+    title: Volume Name
+
   volType:
     type: string
     title: Volume Type
@@ -70,17 +85,14 @@ inputs:
     type: string
     title: Root Access Policy
     default: ''
-  # volName used for onboarding
-  volName:
-    type: string
-    title: Volume Name
-    default: ''
 
 resources:
   Volume:
     type: Custom.XaasNas.Volume
     properties:
       # vRA fields
+      dplyName: '${input.dplyName}'
+      dplyDescription: '${input.dplyDescription}'
       projectId: '${input.projectId}'
       projectName: '${input.projectName}'
       deploymentTag: '${input.deploymentTag}'
@@ -88,13 +100,14 @@ resources:
       deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
-      # funding (optional)
+      reasonsForRequest: '${input.reasonsForRequest}'
+      # funding (optional):
       fnsPrjName: '${input.fnsPrjName}'
       fnsPrjNo: '${input.fnsPrjNo}'
       # volume
       access: '${input.access}'
       volType: '${input.volType}'
-      volName: '${input.volName}'
+      name: '${input.name}'
       svm: '${input.svm}'
       sizeGB: '${input.sizeGB}'
       snapPolicy: '${input.snapPolicy}'
