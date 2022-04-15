@@ -8,78 +8,8 @@
             "id": "section_DEBUG_D",
             "fields": [
               {
-                "id": "checkbox_DEBUG_D",
+                "id": "DEBUG_D",
                 "display": "checkbox",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_deploymentNameHash",
-            "fields": [
-              {
-                "id": "textField_deploymentNameHash",
-                "display": "textField",
-                "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "checkbox_DEBUG_D": true
-                      }
-                    }
-                  ],
-                  "read-only": true
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_deploymentName",
-            "fields": [
-              {
-                "id": "deploymentName",
-                "display": "textField",
-                "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "checkbox_DEBUG_D": true
-                      }
-                    }
-                  ],
-                  "read-only": true
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_description",
-            "fields": [
-              {
-                "id": "description",
-                "display": "textArea",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_reasonsForRequest",
-            "fields": [
-              {
-                "id": "reasonsForRequest",
-                "display": "textArea",
                 "state": {
                   "visible": true,
                   "read-only": false
@@ -115,6 +45,110 @@
                 "state": {
                   "visible": true,
                   "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentNameHash",
+            "fields": [
+              {
+                "id": "deploymentNameHash",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentName",
+            "fields": [
+              {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_dplyName",
+            "fields": [
+              {
+                "id": "dplyName",
+                "display": "textField",
+                "state": {
+                  "visible": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_description",
+            "fields": [
+              {
+                "id": "description",
+                "display": "textArea",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_dplyDescription",
+            "fields": [
+              {
+                "id": "dplyDescription",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_reasonsForRequest",
+            "fields": [
+              {
+                "id": "reasonsForRequest",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
                 },
                 "signpostPosition": "right-middle"
               }
@@ -161,57 +195,6 @@
                 "signpostPosition": "right-middle"
               }
             ]
-          },
-          {
-            "id": "section_funding",
-            "fields": [
-              {
-                "id": "funding",
-                "display": "dropDown",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_fnsPrjName",
-            "fields": [
-              {
-                "id": "fnsPrjName",
-                "display": "textField",
-                "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "funding": "fns"
-                      }
-                    }
-                  ],
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              },
-              {
-                "id": "fnsPrjNo",
-                "display": "textField",
-                "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "funding": "fns"
-                      }
-                    }
-                  ],
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
           }
         ],
         "title": "Deployment",
@@ -224,7 +207,7 @@
             "id": "section_DEBUG_V",
             "fields": [
               {
-                "id": "checkbox_DEBUG_V",
+                "id": "DEBUG_V",
                 "display": "checkbox",
                 "state": {
                   "visible": true,
@@ -245,7 +228,7 @@
                     {
                       "value": true,
                       "equals": {
-                        "checkbox_DEBUG_V": true
+                        "DEBUG_V": true
                       }
                     }
                   ],
@@ -262,15 +245,29 @@
                 "id": "volType",
                 "display": "textField",
                 "state": {
-                  "read-only": true,
                   "visible": [
                     {
+                      "value": true,
                       "equals": {
-                        "checkbox_DEBUG_V": true
-                      },
-                      "value": true
+                        "DEBUG_V": true
+                      }
                     }
-                  ]
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_volName",
+            "fields": [
+              {
+                "id": "volName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": false
                 },
                 "signpostPosition": "right-middle"
               }
@@ -284,92 +281,6 @@
                 "display": "textField",
                 "state": {
                   "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_65c59462",
-            "fields": [
-              {
-                "id": "text_minSnapPercent",
-                "display": "textField",
-                "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "checkbox_DEBUG_V": true
-                      }
-                    }
-                  ],
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_snapPolicy",
-            "fields": [
-              {
-                "id": "snapPolicy",
-                "display": "dropDown",
-                "state": {
-                  "visible": true,
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              },
-              {
-                "id": "snapPercent",
-                "display": "dropDown",
-                "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "notEqual": {
-                        "snapPolicy": "none"
-                      }
-                    }
-                  ],
-                  "read-only": false
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_price",
-            "fields": [
-              {
-                "id": "textField_price",
-                "display": "textField",
-                "state": {
-                  "visible": true,
-                  "read-only": true
-                },
-                "signpostPosition": "right-middle"
-              }
-            ]
-          },
-          {
-            "id": "section_svm",
-            "fields": [
-              {
-                "id": "svm",
-                "display": "dropDown",
-                "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "volType": "col"
-                      }
-                    }
-                  ],
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
@@ -397,20 +308,7 @@
                 "id": "IPsRoot",
                 "display": "textArea",
                 "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "volType": "app"
-                      }
-                    },
-                    {
-                      "value": true,
-                      "equals": {
-                        "access": "nfs3"
-                      }
-                    }
-                  ],
+                  "visible": true,
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
@@ -424,20 +322,7 @@
                 "id": "IPsRO",
                 "display": "textArea",
                 "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "volType": "app"
-                      }
-                    },
-                    {
-                      "value": true,
-                      "equals": {
-                        "access": "nfs3"
-                      }
-                    }
-                  ],
+                  "visible": true,
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
@@ -451,20 +336,7 @@
                 "id": "IPsRW",
                 "display": "textArea",
                 "state": {
-                  "visible": [
-                    {
-                      "value": true,
-                      "equals": {
-                        "volType": "app"
-                      }
-                    },
-                    {
-                      "value": true,
-                      "equals": {
-                        "access": "nfs3"
-                      }
-                    }
-                  ],
+                  "visible": true,
                   "read-only": false
                 },
                 "signpostPosition": "right-middle"
@@ -478,107 +350,13 @@
     ]
   },
   "schema": {
-    "checkbox_DEBUG_D": {
+    "DEBUG_D": {
       "label": "DEBUG (D)",
       "type": {
         "dataType": "boolean"
       },
       "default": false,
       "constraints": {}
-    },
-    "textField_deploymentNameHash": {
-      "label": "deploymentNameHash",
-      "type": {
-        "dataType": "string"
-      },
-      "default": {
-        "id": "ch.epfl.iaas.js/randomHash",
-        "type": "scriptAction",
-        "parameters": [
-          {
-            "s3": "``",
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            }
-          },
-          {
-            "s4": "``",
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            }
-          },
-          {
-            "s5": "``",
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            }
-          },
-          {
-            "s1": "``",
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            }
-          },
-          {
-            "s2": "``",
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            }
-          }
-        ]
-      },
-      "placeholder": "",
-      "constraints": {}
-    },
-    "deploymentName": {
-      "label": "Deployment Name",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": {
-        "bind": {
-          "values": [
-            "sizeGB",
-            "`GB volume for `",
-            "projectName",
-            "` [`",
-            "textField_deploymentNameHash",
-            "`]`"
-          ],
-          "operator": "concatenate"
-        }
-      },
-      "constraints": {
-        "required": true,
-        "max-value": 80
-      }
-    },
-    "description": {
-      "label": "Description",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "constraints": {
-        "required": true,
-        "max-value": 256
-      }
-    },
-    "reasonsForRequest": {
-      "label": "Reasons for request",
-      "type": {
-        "dataType": "string"
-      },
-      "placeholder": "",
-      "constraints": {
-        "required": true
-      }
     },
     "project": {
       "label": "Project",
@@ -654,6 +432,123 @@
         "required": true
       }
     },
+    "deploymentNameHash": {
+      "label": "deploymentNameHash",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.iaas.js/randomHash",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "s3": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s4": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s5": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s1": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s2": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "deploymentName": {
+      "label": "(tmp) Deployment Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": {
+          "values": [
+            "sizeGB",
+            "`GB volume for `",
+            "projectName",
+            "` [`",
+            "deploymentNameHash",
+            "`]`"
+          ],
+          "operator": "concatenate"
+        }
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 80
+      }
+    },
+    "dplyName": {
+      "label": "Deployment Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "description": {
+      "label": "(tmp) Description",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": "dplyDescription"
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 256
+      }
+    },
+    "dplyDescription": {
+      "label": "Description",
+      "type": {
+        "dataType": "string"
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 256
+      }
+    },
+    "reasonsForRequest": {
+      "label": "Reasons for request",
+      "type": {
+        "dataType": "string"
+      },
+      "placeholder": "",
+      "constraints": {
+        "required": true
+      }
+    },
     "requestor": {
       "label": "Requestor",
       "type": {
@@ -716,64 +611,7 @@
         "required": true
       }
     },
-    "funding": {
-      "label": "Funding",
-      "type": {
-        "dataType": "string"
-      },
-      "default": "epfl",
-      "valueList": [
-        {
-          "label": "EPFL",
-          "value": "epfl"
-        },
-        {
-          "label": "FNS",
-          "value": "fns"
-        }
-      ],
-      "placeholder": "",
-      "constraints": {
-        "required": true
-      }
-    },
-    "fnsPrjName": {
-      "label": "FNS Project Name",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": "",
-      "constraints": {
-        "required": [
-          {
-            "value": true,
-            "equals": {
-              "funding": "fns"
-            }
-          }
-        ]
-      }
-    },
-    "fnsPrjNo": {
-      "label": "FNS Project Number",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": "",
-      "constraints": {
-        "required": [
-          {
-            "value": true,
-            "equals": {
-              "funding": "fns"
-            }
-          }
-        ]
-      }
-    },
-    "checkbox_DEBUG_V": {
+    "DEBUG_V": {
       "label": "DEBUG (V)",
       "type": {
         "dataType": "boolean"
@@ -808,17 +646,19 @@
         "dataType": "string",
         "isMultiple": false
       },
-      "default": "col",
-      "valueList": [
-        {
-          "label": "col",
-          "value": "col"
-        },
-        {
-          "label": "app",
-          "value": "app"
-        }
-      ],
+      "default": {
+        "id": "ch.epfl.xaas.nas/getVolType",
+        "type": "scriptAction",
+        "parameters": []
+      }
+    },
+    "volName": {
+      "label": "Volume Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "",
       "constraints": {
         "required": true
       }
@@ -835,174 +675,6 @@
           "value": "^[0-9]*$",
           "message": "Volume Size must be a number"
         }
-      }
-    },
-    "text_minSnapPercent": {
-      "label": "minSnapPercent",
-      "type": {
-        "dataType": "string"
-      },
-      "default": [
-        {
-          "value": "0",
-          "equals": {
-            "snapPolicy": "none"
-          }
-        },
-        {
-          "value": "5",
-          "notEqual": {
-            "snapPolicy": "none"
-          }
-        }
-      ],
-      "placeholder": "",
-      "constraints": {}
-    },
-    "snapPercent": {
-      "label": "Snapshot Percent",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": {
-        "bind": "text_minSnapPercent"
-      },
-      "valueList": {
-        "id": "ch.epfl.xaas.nas/getSnapPercentList",
-        "type": "scriptAction",
-        "parameters": [
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "initValue": "text_minSnapPercent"
-          }
-        ]
-      },
-      "constraints": {}
-    },
-    "snapPolicy": {
-      "label": "Snapshot Policy",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "default": {
-        "id": "ch.epfl.config/getDefaultValue",
-        "type": "scriptAction",
-        "parameters": [
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "deploymentTag": "deploymentTag"
-          },
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "elementName": "`XaasNas_snapshot_policies_EPFL`"
-          },
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "projectName": "projectName"
-          }
-        ]
-      },
-      "valueList": {
-        "id": "ch.epfl.config/getList",
-        "type": "scriptAction",
-        "parameters": [
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "deploymentTag": "deploymentTag"
-          },
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "elementName": "`XaasNas_snapshot_policies_EPFL`"
-          },
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "projectName": "projectName"
-          }
-        ]
-      },
-      "constraints": {
-        "required": true
-      }
-    },
-    "textField_price": {
-      "label": "Price",
-      "type": {
-        "dataType": "string"
-      },
-      "default": {
-        "id": "ch.epfl.xaas.nas/getPrice",
-        "type": "scriptAction",
-        "parameters": [
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "jsonPath": "``"
-          },
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "sizeGB": "sizeGB"
-          },
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "snapPercent": "snapPercent"
-          }
-        ]
-      },
-      "placeholder": "",
-      "constraints": {}
-    },
-    "svm": {
-      "label": "SVM",
-      "type": {
-        "dataType": "string",
-        "isMultiple": false
-      },
-      "valueList": {
-        "id": "ch.epfl.xaas.nas/getSvmList",
-        "type": "scriptAction",
-        "parameters": [
-          {
-            "$type": {
-              "dataType": "string",
-              "isMultiple": false
-            },
-            "projectId": "projectId"
-          }
-        ]
-      },
-      "constraints": {
-        "required": true
       }
     },
     "access": {
