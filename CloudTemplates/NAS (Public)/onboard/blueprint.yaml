@@ -46,7 +46,7 @@ inputs:
 
   # volume
   # name used for onboarding
-  name:
+  volName:
     type: string
     title: Volume Name
 
@@ -108,7 +108,7 @@ resources:
       # volume
       access: '${input.access}'
       volType: '${input.volType}'
-      name: '${input.name}'
+      volName: '${input.volName}'
       svm: '${input.svm}'
       sizeGB: '${input.sizeGB}'
       snapPolicy: '${input.snapPolicy}'
