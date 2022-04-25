@@ -1,5 +1,5 @@
 name: Onboard K8s Cluster
-version: 1.1.5
+version: 1.1.6
 formatVersion: 1
 inputs:
   # vRA fields
@@ -50,7 +50,7 @@ inputs:
     type: string
     title: Cluster Plan
 
-  clusterName: # used for onboarding
+  name: # used for onboarding
     type: string
     title: Cluster Name
 
@@ -73,5 +73,5 @@ resources:
       fnsPrjName: '${input.fnsPrjName}'
       fnsPrjNo: '${input.fnsPrjNo}'
       # cluster
-      clusterName: '${input.clusterName}'
+      name: '${input.name}'
       plan: '${input.plan}'

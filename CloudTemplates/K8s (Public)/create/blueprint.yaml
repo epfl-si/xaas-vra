@@ -1,5 +1,5 @@
 name: K8s Cluster
-version: 1.1.4
+version: 1.1.6
 formatVersion: 1
 inputs:
   # vRA fields
@@ -74,5 +74,5 @@ resources:
       fnsPrjName: '${input.fnsPrjName}'
       fnsPrjNo: '${input.fnsPrjNo}'
       # cluster
-      clusterName: ''
+      name: ''
       plan: '${input.plan}'
