@@ -1,6 +1,6 @@
 layout:
   pages:
-  - id: page_general
+  - id: page_generalX
     title: General
     sections:
     - id: section_DEBUG_G

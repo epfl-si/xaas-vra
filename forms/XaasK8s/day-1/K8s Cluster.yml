@@ -1,6 +1,6 @@
 layout:
   pages:
-    - id: page_deployment_properties
+    - id: page_deployment_propertiesX
       title: Deployment
       sections:
         - id: section_DEBUG_D
