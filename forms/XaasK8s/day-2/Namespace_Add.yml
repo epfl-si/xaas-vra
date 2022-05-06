@@ -1,0 +1,120 @@
+layout:
+  pages:
+  - id: page_general
+    sections:
+    - fields:
+      - display: valuePicker
+        id: cluster
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+        submit: false
+      id: section_cluster
+    - fields:
+      - display: radio
+        id: radio_namespace
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+      id: section_radio_namespace
+    - fields:
+      - display: textField
+        id: namespace
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+      id: section_1
+    - fields:
+      - display: textField
+        id: textField_status
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+      id: section_textFied_status
+    state: {}
+    title: General
+options:
+  externalValidations: []
+schema:
+  cluster:
+    constraints: {}
+    label: Cluster
+    type:
+      dataType: reference
+      isMultiple: false
+      referenceType: DynamicTypes:XaasK8s.Cluster
+  namespace:
+    constraints:
+      pattern:
+        message: New namespace name must begin and end with letter/digit and must
+          contain letters/digits or minus sign (-).
+        value: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+      required: true
+    label: New namespace
+    placeholder: enter new namespace name
+    type:
+      dataType: string
+      isMultiple: false
+  radio_namespace:
+    constraints: {}
+    label: Namespaces
+    type:
+      dataType: string
+    valueList:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsStringArray
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`namespacesNames`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: _resource.object.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: _resource.object.targetTenant
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: _resource.object.namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '``'
+      type: scriptAction
+  textField_status:
+    constraints:
+      pattern:
+        message: ''
+        value: ^Ok$
+      required: true
+    default:
+      id: ch.epfl.xaas.k8s/isNsNameAvailable
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        clusterName: _resource.object.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        nsName: namespace
+      type: scriptAction
+    label: Status
+    placeholder: ''
+    type:
+      dataType: string

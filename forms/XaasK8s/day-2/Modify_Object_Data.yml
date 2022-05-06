@@ -1,0 +1,88 @@
+layout:
+  pages:
+    - id: page_general
+      sections:
+        - id: section_object
+          fields:
+            - id: object
+              display: valuePicker
+              state:
+                visible: true
+                read-only: true
+              signpostPosition: right-middle
+        - id: section_deploymentName
+          fields:
+            - id: deploymentName
+              display: textField
+              state:
+                visible: true
+                read-only: false
+              signpostPosition: right-middle
+        - id: section_deploymentDescription
+          fields:
+            - id: deploymentDescription
+              display: textArea
+              state:
+                visible: true
+                read-only: false
+              signpostPosition: right-middle
+        - id: section_notificationMail
+          fields:
+            - id: notificationMail
+              display: textArea
+              state:
+                visible: true
+                read-only: false
+              signpostPosition: right-middle
+      title: General
+      state: {}
+schema:
+  object:
+    label: Volume
+    type:
+      dataType: reference
+      referenceType: 'DynamicTypes:XaasK8s.Cluster'
+      isMultiple: false
+    constraints:
+      required: false
+  deploymentName:
+    label: Deployment name
+    type:
+      dataType: string
+    default:
+      bind: _resource.object.deploymentName
+    constraints:
+      required: true
+  deploymentDescription:
+    label: Description
+    type:
+      dataType: string
+    default:
+      bind: _resource.object.deploymentDescription
+    constraints:
+      required: true
+  notificationMail:
+    label: Notification Mail
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
+    type:
+      dataType: string
+    default:
+      bind: _resource.object.notificationMail
+    constraints:
+      required: true
+options:
+  externalValidations:
+    - label: Check notification mail
+      source:
+        id: ch.epfl.iaas.utils.mail/checkMails
+        type: scriptAction
+        parameters:
+          - $type:
+              dataType: string
+              isMultiple: false
+            mails: notificationMail
+      target:
+        - notificationMail

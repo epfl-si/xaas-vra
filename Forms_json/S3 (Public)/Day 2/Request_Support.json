@@ -1,0 +1,188 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_general",
+        "sections": [
+          {
+            "id": "section_serviceName",
+            "fields": [
+              {
+                "id": "serviceName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentName",
+            "fields": [
+              {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_object",
+            "fields": [
+              {
+                "id": "object",
+                "display": "valuePicker",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_supportCategory",
+            "fields": [
+              {
+                "id": "supportCategory",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_content",
+            "fields": [
+              {
+                "id": "content",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_wantCC",
+            "fields": [
+              {
+                "id": "wantCC",
+                "display": "checkbox",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "serviceName": {
+      "label": "serviceName",
+      "type": {
+        "dataType": "string"
+      },
+      "default": "Stockage Objet-S3",
+      "constraints": {}
+    },
+    "deploymentName": {
+      "label": "Deployment name",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.object.deploymentName"
+      },
+      "constraints": {}
+    },
+    "object": {
+      "label": "Bucket",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasS3.Bucket",
+        "isMultiple": false
+      },
+      "constraints": {
+        "required": false
+      }
+    },
+    "supportCategory": {
+      "label": "Category",
+      "type": {
+        "dataType": "string"
+      },
+      "valueList": {
+        "id": "ch.epfl.config/getList",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string"
+            },
+            "projectName": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string"
+            },
+            "elementName": "`Support_category_XaasS3`"
+          },
+          {
+            "$type": {
+              "dataType": "string"
+            },
+            "categoryName": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string"
+            },
+            "deploymentTag": "``"
+          }
+        ]
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "content": {
+      "label": "Problem Description",
+      "type": {
+        "dataType": "string"
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "wantCC": {
+      "label": "Copy of request?",
+      "type": {
+        "dataType": "boolean"
+      },
+      "constraints": {
+        "required": false
+      }
+    }
+  },
+  "options": {
+    "externalValidations": []
+  }
+}

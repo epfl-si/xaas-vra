@@ -1,0 +1,133 @@
+layout:
+  pages:
+  - id: page_1
+    sections:
+    - fields:
+      - display: valuePicker
+        id: cluster
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+        submit: false
+      id: section_cluster
+    - fields:
+      - display: radio
+        id: namespace
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+      id: section_namespace
+    - fields:
+      - display: decimalField
+        id: decimalField_crtSizeGB
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+      id: section_crtSizeGB
+    - fields:
+      - display: decimalField
+        id: extSizeGB
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+      id: section_extSizeGB
+    state: {}
+    title: General
+options:
+  externalValidations: []
+schema:
+  cluster:
+    constraints: {}
+    label: Cluster
+    type:
+      dataType: reference
+      isMultiple: false
+      referenceType: DynamicTypes:XaasK8s.Cluster
+  decimalField_crtSizeGB:
+    constraints: {}
+    default:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`namespaces`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: _resource.object.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: _resource.object.targetTenant
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: _resource.object.namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '`name`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '`resourceQuota.spec.hard.requests.storage`'
+      type: scriptAction
+    label: Current NS Storage
+    step: 1
+    type:
+      dataType: decimal
+  extSizeGB:
+    constraints:
+      min-value: 1
+      required: true
+    default: 1
+    label: NS Storage extent
+    type:
+      dataType: decimal
+      isMultiple: false
+  namespace:
+    constraints: {}
+    label: Namespace
+    type:
+      dataType: string
+    valueList:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsStringArray
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`namespacesNames`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: _resource.object.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: _resource.object.targetTenant
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: _resource.object.namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '``'
+      type: scriptAction

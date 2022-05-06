@@ -1,0 +1,48 @@
+layout:
+  pages:
+  - id: page_general
+    sections:
+    - id: section_object
+      fields:
+      - id: object
+        display: valuePicker
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_deletionPolicy
+      fields:
+      - id: deletionPolicy
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    title: General
+    state: {}
+schema:
+  object:
+    label: Volume
+    type:
+      dataType: reference
+      referenceType: DynamicTypes:XaasNas.Volume
+      isMultiple: false
+    constraints: {}
+  deletionPolicy:
+    label: Deletion Policy
+    signpost: "Deletion policy for the volume: \n<ul>\n  <li>'<b>Delete</b>' -> delete\
+      \ the volume completely, \n  <li>'<b>Outboard</b>' -> delete only from vRA,\
+      \ will remain on the backend.\n</ul>"
+    type:
+      dataType: string
+    default:
+      bind: _resource.object.deletionPolicy
+    valueList:
+    - label: Delete
+      value: delete
+    - label: Outboard
+      value: outboard
+    constraints:
+      required: true
+options:
+  externalValidations: []
