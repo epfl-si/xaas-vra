@@ -29,6 +29,7 @@ layout:
     title: General
     state: {}
   - id: page_deployment_properties
+    title: Deployment
     sections:
     - id: section_DEBUG_D
       fields:
@@ -155,7 +156,6 @@ layout:
                   funding: fns
             read-only: false
           signpostPosition: right-middle
-    title: Deployment
     state:
       visible:
       - value: true

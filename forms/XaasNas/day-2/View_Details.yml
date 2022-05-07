@@ -222,6 +222,7 @@ layout:
           status: Ok
   - id: page_volume_access
     sections:
+    title: Acces
     - id: section_DEBUG_A
       fields:
       - id: DEBUG_A
@@ -312,7 +313,6 @@ layout:
               access: nfs3
           read-only: true
         signpostPosition: right-middle
-    title: Acces
     state:
       visible:
       - value: true
