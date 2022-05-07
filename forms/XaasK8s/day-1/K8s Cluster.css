@@ -2,7 +2,10 @@
     font-weight: bold !important;
 }
 
-cf-checkbox, cf-dropdown, cf-text-field, cf-textarea {
+cf-checkbox,
+cf-dropdown,
+cf-text-field,
+cf-textarea {
     width: 700px !important;
 }
 
