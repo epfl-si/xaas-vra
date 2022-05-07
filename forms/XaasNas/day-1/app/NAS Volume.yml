@@ -1,6 +1,7 @@
 layout:
   pages:
   - id: page_deployment_properties
+    title: Deployment
     sections:
     - id: section_DEBUG_D
       fields:
@@ -110,9 +111,9 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
-    title: Deployment
     state: {}
   - id: page_volume_properties
+    title: Volume
     sections:
     - id: section_DEBUG_V
       fields:
@@ -192,7 +193,6 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
-    title: 'Volume '
     state: {}
 schema:
   # deployment

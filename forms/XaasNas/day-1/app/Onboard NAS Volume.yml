@@ -1,6 +1,7 @@
 layout:
   pages:
   - id: page_general
+    title: General
     sections:
     - id: section_DEBUG_G
       fields:
@@ -26,9 +27,10 @@ layout:
           visible: true
           read-only: true
         signpostPosition: right-middle
-    title: General
     state: {}
+
   - id: page_deployment_properties
+    title: Deployment
     sections:
     - id: section_DEBUG_D
       fields:
@@ -127,13 +129,13 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
-    title: Deployment
     state:
       visible:
       - value: true
         equals:
           onboardStatus: Ok
   - id: page_volume_properties
+    title: Volume
     sections:
     - id: section_checkbox_DEBUG_V
       fields:
@@ -247,14 +249,13 @@ layout:
               access: nfs3
           read-only: true
         signpostPosition: right-middle
-    title: Volume
     state:
       visible:
       - value: true
         equals:
           onboardStatus: Ok
 schema:
-  # general panel
+  # onboarding - general
   DEBUG_G:
     label: DEBUG (G)
     type:
