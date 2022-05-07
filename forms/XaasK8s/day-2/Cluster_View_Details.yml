@@ -1,6 +1,7 @@
 layout:
   pages:
     - id: page_general
+      title: General
       sections:
         - id: section_DEBUG_G
           fields:
@@ -35,9 +36,9 @@ layout:
                 visible: true
                 read-only: true
               signpostPosition: right-middle
-      title: General
       state: {}
     - id: page_deployment_properties
+      title: Deployment
       sections:
         - id: section_DEBUG_D
           fields:
@@ -105,9 +106,9 @@ layout:
                 visible: true
                 read-only: true
               signpostPosition: right-middle
-        - id: section_textField_deploymentTag
+        - id: section_deploymentTag
           fields:
-            - id: textField_deploymentTag
+            - id: deploymentTag
               display: textField
               state:
                 visible: true
@@ -115,7 +116,7 @@ layout:
               signpostPosition: right-middle
         - id: section_notificationMail
           fields:
-            - id: textArea_notificationMail
+            - id: notificationMail
               display: textArea
               state:
                 visible: true
@@ -149,7 +150,6 @@ layout:
                       funding: FNS
                 read-only: true
               signpostPosition: right-middle
-      title: Deployment
       state: {}
     - id: page_cluster_properties
       sections:
@@ -247,6 +247,7 @@ layout:
             equals:
               status: Ok
 schema:
+  # details - general (loading resource)
   DEBUG_G:
     label: DEBUG (G)
     type:
@@ -283,6 +284,8 @@ schema:
       pattern:
         value: ^$
         message: Nothing to submit here
+
+  # deployment - general
   DEBUG_D:
     label: DEBUG (D)
     type:
@@ -322,6 +325,14 @@ schema:
             isMultiple: false
           deploymentId: textField_deploymentId
     constraints: {}
+  deploymentTag:
+    label: Environment
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: _resource.object.deploymentTag
+    constraints: {}
   description:
     label: Description
     type:
@@ -341,13 +352,13 @@ schema:
           deploymentId: textField_deploymentId
     constraints:
       max-value: 256
-  projectName:
-    label: Project Name
+  notificationMail:
+    label: Notification Mail
     type:
       dataType: string
       isMultiple: false
     default:
-      bind: _resource.projectName
+      bind: _resource.notificationMail
     constraints: {}
   projectId:
     label: Project Id
@@ -357,6 +368,14 @@ schema:
     default:
       bind: _resource.projectId
     constraints: {}
+  projectName:
+    label: Project Name
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: _resource.projectName
+    constraints: {}
   requestor:
     label: Requestor
     type:
@@ -365,22 +384,22 @@ schema:
     default:
       bind: _resource.object.requestor
     constraints: {}
-  textField_deploymentTag:
-    label: Environment
+
+  # deployment - funding
+  fnsPrjName:
+    label: Project Name
     type:
       dataType: string
       isMultiple: false
     default:
-      bind: _resource.object.deploymentTag
-    constraints: {}
-  textArea_notificationMail:
-    label: Notification Mail
+      bind: _resource.object.fnsPrjName
+  fnsPrjNo:
+    label: Project Number
     type:
       dataType: string
       isMultiple: false
     default:
-      bind: _resource.notificationMail
-    constraints: {}
+      bind: _resource.object.fnsPrjNo
   funding:
     label: Funding
     type:
@@ -400,20 +419,8 @@ schema:
         value: fns
     placeholder: ''
     constraints: {}
-  fnsPrjName:
-    label: Project Name
-    type:
-      dataType: string
-      isMultiple: false
-    default:
-      bind: _resource.object.fnsPrjName
-  fnsPrjNo:
-    label: Project Number
-    type:
-      dataType: string
-      isMultiple: false
-    default:
-      bind: _resource.object.fnsPrjNo
+
+  # cluster information
   DEBUG_C:
     label: DEBUG (C)
     type:
@@ -552,6 +559,8 @@ schema:
           jsonSubPath: '``'
     placeholder: ''
     constraints: {}
+
+  # namespace information
   DEBUG_N:
     label: DEBUG (N)
     type:
@@ -564,43 +573,6 @@ schema:
       dataType: reference
       referenceType: 'DynamicTypes:XaasK8s.Cluster'
       isMultiple: false
-    constraints: {}
-  radio_namespace:
-    label: Namespace
-    type:
-      dataType: string
-    valueList:
-      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsStringArray
-      type: scriptAction
-      parameters:
-        - $type:
-            dataType: string
-            isMultiple: false
-          jsonPath: '`namespacesNames`'
-        - $type:
-            dataType: string
-            isMultiple: false
-          filterValue: '``'
-        - $type:
-            dataType: string
-            isMultiple: false
-          dtId: _resource.object.name
-        - $type:
-            dataType: string
-            isMultiple: false
-          targetTenant: _resource.object.targetTenant
-        - $type:
-            dataType: string
-            isMultiple: false
-          dtName: _resource.object.namespace
-        - $type:
-            dataType: string
-            isMultiple: false
-          filterField: '``'
-        - $type:
-            dataType: string
-            isMultiple: false
-          jsonSubPath: '``'
     constraints: {}
   datagrid_namespaceParameters:
     label: Parameters
@@ -651,6 +623,43 @@ schema:
             isMultiple: false
           jsonSubPath: '`resourceQuota.spec.hard`'
     placeholder: Namespace parameters will appear in this area
+    constraints: {}
+  radio_namespace:
+    label: Namespace
+    type:
+      dataType: string
+    valueList:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsStringArray
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          jsonPath: '`namespacesNames`'
+        - $type:
+            dataType: string
+            isMultiple: false
+          filterValue: '``'
+        - $type:
+            dataType: string
+            isMultiple: false
+          dtId: _resource.object.name
+        - $type:
+            dataType: string
+            isMultiple: false
+          targetTenant: _resource.object.targetTenant
+        - $type:
+            dataType: string
+            isMultiple: false
+          dtName: _resource.object.namespace
+        - $type:
+            dataType: string
+            isMultiple: false
+          filterField: '``'
+        - $type:
+            dataType: string
+            isMultiple: false
+          jsonSubPath: '``'
     constraints: {}
 options:
   externalValidations: []
