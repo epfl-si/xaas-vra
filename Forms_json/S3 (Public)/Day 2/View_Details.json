@@ -1,0 +1,535 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_general",
+        "sections": [
+          {
+            "id": "section_DEBUG",
+            "fields": [
+              {
+                "id": "DEBUG",
+                "display": "checkbox",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentName",
+            "fields": [
+              {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_bucketName",
+            "fields": [
+              {
+                "id": "bucketName",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_bucketUsageB",
+            "fields": [
+              {
+                "id": "bucketUsageB",
+                "display": "decimalField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_bucketUsageMB",
+            "fields": [
+              {
+                "id": "bucketUsageMB",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_nbObjects",
+            "fields": [
+              {
+                "id": "nbObjects",
+                "display": "integerField",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_empty",
+            "fields": [
+              {
+                "id": "empty",
+                "display": "checkbox",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_versioning",
+            "fields": [
+              {
+                "id": "versioning",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_linkedTo",
+            "fields": [
+              {
+                "id": "linkedTo",
+                "display": "array",
+                "state": {
+                  "visible": {
+                    "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsBoolean",
+                    "type": "scriptAction",
+                    "parameters": [
+                      {
+                        "$type": {
+                          "dataType": "string",
+                          "isMultiple": false
+                        },
+                        "jsonPath": "`hasLikendBuckets`"
+                      },
+                      {
+                        "$type": {
+                          "dataType": "string",
+                          "isMultiple": false
+                        },
+                        "filterValue": "``"
+                      },
+                      {
+                        "dtId": "_resource.object.id",
+                        "$type": {
+                          "dataType": "string",
+                          "isMultiple": false
+                        }
+                      },
+                      {
+                        "$type": {
+                          "dataType": "string",
+                          "isMultiple": false
+                        },
+                        "targetTenant": "``"
+                      },
+                      {
+                        "$type": {
+                          "dataType": "string",
+                          "isMultiple": false
+                        },
+                        "dtName": "`XaasS3`"
+                      },
+                      {
+                        "$type": {
+                          "dataType": "string",
+                          "isMultiple": false
+                        },
+                        "filterField": "``"
+                      },
+                      {
+                        "$type": {
+                          "dataType": "string",
+                          "isMultiple": false
+                        },
+                        "jsonSubPath": "``"
+                      }
+                    ]
+                  },
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "DEBUG": {
+      "label": "DEBUG",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": true,
+      "constraints": {}
+    },
+    "deploymentName": {
+      "label": "Deployment name",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.object.deploymentName"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "bucketName": {
+      "label": "Bucket name",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "_resource.object.name"
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "bucketUsageB": {
+      "label": "Bucket usage (B)",
+      "type": {
+        "dataType": "decimal"
+      },
+      "step": 1,
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`usage.storageUtilized`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.object.id",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "`test`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasS3`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "constraints": {}
+    },
+    "bucketUsageMB": {
+      "label": "Bucket usage (MB)",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.iaas.customforms/convertByteSize",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "unit": "`MB`",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "size": "bucketUsageB",
+            "$type": {
+              "dataType": "decimal",
+              "isMultiple": false
+            }
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "nbObjects": {
+      "label": "Number of objects",
+      "type": {
+        "dataType": "integer"
+      },
+      "step": 1,
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`usage.numberOfObjects`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.object.id",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasS3`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "constraints": {}
+    },
+    "empty": {
+      "label": "Empty?",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsBoolean",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`empty`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.object.id",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasS3`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "constraints": {}
+    },
+    "versioning": {
+      "label": "Versioning",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`versioning.status`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.object.id",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasS3`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "linkedTo": {
+      "label": "Linked to",
+      "type": {
+        "dataType": "string",
+        "isMultiple": true
+      },
+      "default": {
+        "id": "ch.epfl.xaas.s3/getLinkedBuckets_withEmails",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "bucketName": "bucketName"
+          }
+        ]
+      },
+      "constraints": {}
+    }
+  },
+  "options": {
+    "externalValidations": []
+  }
+}

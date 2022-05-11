@@ -1,0 +1,465 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_volume",
+        "sections": [
+          {
+            "id": "section_volume",
+            "fields": [
+              {
+                "id": "volume",
+                "display": "valuePicker",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_DEBUG",
+            "fields": [
+              {
+                "id": "textField_DEBUG",
+                "display": "checkbox",
+                "state": {
+                  "visible": false,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_crtSnapPolicy",
+            "fields": [
+              {
+                "id": "textField_crtSnapPolicy",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "textField_DEBUG": true
+                      }
+                    }
+                  ],
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_snapPolicy",
+            "fields": [
+              {
+                "id": "snapPolicy",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_crtSnapPercent",
+            "fields": [
+              {
+                "id": "textField_crtSnapPercent",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "textField_DEBUG": true
+                      }
+                    }
+                  ],
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_snapPercent",
+            "fields": [
+              {
+                "id": "snapPercent",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_sizeGB",
+            "fields": [
+              {
+                "id": "textField_sizeGB",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_price",
+            "fields": [
+              {
+                "id": "textField_price",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "volume": {
+      "label": "Volume",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasNas.Volume"
+      },
+      "constraints": {
+        "required": false
+      }
+    },
+    "textField_DEBUG": {
+      "label": "DEBUG",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": false,
+      "constraints": {}
+    },
+    "textField_crtSnapPolicy": {
+      "label": "crtSnapPolicy",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`snapshots.policy`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.object.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "_resource.object.namespace"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "snapPolicy": {
+      "label": "Snapshot Policy",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "textField_crtSnapPolicy"
+      },
+      "valueList": {
+        "id": "ch.epfl.config/getList",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "deploymentTag": "_resource.object.deploymentTag"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "elementName": "`XaasNas_snapshot_policies_EPFL`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "projectName": "_resource.object.projectName"
+          }
+        ]
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "textField_crtSnapPercent": {
+      "label": "crtSnapPercent",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`snapshots.reservePercent`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.object.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "_resource.object.namespace"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "snapPercent": {
+      "label": "Snapshot Percent",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "bind": "textField_crtSnapPercent"
+      },
+      "valueList": {
+        "id": "ch.epfl.xaas.nas/getSnapPercentList",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "initValue": "textField_crtSnapPercent"
+          }
+        ]
+      },
+      "constraints": {
+        "required": [
+          {
+            "value": true,
+            "notEqual": {
+              "snapPolicy": "none"
+            }
+          }
+        ]
+      }
+    },
+    "textField_sizeGB": {
+      "label": "Volume Size (GB)",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsString",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`size.user.sizeGB`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.object.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "_resource.object.namespace"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "textField_price": {
+      "label": "Price",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.nas/getPrice",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "sizeGB": "textField_sizeGB"
+          },
+          {
+            "$type": {
+              "dataType": "decimal",
+              "isMultiple": false
+            },
+            "extension": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "snapPercent": "snapPercent"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    }
+  },
+  "options": {
+    "externalValidations": []
+  }
+}

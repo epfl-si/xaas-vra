@@ -1,0 +1,12 @@
+/*
+#input_extension {
+    text-align: right;
+}
+*/
+.clr-col-6 {
+    flex: 0 0 55%;
+    max-width: 55%;
+}
+.clr-col-md-4 {
+    flex: 0 0 30% !important;
+}

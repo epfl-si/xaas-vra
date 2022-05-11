@@ -1,0 +1,155 @@
+layout:
+  pages:
+  - id: page_1
+    sections:
+    - fields:
+      - display: valuePicker
+        id: cluster
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+        submit: false
+      id: section_cluster
+    - fields:
+      - display: radio
+        id: namespace
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+      id: section_namespace
+    - fields:
+      - display: decimalField
+        id: decimalField_nbLoadBalacers
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+      id: section_nbLoadBalacers
+    - fields:
+      - display: textField
+        id: textField_status
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+      id: section_status
+    state: {}
+    title: General
+options:
+  externalValidations: []
+schema:
+  cluster:
+    constraints: {}
+    label: Cluster
+    type:
+      dataType: reference
+      isMultiple: false
+      referenceType: DynamicTypes:XaasK8s.Cluster
+  decimalField_nbLoadBalacers:
+    constraints: {}
+    default:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`namespaces`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: _resource.clusterOut.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: _resource.object.targetTenant
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: _resource.object.namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        sizeConversion: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '`name`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '`resourceQuota.spec.hard.services.loadbalancers`'
+      type: scriptAction
+    label: '# LoadBalancers'
+    step: 1
+    type:
+      dataType: decimal
+  namespace:
+    constraints:
+      required: true
+    label: Namespace
+    type:
+      dataType: string
+    valueList:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsStringArray
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`namespacesNames`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: _resource.clusterOut.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: _resource.object.targetTenant
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: _resource.object.namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '``'
+      type: scriptAction
+  textField_status:
+    constraints:
+      pattern:
+        message: Cannot delete LoadBalancer.
+        value: ^Ok$
+      required: true
+    default:
+      id: ch.epfl.xaas.k8s/cadAddDelNSLB
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        namespace: namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        clusterName: _resource.clusterOut.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        operation: '`delNSLB`'
+      type: scriptAction
+    label: Status
+    placeholder: ''
+    type:
+      dataType: string

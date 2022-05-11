@@ -1,0 +1,271 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_1",
+        "sections": [
+          {
+            "id": "section_0",
+            "fields": [
+              {
+                "id": "cluster",
+                "display": "valuePicker",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "submit": false,
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_workerParameters",
+            "fields": [
+              {
+                "id": "datagrid_workerParameters",
+                "display": "datagrid",
+                "state": {
+                  "visible": true,
+                  "read-only": true,
+                  "hidden-fields": []
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_1",
+            "fields": [
+              {
+                "id": "newNbWorkers",
+                "display": "decimalField",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_status",
+            "fields": [
+              {
+                "id": "textField_status",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "General",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "cluster": {
+      "label": "Cluster",
+      "type": {
+        "dataType": "reference",
+        "referenceType": "DynamicTypes:XaasK8s.Cluster",
+        "isMultiple": false
+      },
+      "constraints": {}
+    },
+    "datagrid_workerParameters": {
+      "label": "Worker nodes",
+      "type": {
+        "dataType": "complex",
+        "fields": [
+          {
+            "label": "Key",
+            "type": {
+              "dataType": "string"
+            },
+            "constraints": {},
+            "id": "key"
+          },
+          {
+            "label": "Value",
+            "type": {
+              "dataType": "string"
+            },
+            "constraints": {},
+            "id": "value"
+          }
+        ],
+        "isMultiple": true
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsProperties",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`nbWorkers`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.clusterOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasK8s`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "newNbWorkers": {
+      "label": "New number of workers",
+      "type": {
+        "dataType": "decimal",
+        "isMultiple": false
+      },
+      "default": {
+        "id": "ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonPath": "`nbWorkers.current`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterValue": "``"
+          },
+          {
+            "dtId": "_resource.clusterOut.name",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "targetTenant": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "dtName": "`XaasK8s`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "filterField": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "sizeConversion": "``"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "jsonSubPath": "``"
+          }
+        ]
+      },
+      "constraints": {}
+    },
+    "textField_status": {
+      "label": "Status",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.xaas.k8s/canResize",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "decimal",
+              "isMultiple": false
+            },
+            "newNbWorkers": "newNbWorkers"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "clusterName": "_resource.clusterOut.name"
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {
+        "pattern": {
+          "value": "^Ok$",
+          "message": "Invalid number of workers"
+        },
+        "required": true
+      }
+    }
+  },
+  "options": {
+    "externalValidations": []
+  }
+}

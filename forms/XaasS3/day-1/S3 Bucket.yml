@@ -1,0 +1,437 @@
+layout:
+  pages:
+  - id: page_deployment_properties
+    title: Deployment
+    sections:
+    - id: section_DEBUG_D
+      fields:
+      - id: DEBUG_D
+        display: checkbox
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_deploymentNameHash
+      fields:
+        - id: deploymentNameHash
+          display: textField
+          state:
+            visible:
+              - value: true
+                equals:
+                  DEBUG_D: true
+            read-only: true
+          signpostPosition: right-middle
+    - id: section_deploymentName
+      fields:
+        - id: deploymentName
+          display: textField
+          state:
+            visible:
+              - value: true
+                equals:
+                  DEBUG_D: true
+            read-only: true
+          signpostPosition: right-middle
+    - id: section_dplyName
+      fields:
+        - id: dplyName
+          display: textField
+          state:
+            visible: true
+          signpostPosition: right-middle
+    - id: section_description
+      fields:
+      - id: description
+        display: textArea
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_D: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_dplyDescription
+      fields:
+      - id: dplyDescription
+        display: textArea
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_project
+      fields:
+        - id: project
+          display: dropDown
+          state:
+            visible: true
+            read-only: false
+          signpostPosition: right-middle
+        - id: projectName
+          display: textField
+          state:
+            visible: false
+            read-only: true
+          signpostPosition: right-middle
+        - id: projectId
+          display: textField
+          state:
+            visible: true
+            read-only: true
+          signpostPosition: right-middle
+    - id: section_reasonsForRequest
+      fields:
+      - id: reasonsForRequest
+        display: textArea
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_requestor
+      fields:
+      - id: requestor
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_deploymentTag
+      fields:
+      - id: deploymentTag
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_notificationMail
+      fields:
+      - id: notificationMail
+        display: textArea
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_hasFunding
+      fields:
+      - id: hasFunding
+        display: checkbox
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_D: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_funding
+      fields:
+      - id: funding
+        display: dropDown
+        state:
+          visible:
+          - value: true
+            equals:
+              hasFunding: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_fnsPrjName
+      fields:
+      - id: fnsPrjName
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              funding: fns
+          read-only: false
+        signpostPosition: right-middle
+      - id: fnsPrjNo
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              funding: fns
+          read-only: false
+        signpostPosition: right-middle
+    state: {}
+  - id: page_bucket_properties
+    title: Bucket
+    sections:
+    - id: section_linkedTo
+      fields:
+      - id: linkedTo
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_versioning
+      fields:
+      - id: versioning
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    state: {}
+schema:
+  # deployment - general
+  DEBUG_D:
+    label: DEBUG
+    type:
+      dataType: boolean
+    default: true
+    constraints: {}
+  deploymentName:
+    label: (tmp) Deployment Name
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind:
+        values:
+          - '`New S3 bucket for `'
+          - projectName
+          - '` [`'
+          - deploymentNameHash
+          - '`]`'
+        operator: concatenate
+    constraints:
+      required: true
+      max-value: 80
+  deploymentNameHash:
+    label: deploymentNameHash
+    type:
+      dataType: string
+    default:
+      id: ch.epfl.iaas.js/randomHash
+      type: scriptAction
+      parameters:
+        - s3: '``'
+          $type:
+            dataType: string
+            isMultiple: false
+        - s4: '``'
+          $type:
+            dataType: string
+            isMultiple: false
+        - s5: '``'
+          $type:
+            dataType: string
+            isMultiple: false
+        - s1: '``'
+          $type:
+            dataType: string
+            isMultiple: false
+        - s2: '``'
+          $type:
+            dataType: string
+            isMultiple: false
+    placeholder: ''
+    constraints: {}
+  deploymentTag:
+    label: Environment
+    type:
+      dataType: string
+      isMultiple: false
+    default: Test
+    valueList:
+      - label: Development
+        value: Development
+      - label: Test
+        value: Test
+      - label: Production
+        value: Production
+    constraints:
+      required: true
+  description:
+    label: (tmp) Description
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: dplyDescription
+    constraints:
+      required: true
+      max-value: 256
+  dplyName:
+    label: Deployment Name
+    type:
+      dataType: string
+      isMultiple: false
+    constraints:
+      required: true
+  dplyDescription:
+    label: Description
+    type:
+      dataType: string
+    constraints:
+      required: true
+      max-value: 256
+  project:
+    label: Project
+    type:
+      dataType: string
+      isMultiple: false
+    valueList:
+      id: projects
+      type: scriptAction
+    constraints:
+      required: true
+  projectId:
+    label: Project Id
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      id: ch.epfl.iaas.utils/getProjectCPfromId
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          cpName: '`ch.epfl.vra.project.id`'
+        - $type:
+            dataType: string
+            isMultiple: false
+          projectId: project
+    constraints: {}
+  projectName:
+    label: Project name
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      id: ch.epfl.iaas.utils/getProjectCPfromId
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          cpName: '`ch.epfl.vra.project.name`'
+        - $type:
+            dataType: string
+            isMultiple: false
+          projectId: project
+  notificationMail:
+    label: Notification Mail
+    signpost: List of valid EPFL emails separated by whitespace or newline.
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      id: ch.epfl.iaas.utils.mail/getUserEmailFromVRAUserPrincipalName
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          userPrincipalName: _requestedBy
+    constraints:
+      required: true
+  reasonsForRequest:
+    label: Reason for request
+    type:
+      dataType: string
+      isMultiple: false
+    default: I need that!
+    constraints:
+      required: true
+  requestor:
+    label: Requestor
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: _requestedBy
+    constraints: {}
+
+  # deployment - funding
+  fnsPrjName:
+    label: FNS Project Name
+    type:
+      dataType: string
+      isMultiple: false
+    default: ''
+    constraints:
+      required:
+      - value: true
+        equals:
+          funding: fns
+  fnsPrjNo:
+    label: FNS Project Number
+    type:
+      dataType: string
+      isMultiple: false
+    default: ''
+    constraints:
+      required:
+      - value: true
+        equals:
+          funding: fns
+  funding:
+    label: Funding
+    type:
+      dataType: string
+    default: epfl
+    valueList:
+      - label: EPFL
+        value: epfl
+      - label: FNS
+        value: fns
+    placeholder: ''
+    constraints:
+      required: true
+  hasFunding:
+    label: Has Funding?
+    type:
+      dataType: boolean
+    default:
+      id: ch.epfl.xaas.utils/hasFunding
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          namespace: '`XaasS3`'
+
+  # bucket
+  linkedTo:
+    label: Linked to
+    type:
+      dataType: string
+      isMultiple: false
+    valueList:
+      id: ch.epfl.xaas.s3/getBucketsToLink
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectId: projectId
+    constraints: {}
+  versioning:
+    label: Versioning?
+    type:
+      dataType: string
+      isMultiple: false
+    default: Suspended
+    valueList:
+    - label: Suspended
+      value: Suspended
+    - label: Active
+      value: Active
+
+options:
+  externalValidations:
+  - label: Check notification mail
+    source:
+      id: ch.epfl.iaas.utils.mail/checkMails
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        mails: notificationMail
+    target:
+    - notificationMail

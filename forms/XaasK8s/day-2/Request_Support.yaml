@@ -1,0 +1,95 @@
+layout:
+  pages:
+  - id: page_general
+    sections:
+    - fields:
+      - display: textField
+        id: serviceName
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+      id: section_serviceName
+    - fields:
+      - display: valuePicker
+        id: object
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+      id: section_cluster
+    - fields:
+      - display: dropDown
+        id: supportCategory
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+      id: section_supportCategory
+    - fields:
+      - display: textArea
+        id: content
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+      id: section_content
+    - fields:
+      - display: checkbox
+        id: wantCC
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+      id: section_wantCC
+    state: {}
+    title: General
+options:
+  externalValidations: []
+schema:
+  content:
+    constraints:
+      required: true
+    label: Problem Description
+    type:
+      dataType: string
+  object:
+    label: Cluster
+    type:
+      dataType: reference
+      isMultiple: false
+      referenceType: DynamicTypes:XaasK8s.Cluster
+  serviceName:
+    constraints: {}
+    default: K8s (Kubernetes)
+    label: serviceName
+    type:
+      dataType: string
+  supportCategory:
+    constraints:
+      required: true
+    label: Category
+    type:
+      dataType: string
+    valueList:
+      id: ch.epfl.config/getList
+      parameters:
+      - $type:
+          dataType: string
+        projectName: '``'
+      - $type:
+          dataType: string
+        elementName: '`Support_category_XaasK8s`'
+      - $type:
+          dataType: string
+        categoryName: '``'
+      - $type:
+          dataType: string
+        deploymentTag: '``'
+      type: scriptAction
+  wantCC:
+    constraints:
+      required: false
+    label: Copy of request?
+    type:
+      dataType: boolean

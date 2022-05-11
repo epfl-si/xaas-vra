@@ -1,0 +1,709 @@
+layout:
+  pages:
+  - id: page_general
+    title: General
+    sections:
+    - id: section_DEBUG_G
+      fields:
+      - id: DEBUG_G
+        display: checkbox
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+    - id: section_clusterName
+      fields:
+      - id: name
+        display: textField
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+    - id: section_onboardStatus
+      fields:
+      - display: textField
+        id: onboardStatus
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+    state: {}
+
+  - id: page_deployment_properties
+    title: Deployment
+    sections:
+    - id: section_DEBUG_D
+      fields:
+        - id: DEBUG_D
+          display: checkbox
+          state:
+            visible: true
+            read-only: false
+          signpostPosition: right-middle
+    - id: section_deploymentName
+      fields:
+      - id: deploymentName
+        display: textField
+        state:
+          visible:
+            - value: true
+              equals:
+                DEBUG_D: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_dplyName
+      fields:
+      - id: dplyName
+        display: textField
+        state:
+          visible: true
+        signpostPosition: right-middle
+    - id: section_description
+      fields:
+      - id: description
+        display: textArea
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_D: true
+            read-only: true
+        signpostPosition: right-middle
+    - id: section_dplyDescription
+      fields:
+      - id: dplyDescription
+        display: textArea
+        state:
+          read-only: false
+          visible: true
+        signpostPosition: right-middle
+    - id: section_project
+      fields:
+        - id: project
+          display: dropDown
+          state:
+            visible: true
+            read-only: false
+          signpostPosition: right-middle
+        - id: projectName
+          display: textField
+          state:
+            visible: false
+            read-only: true
+          signpostPosition: right-middle
+        - id: projectId
+          display: textField
+          state:
+            visible: true
+            read-only: true
+          signpostPosition: right-middle
+    - id: section_reasonsForRequest
+      fields:
+      - id: reasonsForRequest
+        display: textArea
+        state:
+          visible: false
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_requestor
+      fields:
+      - id: requestor
+        display: textField
+        state:
+          read-only: true
+          visible: true
+        signpostPosition: right-middle
+    - id: section_deploymentTag
+      fields:
+      - id: deploymentTag
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_notificationMail
+      fields:
+      - id: notificationMail
+        display: textArea
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_hasFunding
+      fields:
+      - id: hasFunding
+        display: checkbox
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_D: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_funding
+      fields:
+      - id: funding
+        display: dropDown
+        state:
+          visible:
+          - value: true
+            equals:
+              hasFunding: true
+            read-only: false
+        signpostPosition: right-middle
+    - id: section_fnsPrjName
+      fields:
+      - id: fnsPrjName
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              funding: fns
+            read-only: false
+          signpostPosition: right-middle
+      - id: fnsPrjNo
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              funding: fns
+          read-only: false
+        signpostPosition: right-middle
+    state:
+      visible:
+      - equals:
+          onboardStatus: Ok
+        value: true
+  - id: page_cluster_properties
+    title: Cluster
+    sections:
+    - id: section_DEBUG_C
+      fields:
+      - id: DEBUG_C
+        display: checkbox
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+    - id: section_clusterId
+      fields:
+      - id: clusterId
+        display: textField
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible:
+          - equals:
+              DEBUG_C: true
+            value: true
+    - id: section_plan
+      fields:
+      - id: plan
+        display: textField
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+    - id: section_clusterParameters
+      fields:
+      - id: datagrid_clusterParameters
+        display: datagrid
+        signpostPosition: right-middle
+        state:
+          hidden-fields: []
+          read-only: true
+          visible: true
+    state:
+      visible:
+      - equals:
+          onboardStatus: Ok
+        value: true
+  - id: page_namespace_properties
+    title: Namespaces
+    sections:
+    - fields:
+      - id: radio_namespace
+      - display: radio
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+      id: section_radio_namespace
+    - fields:
+      - id: datagrid_namespaceParameters
+        display: datagrid
+        signpostPosition: right-middle
+        state:
+          hidden-fields: []
+          read-only: true
+          visible: true
+      id: section_namespaceParameters
+    state:
+      visible:
+      - equals:
+          onboardStatus: Ok
+        value: true
+schema:
+  # onboarding - general
+  DEBUG_G:
+    constraints: { }
+    default: true
+    label: DEBUG
+    type:
+      dataType: boolean
+  name:
+    constraints: { }
+    default: ''
+    label: Cluster Name
+    signpost: 'Enter the name of the cluster to be onboarded. It must be
+
+      <ul>
+
+      <li> present in the backend </li>
+
+      <li> not already onboarded</li>
+
+      </ul>'
+    type:
+      dataType: string
+      isMultiple: false
+  onboardStatus:
+    constraints:
+      pattern:
+        message: ''
+        value: ^Ok$
+      required: true
+    default:
+      id: ch.epfl.xaas.k8s/readyToOnboardMsg
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          clusterName: name
+      type: scriptAction
+    label: Status
+    placeholder: ''
+    signpost: Cluster cannot be onboarded yet
+    type:
+      dataType: string
+
+  # deployment - general
+  DEBUG_D:
+    label: DEBUG (D)
+    type:
+      dataType: boolean
+    default: true
+    constraints: {}
+  deploymentName:
+    label: (tmp) Deployment Name
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: dplyName
+    constraints:
+      max-value: 80
+      required: true
+  deploymentTag:
+    label: Environment
+    type:
+      dataType: string
+      isMultiple: false
+    valueList:
+      - label: Development
+        value: Development
+      - label: Test
+        value: Test
+      - label: Production
+        value: Production
+    constraints:
+      required: true
+  description:
+    label: (tmp) Description
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: dplyDescription
+    constraints:
+      max-value: 256
+      required: true
+  dplyDescription:
+    label: Description
+    type:
+      dataType: string
+    constraints:
+      max-value: 256
+      required: true
+  dplyName:
+    label: Deployment Name
+    type:
+      dataType: string
+      isMultiple: false
+    constraints:
+      required: true
+  notificationMail:
+    label: Notification Mail
+    signpost: 'List of valid EPFL emails, one email per line'
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      id: ch.epfl.xaas.k8s/getNotificationMailForOnboarding
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          requestor: _requestedBy
+        - $type:
+            dataType: string
+            isMultiple: false
+          clusterId: clusterId
+      type: scriptAction
+    constraints:
+      required: true
+  project:
+    label: Project
+    type:
+      dataType: string
+      isMultiple: false
+    valueList:
+      id: projects
+      type: scriptAction
+    constraints:
+      required: true
+  projectId:
+    label: Project Id
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      id: ch.epfl.iaas.utils/getProjectCPfromId
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          cpName: '`ch.epfl.vra.project.id`'
+        - $type:
+            dataType: string
+            isMultiple: false
+          projectId: project
+    constraints:
+      required: true
+  projectName:
+    label: Project Name
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      id: ch.epfl.iaas.utils/getProjectCPfromId
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          cpName: '`ch.epfl.vra.project.name`'
+        - $type:
+            dataType: string
+            isMultiple: false
+          projectId: project
+    constraints:
+      required: true
+  reasonsForRequest:
+    label: Reasons for request
+    type:
+      dataType: string
+      isMultiple: false
+    constraints:
+      required: true
+    default: '`Bucket onboarded w/o approval`'
+  requestor:
+    label: Requestor
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: _requestedBy
+    constraints:
+      required: true
+
+  # deployment - funding
+  fnsPrjName:
+    label: FNS Project Name
+    type:
+      dataType: string
+      isMultiple: false
+    default: ''
+    constraints:
+      required:
+        - value: true
+          equals:
+            funding: fns
+  fnsPrjNo:
+    label: FNS Project Number
+    type:
+      dataType: string
+      isMultiple: false
+    default: ''
+    constraints:
+      required:
+        - value: true
+          equals:
+            funding: fns
+  funding:
+    label: Funding
+    type:
+      dataType: string
+    default: epfl
+    valueList:
+      - label: EPFL
+        value: epfl
+      - label: FNS
+        value: fns
+    placeholder: ''
+    constraints:
+      required: true
+  hasFunding:
+    label: Has Funding?
+    type:
+      dataType: boolean
+    default: false
+
+  # cluster information
+  DEBUG_C:
+    label: DEBUG (C)
+    type:
+      dataType: boolean
+    constraints: {}
+  clusterId:
+    constraints: {}
+    default:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsString
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`cluster.uuid`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: '`XaasK8s.Cluster`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '``'
+      type: scriptAction
+    label: Cluster Id
+    type:
+      dataType: string
+      isMultiple: false
+  plan:
+    constraints: {}
+    default:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsString
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          jsonPath: '`cluster.plan_name`'
+        - $type:
+            dataType: string
+            isMultiple: false
+          filterValue: '``'
+        - $type:
+            dataType: string
+            isMultiple: false
+          dtId: name
+        - $type:
+            dataType: string
+            isMultiple: false
+          targetTenant: '``'
+        - $type:
+            dataType: string
+            isMultiple: false
+          dtName: '`XaasK8s.Cluster`'
+        - $type:
+            dataType: string
+            isMultiple: false
+          filterField: '``'
+        - $type:
+            dataType: string
+            isMultiple: false
+          jsonSubPath: '``'
+      type: scriptAction
+    label: Plan
+    placeholder: ''
+    type:
+      dataType: string
+  datagrid_clusterParameters:
+    constraints: {}
+    default:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsProperties
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`cluster.parameters`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: '`epfl`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: '`XaasK8s.Cluster`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '``'
+      type: scriptAction
+    label: Parameters
+    placeholder: ''
+    type:
+      dataType: complex
+      fields:
+      - constraints: {}
+        id: key
+        label: Key
+        type:
+          dataType: string
+      - constraints: {}
+        id: value
+        label: Value
+        type:
+          dataType: string
+      isMultiple: true
+
+  # namespace information
+  datagrid_namespaceParameters:
+    constraints: {}
+    default:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsProperties
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`namespaces`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: '`epfl`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: '`XaasK8s.Cluster`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: radio_namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '`name`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '`resourceQuota.spec.hard`'
+      type: scriptAction
+    label: Parameters
+    placeholder: Namespace parameters will appear in this area
+    type:
+      dataType: complex
+      fields:
+      - constraints: {}
+        id: key
+        label: Key
+        type:
+          dataType: string
+      - constraints: {}
+        id: value
+        label: Value (absent =0)
+        type:
+          dataType: integer
+      isMultiple: true
+  radio_namespace:
+    constraints: {}
+    label: Namespace
+    type:
+      dataType: string
+    valueList:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsStringArray
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`namespacesNames`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: '`epfl`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: '`XaasK8s.Cluster`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '``'
+      type: scriptAction
+
+options:
+  externalValidations:
+    - label: Check notification mail
+      source:
+        id: ch.epfl.iaas.utils.mail/checkMails
+        type: scriptAction
+        parameters:
+          - $type:
+              dataType: string
+              isMultiple: false
+            mails: notificationMail
+      target:
+        - notificationMail

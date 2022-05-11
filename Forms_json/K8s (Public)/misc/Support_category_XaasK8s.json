@@ -1,0 +1,13 @@
+{
+  "default": {
+    "System Management": {
+      "detail": "System Management"
+    },
+    "Fault/Crash": {
+      "detail": "Fault/Crash"
+    },
+    "Feature Request": {
+      "detail": "Feature Request"
+    }
+  }
+}

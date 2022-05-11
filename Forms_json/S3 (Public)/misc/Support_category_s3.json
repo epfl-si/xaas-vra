@@ -1,0 +1,16 @@
+{
+  "default": {
+    "System Management": {
+      "value": "System Management"
+    },
+    "Storage": {
+      "value": "Storage"
+    },
+    "Fault/Crash": {
+      "value": "Fault/Crash"
+    },
+    "Feature Request": {
+      "value": "Feature Request"
+    }
+  }
+}

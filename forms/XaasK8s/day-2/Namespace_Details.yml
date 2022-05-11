@@ -1,0 +1,148 @@
+layout:
+  pages:
+  - id: page_namespace_properties
+    sections:
+    - fields:
+      - display: valuePicker
+        id: cluster
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+        submit: false
+      id: section_cluster
+    - fields:
+      - display: radio
+        id: radio_namespace
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+      id: section_radio_namespace
+    - fields:
+      - display: datagrid
+        id: datagrid_namespaceParameters
+        signpostPosition: right-middle
+        state:
+          hidden-fields: []
+          read-only: true
+          visible: true
+      id: section_namespaceParameters
+    - fields:
+      - display: textField
+        id: textField_caution
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+      id: section_caution
+    state: {}
+    title: General
+options:
+  externalValidations: []
+schema:
+  cluster:
+    constraints: {}
+    label: cluster
+    type:
+      dataType: reference
+      isMultiple: false
+      referenceType: DynamicTypes:XaasK8s.Cluster
+  datagrid_namespaceParameters:
+    constraints: {}
+    default:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsProperties
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`namespaces`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: _resource.object.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: _resource.object.targetTenant
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: _resource.object.namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: radio_namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '`name`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '`resourceQuota.spec.hard`'
+      type: scriptAction
+    label: Namespace parameters
+    placeholder: Namespace parameters will appear in this area
+    type:
+      dataType: complex
+      fields:
+      - constraints: {}
+        id: key
+        label: Key
+        type:
+          dataType: string
+      - constraints: {}
+        id: value
+        label: Value (absent =0)
+        type:
+          dataType: integer
+      isMultiple: true
+  radio_namespace:
+    constraints: {}
+    label: Namespace
+    signpost: Choose the namespace to display information on
+    type:
+      dataType: string
+    valueList:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsStringArray
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`namespacesNames`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtId: _resource.object.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: _resource.object.targetTenant
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: _resource.object.namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '``'
+      type: scriptAction
+  textField_caution:
+    constraints:
+      pattern:
+        message: Nothing to submit here
+        value: ^$
+    default: Nothing to submit here
+    label: Caution
+    placeholder: ''
+    type:
+      dataType: string

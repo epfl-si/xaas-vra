@@ -1,0 +1,705 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "id": "page_deployment_properties",
+        "sections": [
+          {
+            "id": "section_DEBUG_D",
+            "fields": [
+              {
+                "id": "DEBUG_D",
+                "display": "checkbox",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_project",
+            "fields": [
+              {
+                "id": "project",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              },
+              {
+                "id": "projectName",
+                "display": "textField",
+                "state": {
+                  "visible": false,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              },
+              {
+                "id": "projectId",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentNameHash",
+            "fields": [
+              {
+                "id": "deploymentNameHash",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentName",
+            "fields": [
+              {
+                "id": "deploymentName",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_dplyName",
+            "fields": [
+              {
+                "id": "dplyName",
+                "display": "textField",
+                "state": {
+                  "visible": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_description",
+            "fields": [
+              {
+                "id": "description",
+                "display": "textArea",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_dplyDescription",
+            "fields": [
+              {
+                "id": "dplyDescription",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_reasonsForRequest",
+            "fields": [
+              {
+                "id": "reasonsForRequest",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_requestor",
+            "fields": [
+              {
+                "id": "requestor",
+                "display": "textField",
+                "state": {
+                  "visible": true,
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_deploymentTag",
+            "fields": [
+              {
+                "id": "deploymentTag",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_notificationMail",
+            "fields": [
+              {
+                "id": "notificationMail",
+                "display": "textArea",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_hasFunding",
+            "fields": [
+              {
+                "id": "hasFunding",
+                "display": "checkbox",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "DEBUG_D": true
+                      }
+                    }
+                  ],
+                  "read-only": true
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_funding",
+            "fields": [
+              {
+                "id": "funding",
+                "display": "dropDown",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "hasFunding": true
+                      }
+                    }
+                  ],
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_fnsPrjName",
+            "fields": [
+              {
+                "id": "fnsPrjName",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "funding": "fns"
+                      }
+                    }
+                  ],
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              },
+              {
+                "id": "fnsPrjNo",
+                "display": "textField",
+                "state": {
+                  "visible": [
+                    {
+                      "value": true,
+                      "equals": {
+                        "funding": "fns"
+                      }
+                    }
+                  ],
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "Deployment",
+        "state": {}
+      },
+      {
+        "id": "page_cluster_properties",
+        "sections": [
+          {
+            "id": "section_DEBUG_C",
+            "fields": [
+              {
+                "id": "DEBUG_C",
+                "display": "checkbox",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          },
+          {
+            "id": "section_plan",
+            "fields": [
+              {
+                "id": "plan",
+                "display": "dropDown",
+                "state": {
+                  "visible": true,
+                  "read-only": false
+                },
+                "signpostPosition": "right-middle"
+              }
+            ]
+          }
+        ],
+        "title": "Cluster",
+        "state": {}
+      }
+    ]
+  },
+  "schema": {
+    "DEBUG_D": {
+      "label": "DEBUG (D)",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": false,
+      "constraints": {}
+    },
+    "deploymentNameHash": {
+      "label": "deploymentNameHash",
+      "type": {
+        "dataType": "string"
+      },
+      "default": {
+        "id": "ch.epfl.iaas.js/randomHash",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "s3": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s4": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s5": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s1": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          },
+          {
+            "s2": "``",
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            }
+          }
+        ]
+      },
+      "placeholder": "",
+      "constraints": {}
+    },
+    "deploymentName": {
+      "label": "(tmp) Deployment Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": {
+          "values": [
+            "`New K8s cluster for `",
+            "projectName",
+            "` [`",
+            "deploymentNameHash",
+            "`]`"
+          ],
+          "operator": "concatenate"
+        }
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 80
+      }
+    },
+    "description": {
+      "label": "(tmp) Description",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": "dplyDescription"
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 256
+      }
+    },
+    "dplyName": {
+      "label": "Deployment Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "dplyDescription":{
+      "label": "Description",
+      "type": {
+        "dataType": "string"
+      },
+      "constraints": {
+        "required": true,
+        "max-value": 256
+      }
+    },
+
+    "project": {
+      "label": "Project",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "valueList": {
+        "id": "projects",
+        "type": "scriptAction"
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "projectName": {
+      "label": "Project Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "id": "ch.epfl.iaas.utils/getProjectCPfromId",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "cpName": "`ch.epfl.vra.project.name`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "projectId": "project"
+          }
+        ]
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "projectId": {
+      "label": "Project Id",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "id": "ch.epfl.iaas.utils/getProjectCPfromId",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "cpName": "`ch.epfl.vra.project.id`"
+          },
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "projectId": "project"
+          }
+        ]
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "requestor": {
+      "label": "Requestor",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "bind": "_requestedBy"
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "deploymentTag": {
+      "label": "Environment",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "Test",
+      "valueList": [
+        {
+          "label": "Development",
+          "value": "Development"
+        },
+        {
+          "label": "Test",
+          "value": "Test"
+        },
+        {
+          "label": "Production",
+          "value": "Production"
+        }
+      ],
+      "constraints": {
+        "required": true
+      }
+    },
+    "notificationMail": {
+      "label": "Notification Mail",
+      "signpost": "List of valid EPFL emails, one email per line",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": {
+        "id": "ch.epfl.iaas.ad/getUserMailFromVRAUserPrincipalName",
+        "type": "scriptAction",
+        "parameters": [
+          {
+            "$type": {
+              "dataType": "string",
+              "isMultiple": false
+            },
+            "userPrincipalName": "_requestedBy"
+          }
+        ]
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "reasonsForRequest": {
+      "label": "Reasons for request",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "constraints": {
+        "required": true
+      }
+    },
+    "hasFunding": {
+      "label": "Has Funding?",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": false
+    },
+    "funding": {
+      "label": "Funding",
+      "type": {
+        "dataType": "string"
+      },
+      "default": "epfl",
+      "valueList": [
+        {
+          "label": "EPFL",
+          "value": "epfl"
+        },
+        {
+          "label": "FNS",
+          "value": "fns"
+        }
+      ],
+      "placeholder": "",
+      "constraints": {
+        "required": true
+      }
+    },
+    "fnsPrjName": {
+      "label": "FNS Project Name",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "",
+      "constraints": {
+        "required": [
+          {
+            "value": true,
+            "equals": {
+              "funding": "fns"
+            }
+          }
+        ]
+      }
+    },
+    "fnsPrjNo": {
+      "label": "FNS Project Number",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "",
+      "constraints": {
+        "required": [
+          {
+            "value": true,
+            "equals": {
+              "funding": "fns"
+            }
+          }
+        ]
+      }
+    },
+    "DEBUG_C": {
+      "label": "DEBUG (C)",
+      "type": {
+        "dataType": "boolean"
+      },
+      "default": true,
+      "constraints": {}
+    },
+    "plan": {
+      "label": "Cluster Plan",
+      "type": {
+        "dataType": "string",
+        "isMultiple": false
+      },
+      "default": "Tiny",
+      "valueList": [
+        {
+          "label": "Tiny",
+          "value": "Tiny"
+        },
+        {
+          "label": "Small",
+          "value": "Small"
+        },
+        {
+          "label": "Medium",
+          "value": "Medium"
+        },
+        {
+          "label": "Large",
+          "value": "Large"
+        }
+      ],
+      "constraints": {
+        "required": true
+      }
+    }
+  },
+  "options": {
+    "externalValidations": [
+      {
+        "source": {
+          "id": "ch.epfl.iaas.utils.mail/checkMails",
+          "type": "scriptAction",
+          "parameters": [
+            {
+              "$type": {
+                "dataType": "string",
+                "isMultiple": false
+              },
+              "mails": "notificationMail"
+            }
+          ]
+        },
+        "target": [
+          "notificationMail"
+        ]
+      }
+    ]
+  }
+}
