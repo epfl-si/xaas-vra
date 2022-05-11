@@ -386,7 +386,14 @@ schema:
     label: Has Funding?
     type:
       dataType: boolean
-    default: false
+    default:
+      id: ch.epfl.xaas.utils/hasFunding
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          namespace: '`XaasS3`'
 
   # bucket
   linkedTo:

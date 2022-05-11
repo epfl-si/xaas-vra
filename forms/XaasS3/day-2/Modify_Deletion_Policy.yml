@@ -22,12 +22,13 @@ layout:
     state: {}
 schema:
   object:
-    label: Volume
+    label: Bucket
     type:
       dataType: reference
-      referenceType: DynamicTypes:XaasNas.Volume
+      referenceType: DynamicTypes:XaasS3.Bucket
       isMultiple: false
-    constraints: {}
+    constraints:
+      required: false
   deletionPolicy:
     label: Deletion Policy
     signpost: |-

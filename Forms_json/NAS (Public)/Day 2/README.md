@@ -1,7 +1,12 @@
 ## Additional Actions in custom resource
-* **Modify_Object_Data** (Modify Object Data) - generic
-* **Modify_Deletion_Policy** (Modify Deletion Policy)
-* **View_Details** (View Details)
+
+* [Modify_Object_Data](Modify_Object_Data.yml) &rarr; [Cluster] Modify Object Data - generic
+* [Modify_Deletion_Policy](Modify_Deletion_Policy.yml) &rarr; [Cluster] Modify Deletion Policy - generic
+* [Request_Support] &rarr; [Support] Request
+
+### Volume: all
+* [View_Details](View_Details.yml) + [css](View_Details.css) &rarr; View Details
+
 * **Request_Support** (Request Support) - generic
 * **Resize** (Resize) - app/ and ... col
 * **Modify_Access_Policy** (Modify Access Policy):

@@ -139,7 +139,7 @@ layout:
               funding: fns
           read-only: false
         signpostPosition: right-middle
-    state: {}
+    state: { }
   - id: page_volume_properties
     title: 'Volume '
     sections:
@@ -242,8 +242,24 @@ layout:
           - value: true
             equals:
               access: nfs3
+          - value: true
+            equals:
+              DEBUG_V: true
           read-only: false
         signpostPosition: right-middle
+      - id: xfix_IPsRoot
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              access: nfs3
+          - value: true
+            equals:
+              DEBUG_V: true
+          read-only: true
+        signpostPosition: right-middle
+
     - id: section_IPsRO
       fields:
       - id: IPsRO
@@ -253,8 +269,24 @@ layout:
           - value: true
             equals:
               access: nfs3
+          - value: true
+            equals:
+              DEBUG_V: true
           read-only: false
         signpostPosition: right-middle
+      - id: xfix_IPsRO
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              access: nfs3
+          - value: true
+            equals:
+              DEBUG_V: true
+          read-only: true
+        signpostPosition: right-middle
+
     - id: section_IPsRW
       fields:
       - id: IPsRW
@@ -264,9 +296,24 @@ layout:
           - value: true
             equals:
               access: nfs3
+          - value: true
+            equals:
+              DEBUG_V: true
           read-only: false
         signpostPosition: right-middle
-    state: {}
+      - id: xfix_IPsRW
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              access: nfs3
+          - value: true
+            equals:
+              DEBUG_V: true
+          read-only: true
+        signpostPosition: right-middle
+    state: { }
 schema:
   # deployment
   DEBUG_D:
@@ -274,7 +321,7 @@ schema:
     type:
       dataType: boolean
     default: false
-    constraints: {}
+    constraints: { }
   deletionPolicy:
     label: Deletion Policy
     type:
@@ -282,10 +329,10 @@ schema:
       isMultiple: false
     default: outboard
     valueList:
-      - label: delete
-        value: delete
-      - label: outboard
-        value: outboard
+    - label: delete
+      value: delete
+    - label: outboard
+      value: outboard
     constraints:
       required: true
   deploymentNameHash:
@@ -296,28 +343,28 @@ schema:
       id: ch.epfl.iaas.js/randomHash
       type: scriptAction
       parameters:
-        - s3: '``'
-          $type:
-            dataType: string
-            isMultiple: false
-        - s4: '``'
-          $type:
-            dataType: string
-            isMultiple: false
-        - s5: '``'
-          $type:
-            dataType: string
-            isMultiple: false
-        - s1: '``'
-          $type:
-            dataType: string
-            isMultiple: false
-        - s2: '``'
-          $type:
-            dataType: string
-            isMultiple: false
+      - s3: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - s4: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - s5: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - s1: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - s2: '``'
+        $type:
+          dataType: string
+          isMultiple: false
     placeholder: ''
-    constraints: {}
+    constraints: { }
   deploymentName:
     label: (tmp) Deployment Name
     type:
@@ -326,12 +373,12 @@ schema:
     default:
       bind:
         values:
-          - sizeGB
-          - '`GB volume for `'
-          - projectName
-          - '` [`'
-          - deploymentNameHash
-          - '`]`'
+        - sizeGB
+        - '`GB volume for `'
+        - projectName
+        - '` [`'
+        - deploymentNameHash
+        - '`]`'
         operator: concatenate
     constraints:
       required: true
@@ -343,12 +390,12 @@ schema:
       isMultiple: false
     default: Test
     valueList:
-      - label: Development
-        value: Development
-      - label: Test
-        value: Test
-      - label: Production
-        value: Production
+    - label: Development
+      value: Development
+    - label: Test
+      value: Test
+    - label: Production
+      value: Production
     constraints:
       required: true
   description:
@@ -385,10 +432,10 @@ schema:
       id: ch.epfl.iaas.ad/getUserMailFromVRAUserPrincipalName
       type: scriptAction
       parameters:
-        - $type:
-            dataType: string
-            isMultiple: false
-          userPrincipalName: _requestedBy
+      - $type:
+          dataType: string
+          isMultiple: false
+        userPrincipalName: _requestedBy
     constraints:
       required: true
   project:
@@ -410,14 +457,14 @@ schema:
       id: ch.epfl.iaas.utils/getProjectCPfromId
       type: scriptAction
       parameters:
-        - $type:
-            dataType: string
-            isMultiple: false
-          cpName: '`ch.epfl.vra.project.name`'
-        - $type:
-            dataType: string
-            isMultiple: false
-          projectId: project
+      - $type:
+          dataType: string
+          isMultiple: false
+        cpName: '`ch.epfl.vra.project.name`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectId: project
     constraints:
       required: true
   projectId:
@@ -429,14 +476,14 @@ schema:
       id: ch.epfl.iaas.utils/getProjectCPfromId
       type: scriptAction
       parameters:
-        - $type:
-            dataType: string
-            isMultiple: false
-          cpName: '`ch.epfl.vra.project.id`'
-        - $type:
-            dataType: string
-            isMultiple: false
-          projectId: project
+      - $type:
+          dataType: string
+          isMultiple: false
+        cpName: '`ch.epfl.vra.project.id`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectId: project
     constraints:
       required: true
   reasonsForRequest:
@@ -465,9 +512,9 @@ schema:
     default: ''
     constraints:
       required:
-        - value: true
-          equals:
-            funding: fns
+      - value: true
+        equals:
+          funding: fns
   fnsPrjNo:
     label: FNS Project Number
     type:
@@ -476,19 +523,19 @@ schema:
     default: ''
     constraints:
       required:
-        - value: true
-          equals:
-            funding: fns
+      - value: true
+        equals:
+          funding: fns
   funding:
     label: Funding
     type:
       dataType: string
     default: epfl
     valueList:
-      - label: EPFL
-        value: epfl
-      - label: FNS
-        value: fns
+    - label: EPFL
+      value: epfl
+    - label: FNS
+      value: fns
     placeholder: ''
     constraints:
       required: true
@@ -499,7 +546,7 @@ schema:
     type:
       dataType: boolean
     default: false
-    constraints: {}
+    constraints: { }
   volType:
     label: Volume Type
     type:
@@ -508,7 +555,7 @@ schema:
     default:
       id: ch.epfl.xaas.nas/getVolType
       type: scriptAction
-      parameters: []
+      parameters: [ ]
   sizeGB:
     label: Volume Size (GB)
     type:
@@ -539,18 +586,43 @@ schema:
     type:
       dataType: string
       isMultiple: false
-    constraints: {}
+    constraints: { }
+  xfix_IPsRoot:
+    label: xfix_IPsRoot
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: IPsRoot
+    constraints: { }
   IPsRO:
     label: RO Access Policy
     type:
       dataType: string
       isMultiple: false
-    constraints: {}
+    constraints: { }
+  xfix_IPsRO:
+    label: xfix_IPsRO
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: IPsRW
+    constraints: { }
   IPsRW:
     label: RW Access Policy
     type:
       dataType: string
       isMultiple: false
+    constraints: { }
+  xfix_IPsRW:
+    label: xfix_IPsRW
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: IPsRW
+    constraints: { }
 
   # volume - specific col part
   svm:
@@ -562,10 +634,10 @@ schema:
       id: ch.epfl.xaas.nas/getSvmList
       type: scriptAction
       parameters:
-        - $type:
-            dataType: string
-            isMultiple: false
-          projectId: projectId
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectId: projectId
     constraints:
       required: true
   snapPolicy:
@@ -612,14 +684,14 @@ schema:
     type:
       dataType: string
     default:
-      - value: '0'
-        equals:
-          snapPolicy: none
-      - value: '5'
-        notEqual:
-          snapPolicy: none
+    - value: '0'
+      equals:
+        snapPolicy: none
+    - value: '5'
+      notEqual:
+        snapPolicy: none
     placeholder: ''
-    constraints: {}
+    constraints: { }
   snapPercent:
     label: Snapshot Percent
     type:
@@ -635,7 +707,7 @@ schema:
           dataType: string
           isMultiple: false
         initValue: minSnapPercent
-    constraints: {}
+    constraints: { }
 
   # volume - price
   price:
@@ -646,20 +718,20 @@ schema:
       id: ch.epfl.xaas.nas/getPrice
       type: scriptAction
       parameters:
-        - $type:
-            dataType: string
-            isMultiple: false
-          jsonPath: '``'
-        - $type:
-            dataType: string
-            isMultiple: false
-          sizeGB: sizeGB
-        - $type:
-            dataType: string
-            isMultiple: false
-          snapPercent: snapPercent
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        sizeGB: sizeGB
+      - $type:
+          dataType: string
+          isMultiple: false
+        snapPercent: snapPercent
     placeholder: ''
-    constraints: {}
+    constraints: { }
 
 options:
   externalValidations:
@@ -674,6 +746,21 @@ options:
         mails: notificationMail
     target:
     - notificationMail
+  - label: Check volume name availability
+    source:
+      id: ch.epfl.xaas.nas/colVolAvailable
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        access: access
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectId: projectId
+    target:
+    - projectName
   - label: Root Access Policy Check
     source:
       id: ch.epfl.xaas.nas/checkIP
@@ -682,7 +769,7 @@ options:
       - $type:
           dataType: string
           isMultiple: false
-        IPs: IPsRoot
+        IPs: xfix_IPsRoot
     target:
     - IPsRoot
   - label: RO Access Policy Check
@@ -693,7 +780,7 @@ options:
       - $type:
           dataType: string
           isMultiple: false
-        IPs: IPsRO
+        IPs: xfix_IPsRO
     target:
     - IPsRO
   - label: RW Access Policy Check
@@ -704,6 +791,6 @@ options:
       - $type:
           dataType: string
           isMultiple: false
-        IPs: IPsRW
+        IPs: xfix_IPsRW
     target:
     - IPsRW

@@ -53,8 +53,8 @@ layout:
         signpostPosition: right-middle
     - id: section_dplyName
       fields:
-        - id: dplyName
-          display: textField
+      - id: dplyName
+        display: textField
         state:
           visible: true
         signpostPosition: right-middle
@@ -67,7 +67,7 @@ layout:
           - value: true
             equals:
               DEBUG_D: true
-                read-only: true
+            read-only: true
         signpostPosition: right-middle
     - id: section_dplyDescription
       fields:
@@ -99,8 +99,8 @@ layout:
           signpostPosition: right-middle
     - id: section_reasonsForRequest
       fields:
-        - id: reasonsForRequest
-          display: textArea
+      - id: reasonsForRequest
+        display: textArea
         state:
           visible: false
           read-only: false

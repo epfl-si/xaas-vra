@@ -66,10 +66,10 @@ schema:
       Supports groups mail addresses defined on http://groups.epfl.ch 
       Emails must be visible in LDAP.
   object:
-    label: Volume
+    label: Bucket
     type:
       dataType: reference
-      referenceType: DynamicTypes:XaasNas.Volume
+      referenceType: DynamicTypes:XaasS3.Bucket
       isMultiple: false
     constraints:
       required: false

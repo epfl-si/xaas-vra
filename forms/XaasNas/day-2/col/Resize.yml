@@ -15,30 +15,13 @@ layout:
       - id: volume
         display: valuePicker
         state:
-          visible: false
-          read-only: true
-        submit: false
-        signpostPosition: right-middle
-    - id: section_deploymentName
-      fields:
-      - id: deploymentName
-        display: textField
-        state:
-          visible: true
-          read-only: true
-        signpostPosition: right-middle
-    - id: section_volumeName
-      fields:
-      - id: volumeName
-        display: textField
-        state:
           visible: true
           read-only: true
         submit: false
         signpostPosition: right-middle
     - id: section_sizeGB
       fields:
-      - id: sizeGB
+      - id: textField_sizeGB
         display: textField
         state:
           visible: true
@@ -54,7 +37,23 @@ layout:
         signpostPosition: right-middle
     - id: section_newSizeGB
       fields:
-      - id: newSizeGB
+      - id: textField_newSizeGB
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_snapPercent
+      fields:
+      - id: textField_snapPercent
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_price
+      fields:
+      - id: price
         display: textField
         state:
           visible: true
@@ -69,49 +68,14 @@ schema:
       dataType: boolean
     default: false
     constraints: {}
-  deploymentName:
-    label: Deployment
-    type:
-      dataType: string
-      isMultiple: false
-    default:
-      bind: _resource.object.deploymentName
-    constraints: {}
-  volumeName:
+  volume:
     label: Volume
     type:
-      dataType: string
-      isMultiple: false
-    default:
-      bind: _resource.object.name
-    constraints: {}
-  extension:
-    label: Extension (GB)
-    type:
-      dataType: decimal
-    default: 1
+      dataType: reference
+      referenceType: DynamicTypes:XaasNas.Volume
     constraints:
-      required: true
-      min-value: 1
-  newSizeGB:
-    label: New Size (GB)
-    type:
-      dataType: string
-    default:
-      id: ch.epfl.iaas.js/sumAsNumbers
-      type: scriptAction
-      parameters:
-      - a: sizeGB
-        $type:
-          dataType: string
-          isMultiple: false
-      - b: extension
-        $type:
-          dataType: decimal
-          isMultiple: false
-    placeholder: ''
-    constraints: {}
-  sizeGB:
+      required: false
+  textField_sizeGB:
     label: Volume Size (GB)
     type:
       dataType: string
@@ -149,11 +113,95 @@ schema:
         jsonSubPath: '``'
     placeholder: ''
     constraints: {}
-  volume:
-    label: Volume
+  extension:
+    label: Extension (GB)
     type:
-      dataType: reference
-      referenceType: DynamicTypes:XaasNas.Volume
+      dataType: decimal
+    default: 1
     constraints:
-      required: false
-options: {}
+      required: true
+      min-value: 1
+  textField_newSizeGB:
+    label: New Size (GB)
+    type:
+      dataType: string
+    default:
+      id: ch.epfl.iaas.js/sumAsNumbers
+      type: scriptAction
+      parameters:
+      - a: textField_sizeGB
+        $type:
+          dataType: string
+          isMultiple: false
+      - b: extension
+        $type:
+          dataType: decimal
+          isMultiple: false
+    placeholder: ''
+    constraints: {}
+  textField_snapPercent:
+    label: Snapshot Percent
+    type:
+      dataType: string
+    default:
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsString
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '`snapshots.reservePercent`'
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterValue: '``'
+      - dtId: _resource.object.name
+        $type:
+          dataType: string
+          isMultiple: false
+      - $type:
+          dataType: string
+          isMultiple: false
+        targetTenant: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        dtName: _resource.object.namespace
+      - $type:
+          dataType: string
+          isMultiple: false
+        filterField: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonSubPath: '``'
+    placeholder: ''
+    constraints: {}
+  price:
+    label: Price
+    type:
+      dataType: string
+    default:
+      id: ch.epfl.xaas.nas/getPrice
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonPath: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        sizeGB: textField_sizeGB
+      - $type:
+          dataType: decimal
+          isMultiple: false
+        extension: extension
+      - $type:
+          dataType: string
+          isMultiple: false
+        snapPercent: textField_snapPercent
+    placeholder: ''
+    constraints: {}
+options:
+  externalValidations: []

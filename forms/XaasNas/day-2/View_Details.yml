@@ -221,8 +221,8 @@ layout:
         equals:
           status: Ok
   - id: page_volume_access
-    sections:
     title: Acces
+    sections:
     - id: section_DEBUG_A
       fields:
       - id: DEBUG_A

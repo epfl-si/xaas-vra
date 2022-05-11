@@ -37,42 +37,42 @@ layout:
       title: General
       state: {}
 schema:
-  object:
-    label: Volume
-    type:
-      dataType: reference
-      referenceType: 'DynamicTypes:XaasK8s.Cluster'
-      isMultiple: false
-    constraints:
-      required: false
   deploymentName:
     label: Deployment name
     type:
       dataType: string
-    default:
-      bind: _resource.object.deploymentName
     constraints:
       required: true
+    default:
+      bind: _resource.object.deploymentName
   deploymentDescription:
     label: Description
     type:
       dataType: string
-    default:
-      bind: _resource.object.deploymentDescription
     constraints:
       required: true
+    default:
+      bind: _resource.object.deploymentDescription
   notificationMail:
     label: Notification Mail
+    type:
+      dataType: string
+    constraints:
+      required: true
+    default:
+      bind: _resource.object.notificationMail
     signpost: |-
       EPFL email addresses only, one email per line.
       Supports groups mail addresses defined on http://groups.epfl.ch 
       Emails must be visible in LDAP.
+  object:
+    label: Cluster
     type:
-      dataType: string
-    default:
-      bind: _resource.object.notificationMail
+      dataType: reference
+      referenceType: DynamicTypes:XaasK8s.Cluster
+      isMultiple: false
     constraints:
-      required: true
+      required: false
 options:
   externalValidations:
     - label: Check notification mail
