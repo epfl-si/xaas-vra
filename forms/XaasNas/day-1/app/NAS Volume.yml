@@ -177,6 +177,15 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
+      - id: xfix_IPsRoot
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_V: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_IPsRO
       fields:
       - id: IPsRO
@@ -185,6 +194,15 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
+      - id: xfix_IPsRO
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_V: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_IPsRW
       fields:
       - id: IPsRW
@@ -192,6 +210,15 @@ layout:
         state:
           visible: true
           read-only: false
+        signpostPosition: right-middle
+      - id: xfix_IPsRW
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_V: true
+          read-only: true
         signpostPosition: right-middle
     state: {}
 schema:
@@ -449,6 +476,30 @@ schema:
     type:
       dataType: string
       isMultiple: false
+  xfix_IPsRoot:
+    label: xfix_IPsRoot
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: IPsRoot
+    constraints: { }
+  xfix_IPsRO:
+    label: xfix_IPsRO
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: IPsRW
+    constraints: { }
+  xfix_IPsRW:
+    label: xfix_IPsRW
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: IPsRW
+    constraints: { }
 
 options:
   externalValidations:
@@ -486,7 +537,7 @@ options:
       - $type:
           dataType: string
           isMultiple: false
-        IPs: IPsRoot
+        IPs: xfix_IPsRoot
     target:
     - IPsRoot
   - label: RO Access Policy Check
@@ -497,7 +548,7 @@ options:
       - $type:
           dataType: string
           isMultiple: false
-        IPs: IPsRO
+        IPs: xfix_IPsRO
     target:
     - IPsRO
   - label: RW Access Policy Check
@@ -508,6 +559,6 @@ options:
       - $type:
           dataType: string
           isMultiple: false
-        IPs: IPsRW
+        IPs: xfix_IPsRW
     target:
     - IPsRW

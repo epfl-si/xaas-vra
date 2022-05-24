@@ -2,39 +2,43 @@ layout:
   pages:
   - id: page_1
     sections:
-    - fields:
-      - display: valuePicker
-        id: cluster
-        signpostPosition: right-middle
+    - id: section_cluster
+      fields:
+      - id: cluster
+        display: valuePicker
         state:
           read-only: true
           visible: true
         submit: false
-      id: section_cluster
-    - fields:
-      - display: radio
-        id: namespace
         signpostPosition: right-middle
+
+    - id: section_namespace
+      fields:
+      - id: namespace
+        display: radio
         state:
           read-only: false
           visible: true
-      id: section_namespace
-    - fields:
-      - display: decimalField
-        id: decimalField_nbLoadBalacers
         signpostPosition: right-middle
+
+    - id: section_nbLoadBalacers
+      fields:
+      - id: nbLoadBalacers
+        display: decimalField
+        state:
+          read-only: false
+          visible: true
+        signpostPosition: right-middle
+
+    - id: section_status
+      fields:
+      - id: textField_status
+        display: textField
         state:
           read-only: true
           visible: true
-      id: section_nbLoadBalacers
-    - fields:
-      - display: textField
-        id: textField_status
         signpostPosition: right-middle
-        state:
-          read-only: true
-          visible: true
-      id: section_status
+
     state: {}
     title: General
 options:
@@ -47,7 +51,7 @@ schema:
       dataType: reference
       isMultiple: false
       referenceType: DynamicTypes:XaasK8s.Cluster
-  decimalField_nbLoadBalacers:
+  nbLoadBalacers:
     constraints: {}
     default:
       id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber
@@ -59,7 +63,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        dtId: _resource.clusterOut.name
+        dtId: _resource.object.name
       - $type:
           dataType: string
           isMultiple: false
@@ -109,7 +113,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        dtId: _resource.clusterOut.name
+        dtId: _resource.object.name
       - $type:
           dataType: string
           isMultiple: false
@@ -143,7 +147,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        clusterName: _resource.clusterOut.name
+        clusterName: _resource.object.name
       - $type:
           dataType: string
           isMultiple: false
