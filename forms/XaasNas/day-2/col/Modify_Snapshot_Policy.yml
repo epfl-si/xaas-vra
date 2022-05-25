@@ -55,7 +55,10 @@ layout:
         display: dropDown
         state:
           visible: true
-          read-only: false
+          read-only:
+          - value: true
+            equals:
+              snapPolicy: none
         signpostPosition: right-middle
     - id: section_sizeGB
       fields:

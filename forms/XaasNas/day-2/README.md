@@ -16,10 +16,10 @@
 [^1]: Modify_Access_Policy, for col volumes only
 ````yaml
 matchExpression:
-- and:
-  - key: properties.access
-    operator: eq
-    value: nfs3
+  - and:
+    - key: properties.access
+      operator: eq
+      value: nfs3
 ````
 
 ### Installing forms:
