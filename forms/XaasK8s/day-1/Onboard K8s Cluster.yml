@@ -160,8 +160,8 @@ layout:
           - value: true
             equals:
               funding: fns
-            read-only: false
-          signpostPosition: right-middle
+          read-only: false
+        signpostPosition: right-middle
       - id: fnsPrjNo
         display: textField
         state:
@@ -225,7 +225,7 @@ layout:
     sections:
     - fields:
       - id: radio_namespace
-      - display: radio
+        display: radio
         signpostPosition: right-middle
         state:
           read-only: false
