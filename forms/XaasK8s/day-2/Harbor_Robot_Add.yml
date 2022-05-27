@@ -2,7 +2,8 @@ layout:
   pages:
   - id: page_general
     sections:
-    - fields:
+    - id: section_cluster
+      fields:
       - display: valuePicker
         id: cluster
         signpostPosition: right-middle
@@ -10,32 +11,42 @@ layout:
           read-only: true
           visible: true
         submit: false
-      id: section_cluster
-    - fields:
+
+    - id: section_robotType
+      fields:
       - display: dropDown
         id: robotType
         signpostPosition: right-middle
         state:
           read-only: false
           visible: true
-      id: section_robotType
+
+    - id: section_information
+      fields:
+      - id: information
+        display: textArea
+        signpostPosition: right-middle
+        state:
+          visible: true
+          read-only: true
+
     state: {}
     title: General
 options:
   externalValidations: []
 schema:
   cluster:
-    constraints: {}
     label: Cluster
+    constraints: {}
     type:
       dataType: reference
       isMultiple: false
       referenceType: DynamicTypes:XaasK8s.Cluster
   robotType:
+    label: Robot Type
     constraints:
       required: true
     default: pull
-    label: Robot Type
     type:
       dataType: string
       isMultiple: false
@@ -44,3 +55,12 @@ schema:
       value: pull
     - label: Push
       value: push
+  information:
+    label: Information
+    type:
+      dataType: string
+    default: |-
+      Information about the new robot will be sent by mail to notification mail
+      specified for the cluster.
+    placeholder: ''
+    constraints: { }

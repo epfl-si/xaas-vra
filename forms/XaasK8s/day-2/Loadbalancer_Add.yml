@@ -32,12 +32,21 @@ layout:
 
     - id: section_status
       fields:
-      - id: textField_status
+      - id: status
         display: textField
         state:
           read-only: false
           visible: true
         signpostPosition: right-middle
+
+    - id: section_information
+      fields:
+      - id: information
+        display: textArea
+        signpostPosition: right-middle
+        state:
+          visible: true
+          read-only: true
 
     state: {}
     title: General
@@ -131,7 +140,7 @@ schema:
           isMultiple: false
         jsonSubPath: '``'
       type: scriptAction
-  textField_status:
+  status:
     constraints:
       pattern:
         message: Cannot add namespace.
@@ -157,3 +166,13 @@ schema:
     placeholder: ''
     type:
       dataType: string
+
+  information:
+    label: Information
+    type:
+      dataType: string
+    default: |-
+      Caution: You can have at most ONE LoadBalancer in namespace
+    placeholder: ''
+    constraints: { }
+

@@ -264,11 +264,10 @@ schema:
     constraints: {}
   volName:
     label: Volume Name
-    signpost: 'Enter the name of the volume to be onboarded. It must be
-      <ul>
+    signpost: |-
+      Enter the name of the volume to be onboarded. It must be
       <li> present in the backend </li>
       <li> not already onboarded</li>
-      </ul>'
     type:
       dataType: string
       isMultiple: false
@@ -352,6 +351,10 @@ schema:
       required: true
   notificationMail:
     label: Notification Mail
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
       isMultiple: false
@@ -602,6 +605,11 @@ schema:
     constraints: {}
   IPsRoot:
     label: Root Access Policy
+    signpost: >-
+      Several entries allowed, one with IP per line, using the following format :
+      <li> &lt;IP&gt; (e.g. 128.178.200.200)
+      <li> &lt;IP&gt;/&lt;netmask&gt; (e.g. 128.178.200.0/255.255.255.0)
+      <li> &lt;IP&gt;/&lt;cidr&gt;  (e.g. 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
@@ -639,6 +647,11 @@ schema:
         jsonSubPath: '``'
   IPsRO:
     label: RO Access Policy
+    signpost: >-
+      Several entries allowed, one with IP per line, using the following format :
+      <li> &lt;IP&gt; (e.g. 128.178.200.200)
+      <li> &lt;IP&gt;/&lt;netmask&gt; (e.g. 128.178.200.0/255.255.255.0)
+      <li> &lt;IP&gt;/&lt;cidr&gt;  (e.g. 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
@@ -676,6 +689,11 @@ schema:
         jsonSubPath: '``'
   IPsRW:
     label: RW Access Policy
+    signpost: >-
+      Several entries allowed, one with IP per line, using the following format :
+      <li> &lt;IP&gt; (e.g. 128.178.200.200)
+      <li> &lt;IP&gt;/&lt;netmask&gt; (e.g. 128.178.200.0/255.255.255.0)
+      <li> &lt;IP&gt;/&lt;cidr&gt;  (e.g. 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false

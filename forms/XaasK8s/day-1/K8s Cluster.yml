@@ -180,7 +180,7 @@ schema:
     label: DEBUG (D)
     type:
       dataType: boolean
-    default: false
+    default: true
     constraints: {}
   deploymentName:
     label: (tmp) Deployment Name
@@ -269,7 +269,10 @@ schema:
       required: true
   notificationMail:
     label: Notification Mail
-    signpost: 'List of valid EPFL emails, one email per line'
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
       isMultiple: false
@@ -388,9 +391,16 @@ schema:
     label: Has Funding?
     type:
       dataType: boolean
-    default: false
-  # cluster
+    default:
+      id: ch.epfl.xaas.utils/hasFunding
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          namespace: '`XaasS3`'
 
+  # cluster
   DEBUG_C:
     label: DEBUG (C)
     type:
@@ -399,6 +409,16 @@ schema:
     constraints: {}
   plan:
     label: Cluster Plan
+    signpost: |-
+      <b>Available LoadBalancers:</b> 1
+      <br/>
+      <b>Available numbers of workers:</b>
+      <ul>
+        <li><b>Tiny</b>: 1-2</il>
+        <li><b>Small</b>: 2-10</il>
+        <li><b>Medium</b>: 2-10</il>
+        <li><b>Large</b>: 2-10</il>
+      </ul>
     type:
       dataType: string
       isMultiple: false

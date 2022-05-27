@@ -88,8 +88,10 @@ schema:
         deploymentTag: '``'
       type: scriptAction
   wantCC:
+    label: Copy of request?
+    signpost: |-
+        you will receive your request in CC.
     constraints:
       required: false
-    label: Copy of request?
     type:
       dataType: boolean

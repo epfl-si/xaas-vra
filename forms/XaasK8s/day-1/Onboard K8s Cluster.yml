@@ -257,15 +257,10 @@ schema:
     constraints: { }
     default: ''
     label: Cluster Name
-    signpost: 'Enter the name of the cluster to be onboarded. It must be
-
-      <ul>
-
-      <li> present in the backend </li>
-
-      <li> not already onboarded</li>
-
-      </ul>'
+    signpost: |- 
+      Enter the name of the cluster to be onboarded. It must be
+        <li> present in the backend </li>
+        <li> not already onboarded</li>
     type:
       dataType: string
       isMultiple: false
@@ -346,7 +341,10 @@ schema:
       required: true
   notificationMail:
     label: Notification Mail
-    signpost: 'List of valid EPFL emails, one email per line'
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
       isMultiple: false

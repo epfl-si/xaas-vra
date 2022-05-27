@@ -56,8 +56,8 @@ layout:
         - id: dplyDescription
           display: textArea
           state:
-            visible: true
             read-only: false
+            visible: true
           signpostPosition: right-middle
     - id: section_project
       fields:
@@ -92,8 +92,8 @@ layout:
       - id: requestor
         display: textField
         state:
-          visible: true
           read-only: true
+          visible: true
         signpostPosition: right-middle
     - id: section_deploymentTag
       fields:
@@ -331,7 +331,10 @@ schema:
       required: true
   notificationMail:
     label: Notification Mail
-    signpost: List of valid EPFL emails separated by whitespace or newline.
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
       isMultiple: false
@@ -461,18 +464,33 @@ schema:
       required: true
   IPsRoot:
     label: Root Access Policy
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li>  &lt;IP&gt; (ex: 128.178.200.200)
+      <li>  &lt;IP&gt;/&lt;netmask&gt;  (ex: 128.178.200.0/255.255.255.0)
+      <li>  &lt;IP&gt;/&lt;cidr&gt;  (ex: 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
     constraints: {}
   IPsRO:
     label: RO Access Policy
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li>  &lt;IP&gt; (ex: 128.178.200.200)
+      <li>  &lt;IP&gt;/&lt;netmask&gt;  (ex: 128.178.200.0/255.255.255.0)
+      <li>  &lt;IP&gt;/&lt;cidr&gt;  (ex: 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
     constraints: {}
   IPsRW:
     label: RW Access Policy
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li>  &lt;IP&gt; (ex: 128.178.200.200)
+      <li>  &lt;IP&gt;/&lt;netmask&gt;  (ex: 128.178.200.0/255.255.255.0)
+      <li>  &lt;IP&gt;/&lt;cidr&gt;  (ex: 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false

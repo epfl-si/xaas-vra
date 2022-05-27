@@ -202,15 +202,10 @@ schema:
     constraints: {}
   name:
     label: Bucket Name
-    signpost: 'Enter the name of the bucket to be onboarded. It must be
-
-      <ul>
-
+    signpost: |- 
+      Enter the name of the bucket to be onboarded. It must be
       <li> present in the backend </li>
-
       <li> not already onboarded</li>
-
-      </ul>'
     type:
       dataType: string
       isMultiple: false
@@ -218,7 +213,7 @@ schema:
     constraints: {}
   onboardStatus:
     label: Status
-    signpost: Volume cannot be onboarded yet
+    signpost: Bucket cannot be onboarded yet
     type:
       dataType: string
     default:
@@ -294,7 +289,10 @@ schema:
       required: true
   notificationMail:
     label: Notification Mail
-    signpost: List of valid EPFL emails separated by whitespace or newline.
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
       isMultiple: false
@@ -436,6 +434,10 @@ schema:
     constraints: {}
   versioning:
     label: Versioning?
+    signpost: |-
+      A bucket with versioning protects against object deletion and overwrites, but can also impact the total capacity consumed:
+      <li> when <font color="red"><i>active</i></font> all new objects will be versionined and previously versioned objects will be retained.
+      <li>when <font color="red"><i>suspened</i></font> new objects will not be versioned but previously versions will be retained,
     type:
       dataType: string
       isMultiple: false

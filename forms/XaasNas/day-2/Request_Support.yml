@@ -104,6 +104,8 @@ schema:
       required: true
   wantCC:
     label: Copy of request?
+    signpost: |-
+      you will receive your request in CC.
     type:
       dataType: boolean
     constraints:

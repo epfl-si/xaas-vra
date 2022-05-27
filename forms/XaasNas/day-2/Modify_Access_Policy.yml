@@ -80,8 +80,13 @@ schema:
     constraints: {}
   IPsRoot:
     label: Root Access Policy
-    signpost: '<span class="red-text">Root</span> access: list of valid IP addresses
-      (simple/with octet mask/with CIDR mask). One address per line.'
+    #signpost: '<span class="red-text">Read/Write</span> access: list of valid IP addresses
+    #  (simple/with octet mask/with CIDR mask). One address per line.'
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li>  &lt;IP&gt; (ex: 128.178.200.200)
+      <li>  &lt;IP&gt;/&lt;netmask&gt;  (ex: 128.178.200.0/255.255.255.0)
+      <li>  &lt;IP&gt;/&lt;cidr&gt;  (ex: 128.178.200.0/24)
     type:
       dataType: string
     default:
@@ -120,8 +125,11 @@ schema:
       required: false
   IPsRO:
     label: RO Access Policy
-    signpost: '<span class="red-text">Read Only</span> access: list of valid IP addresses
-      (simple/with octet mask/with CIDR mask). One address per line.'
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li>  &lt;IP&gt; (ex: 128.178.200.200)
+      <li>  &lt;IP&gt;/&lt;netmask&gt;  (ex: 128.178.200.0/255.255.255.0)
+      <li>  &lt;IP&gt;/&lt;cidr&gt;  (ex: 128.178.200.0/24)
     type:
       dataType: string
     default:
@@ -160,8 +168,11 @@ schema:
       required: false
   IPsRW:
     label: RW Access Policy
-    signpost: '<span class="red-text">Read/Write</span> access: list of valid IP addresses
-      (simple/with octet mask/with CIDR mask). One address per line.'
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li>  &lt;IP&gt; (ex: 128.178.200.200)
+      <li>  &lt;IP&gt;/&lt;netmask&gt;  (ex: 128.178.200.0/255.255.255.0)
+      <li>  &lt;IP&gt;/&lt;cidr&gt;  (ex: 128.178.200.0/24)
     type:
       dataType: string
     default:
