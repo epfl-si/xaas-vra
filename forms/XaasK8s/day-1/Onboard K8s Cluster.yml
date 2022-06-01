@@ -40,6 +40,26 @@ layout:
             visible: true
             read-only: false
           signpostPosition: right-middle
+    - id: section_project
+      fields:
+      - id: project
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+      - id: projectName
+        display: textField
+        state:
+          visible: false
+          read-only: true
+        signpostPosition: right-middle
+      - id: projectId
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_deploymentName
       fields:
       - id: deploymentName
@@ -77,26 +97,6 @@ layout:
           read-only: false
           visible: true
         signpostPosition: right-middle
-    - id: section_project
-      fields:
-        - id: project
-          display: dropDown
-          state:
-            visible: true
-            read-only: false
-          signpostPosition: right-middle
-        - id: projectName
-          display: textField
-          state:
-            visible: false
-            read-only: true
-          signpostPosition: right-middle
-        - id: projectId
-          display: textField
-          state:
-            visible: true
-            read-only: true
-          signpostPosition: right-middle
     - id: section_reasonsForRequest
       fields:
       - id: reasonsForRequest
