@@ -10,6 +10,20 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
+    - id: section_projectName
+      fields:
+          - id: projectName
+            display: textField
+            state:
+              visible: true
+              read-only: true
+            signpostPosition: right-middle
+          - id: projectId
+            display: textField
+            state:
+              visible: true
+              read-only: true
+            signpostPosition: right-middle
     - id: section_deploymentName
       fields:
       - id: deploymentName
@@ -162,6 +176,22 @@ schema:
       dataType: string
     default:
       bind: _resource.object.deploymentName
+    placeholder: ''
+    constraints: {}
+  projectId:
+    label: Project Id
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: _resource.projectId
+    constraints: {}
+  projectName:
+    label: Project Name
+    type:
+      dataType: string
+    default:
+      bind: _resource.object.projectName
     placeholder: ''
     constraints: {}
   bucketName:

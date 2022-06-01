@@ -57,6 +57,20 @@ layout:
                 read-only: true
               submit: false
               signpostPosition: right-middle
+        - id: section_projectName
+          fields:
+          - id: projectName
+            display: textField
+            state:
+              visible: true
+              read-only: true
+            signpostPosition: right-middle
+          - id: projectId
+            display: textField
+            state:
+              visible: true
+              read-only: true
+            signpostPosition: right-middle
         - id: section_deploymentId
           fields:
             - id: textField_deploymentId
@@ -80,20 +94,6 @@ layout:
           fields:
             - id: description
               display: textArea
-              state:
-                visible: true
-                read-only: true
-              signpostPosition: right-middle
-        - id: section_projectName
-          fields:
-            - id: projectName
-              display: textField
-              state:
-                visible: true
-                read-only: true
-              signpostPosition: right-middle
-            - id: projectId
-              display: textField
               state:
                 visible: true
                 read-only: true
