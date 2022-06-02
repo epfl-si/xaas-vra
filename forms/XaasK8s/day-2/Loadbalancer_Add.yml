@@ -143,7 +143,7 @@ schema:
   status:
     constraints:
       pattern:
-        message: Cannot add namespace.
+        message: Cannot add LoadBalancer.
         value: ^Ok$
       required: true
     default:
