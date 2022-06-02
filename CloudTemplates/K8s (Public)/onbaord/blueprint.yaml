@@ -16,14 +16,14 @@ inputs:
   projectId:
     type: string
     title: Project Id
-  deploymentTag:
+  env:
     type: string
     title: Environment
     enum:
-      - Development
-      - Test
-      - Production
-    default: Test
+      - development
+      - test
+      - production
+    default: test
   notificationMail:
     type: string
     title: Notification Mail
@@ -63,7 +63,7 @@ resources:
       dplyDescription: '${input.dplyDescription}'
       projectId: '${input.projectId}'
       projectName: '${input.projectName}'
-      deploymentTag: '${input.deploymentTag}'
+      env: '${input.env}'
       creationPolicy: onboard
       deletionPolicy: outboard
       notificationMail: '${input.notificationMail}'
