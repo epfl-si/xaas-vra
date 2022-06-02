@@ -93,7 +93,7 @@ schema:
         categoryName: '``'
       - $type:
           dataType: string
-        deploymentTag: '``'
+        env: '``'
     constraints:
       required: true
   content:

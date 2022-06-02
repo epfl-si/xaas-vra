@@ -58,9 +58,9 @@ layout:
           visible: true
           read-only: true
         signpostPosition: right-middle
-    - id: section_deploymentTag
+    - id: section_env
       fields:
-      - id: deploymentTag
+      - id: env
         display: textField
         state:
           visible: true
@@ -397,12 +397,12 @@ schema:
     default:
       bind: _resource.object.deploymentName
     constraints: {}
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
     default:
-      bind: _resource.object.deploymentTag
+      bind: _resource.object.env
     placeholder: ''
     constraints: {}
   notificationMail:
@@ -836,7 +836,7 @@ schema:
         - $type:
             dataType: string
             isMultiple: false
-          deploymentTag: _resource.object.deploymentTag
+          env: _resource.object.env
         - $type:
             dataType: string
             isMultiple: false

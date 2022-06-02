@@ -85,7 +85,7 @@ schema:
         categoryName: '``'
       - $type:
           dataType: string
-        deploymentTag: '``'
+        env: '``'
       type: scriptAction
   wantCC:
     label: Copy of request?

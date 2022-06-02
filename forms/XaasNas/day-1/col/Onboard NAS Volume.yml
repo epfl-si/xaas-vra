@@ -112,9 +112,9 @@ layout:
           visible: true
           read-only: true
         signpostPosition: right-middle
-    - id: section_deploymentTag
+    - id: section_env
       fields:
-      - id: deploymentTag
+      - id: env
         display: dropDown
         state:
           visible: true
@@ -362,7 +362,7 @@ schema:
     constraints:
       required: true
       max-value: 80
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
@@ -370,11 +370,11 @@ schema:
     default: Test
     valueList:
       - label: Development
-        value: Development
+        value: development
       - label: Test
-        value: Test
+        value: test
       - label: Production
-        value: Production
+        value: production
     constraints:
       required: true
   description:

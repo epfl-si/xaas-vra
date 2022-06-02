@@ -106,9 +106,9 @@ layout:
                 visible: true
                 read-only: true
               signpostPosition: right-middle
-        - id: section_deploymentTag
+        - id: section_env
           fields:
-            - id: deploymentTag
+            - id: env
               display: textField
               state:
                 visible: true
@@ -325,13 +325,13 @@ schema:
             isMultiple: false
           deploymentId: textField_deploymentId
     constraints: {}
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
       isMultiple: false
     default:
-      bind: _resource.object.deploymentTag
+      bind: _resource.object.env
     constraints: {}
   description:
     label: Description
