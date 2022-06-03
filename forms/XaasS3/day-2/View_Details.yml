@@ -1,56 +1,146 @@
 layout:
   pages:
-  - id: page_general
+  - id: page_deployment_properties
+    title: Deployment
     sections:
-    - id: section_DEBUG
+    - id: section_DEBUG_D
       fields:
-      - id: DEBUG
+      - id: DEBUG_D
         display: checkbox
         state:
-          visible: true
+          visible: false
           read-only: false
         signpostPosition: right-middle
+    - id: section_bucket_D
+      fields:
+        - id: bucket_D
+          display: textField
+          state:
+            visible: true
+            read-only: true
+          submit: false
+          signpostPosition: right-middle
     - id: section_projectName
       fields:
-          - id: projectName
-            display: textField
-            state:
-              visible: true
-              read-only: true
-            signpostPosition: right-middle
-          - id: projectId
-            display: textField
-            state:
-              visible: true
-              read-only: true
-            signpostPosition: right-middle
-    - id: section_deploymentName
-      fields:
-      - id: deploymentName
+      - id: projectName
         display: textField
         state:
           visible: true
           read-only: true
         signpostPosition: right-middle
-    - id: section_bucketName
-      fields:
-      - id: bucketName
+      - id: projectId
         display: textField
         state:
           visible: true
           read-only: true
         signpostPosition: right-middle
-    - id: section_bucketUsageB
+    - id: section_deploymentName_D
       fields:
-      - id: bucketUsageB
-        display: decimalField
+      - id: deploymentName_D
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_description
+      fields:
+      - id: description
+        display: textArea
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_requestor
+      fields:
+      - id: requestor
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_env
+      fields:
+      - id: env
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_notificationMail
+      fields:
+      - id: notificationMail
+        display: textArea
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_funding
+      fields:
+      - id: funding
+        display: textField
+        state:
+          visible:
+            type: scriptAction
+            id: ch.epfl.xaas.s3/hasFunding
+            parameters: []
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_fnsPrjName
+      fields:
+      - id: fnsPrjName
+        display: textField
         state:
           visible:
           - value: true
             equals:
-              DEBUG: true
+              funding: FNS
           read-only: true
         signpostPosition: right-middle
+      - id: fnsPrjNo
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              funding: FNS
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_status
+      fields:
+      - id: status
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    - id: section_caution
+      fields:
+      - id: textField_caution
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+    state: {}
+  - id: page_bucket_properties
+    title: Bucket
+    sections:
+    - id: section_DEBUG_B
+      fields:
+      - id: DEBUG_B
+        display: checkbox
+        state:
+          visible: false
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_bucket_B
+      fields:
+        - id: bucket_B
+          display: textField
+          state:
+            visible: true
+            read-only: true
+          signpostPosition: right-middle
     - id: section_bucketUsageMB
       fields:
       - id: bucketUsageMB
@@ -65,7 +155,7 @@ layout:
         display: integerField
         state:
           visible: true
-          read-only: false
+          read-only: true
         signpostPosition: right-middle
     - id: section_empty
       fields:
@@ -122,17 +212,15 @@ layout:
               jsonSubPath: '``'
           read-only: true
         signpostPosition: right-middle
-    title: General
-    state: {}
+    state:
+      visible:
+      - value: true
+        equals:
+          status: Ok
+
 schema:
   # details - general (loading resource)
-  DEBUG_G:
-    label: DEBUG (g)
-    type:
-      dataType: boolean
-    default: false
-    constraints: { }
-  volume:
+  bucket:
     label: Volume
     type:
       dataType: reference
@@ -147,10 +235,10 @@ schema:
       id: ch.epfl.xaas.s3/isBucketInBackendMsg
       type: scriptAction
       parameters:
-        - $type:
-            dataType: string
-            isMultiple: false
-          volName: _resource.object.name
+      - $type:
+          dataType: string
+          isMultiple: false
+        bucketName: _resource.object.name
     constraints:
       required: true
   textField_caution:
@@ -164,20 +252,38 @@ schema:
         value: ^$
         message: Nothing to submit here
 
-  DEBUG:
-    label: DEBUG
+  # deployment - general
+  DEBUG_D:
+    label: DEBUG (d)
     type:
       dataType: boolean
-    default: true
-    constraints: {}
-  deploymentName:
-    label: Deployment name
+    default: false
+    constraints: { }
+  bucket_D:
+    label: Bucket name
     type:
       dataType: string
     default:
-      bind: _resource.object.deploymentName
+      bind: _resource.object.name
     placeholder: ''
-    constraints: {}
+    constraints: { }
+  deploymentName_D:
+    label: Deployment
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: _resource.object.deploymentName
+    constraints: { }
+  description:
+    label: Description
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: _resource.object.deploymentDescription
+    constraints:
+      max-value: 256
   projectId:
     label: Project Id
     type:
@@ -194,16 +300,84 @@ schema:
       bind: _resource.object.projectName
     placeholder: ''
     constraints: {}
-  bucketName:
+  env:
+    label: Environment
+    type:
+      dataType: string
+    default:
+      bind: _resource.object.env
+    placeholder: ''
+    constraints: {}
+  notificationMail:
+    label: Notification Mail
+    type:
+      dataType: string
+    default:
+      bind: _resource.object.notificationMail
+    placeholder: ''
+    constraints: {}
+  requestor:
+    label: Requestor
+    type:
+      dataType: string
+    default:
+      bind: _resource.object.requestor
+    placeholder: ''
+    constraints: {}
+
+  # deployment - funding
+  fnsPrjName:
+    label: Project Name
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: _resource.object.fnsPrjName
+  fnsPrjNo:
+    label: Project Number
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: _resource.object.fnsPrjNo
+  funding:
+    label: Funding
+    type:
+      dataType: string
+    default:
+      id: ch.epfl.xaas.k8s/getFunding
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        fnsPrjName: _resource.object.fnsPrjName
+    valueList:
+    - label: EPFL
+      value: epfl
+    - label: FNS
+      value: fns
+    placeholder: ''
+    constraints: {}
+
+  # bucket-specific part
+  DEBUG_B:
+    # debug bucket
+    label: DEBUG (b)
+    type:
+      dataType: boolean
+    default: true
+    constraints: {}
+  bucket_B:
     label: Bucket name
     type:
       dataType: string
     default:
       bind: _resource.object.name
     placeholder: ''
-    constraints: {}
-  bucketUsageB:
-    label: Bucket usage (B)
+    constraints: { }
+  bucketUsageMB:
+    label: Bucket usage (MB)
     type:
       dataType: decimal
     step: 1
@@ -214,12 +388,12 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        jsonPath: '`usage.storageUtilized`'
+        jsonPath: '`usage.storageUtilizedMB`'
       - $type:
           dataType: string
           isMultiple: false
         filterValue: '``'
-      - dtId: _resource.object.id
+      - dtId: _resource.object.name
         $type:
           dataType: string
           isMultiple: false
@@ -240,24 +414,6 @@ schema:
           isMultiple: false
         jsonSubPath: '``'
     constraints: {}
-  bucketUsageMB:
-    label: Bucket usage (MB)
-    type:
-      dataType: string
-    default:
-      id: ch.epfl.iaas.customforms/convertByteSize
-      type: scriptAction
-      parameters:
-      - unit: '`MB`'
-        $type:
-          dataType: string
-          isMultiple: false
-      - size: bucketUsageB
-        $type:
-          dataType: decimal
-          isMultiple: false
-    placeholder: ''
-    constraints: {}
   nbObjects:
     label: Number of objects
     type:
@@ -275,7 +431,7 @@ schema:
           dataType: string
           isMultiple: false
         filterValue: '``'
-      - dtId: _resource.object.id
+      - dtId: _resource.object.name
         $type:
           dataType: string
           isMultiple: false
@@ -312,7 +468,7 @@ schema:
           dataType: string
           isMultiple: false
         filterValue: '``'
-      - dtId: _resource.object.id
+      - dtId: _resource.object.name
         $type:
           dataType: string
           isMultiple: false
@@ -349,7 +505,7 @@ schema:
           dataType: string
           isMultiple: false
         filterValue: '``'
-      - dtId: _resource.object.id
+      - dtId: _resource.object.name
         $type:
           dataType: string
           isMultiple: false
@@ -383,7 +539,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        bucketName: bucketName
+        bucketName: _resource.object.name
     constraints: {}
 options:
   externalValidations: []
