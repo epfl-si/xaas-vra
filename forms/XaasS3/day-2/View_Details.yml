@@ -254,7 +254,7 @@ schema:
 
   # deployment - general
   DEBUG_D:
-    label: DEBUG (d)
+    label: DEBUG (D)
     type:
       dataType: boolean
     default: false
@@ -363,10 +363,10 @@ schema:
   # bucket-specific part
   DEBUG_B:
     # debug bucket
-    label: DEBUG (b)
+    label: DEBUG (D)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   bucket_B:
     label: Bucket name

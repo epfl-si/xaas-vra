@@ -249,8 +249,8 @@ schema:
   # onboarding - general
   DEBUG_G:
     constraints: { }
-    default: true
-    label: DEBUG
+    default: false
+    label: DEBUG (G)
     type:
       dataType: boolean
   name:
@@ -289,7 +289,7 @@ schema:
     label: DEBUG (D)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   deploymentName:
     label: (tmp) Deployment Name
@@ -498,6 +498,7 @@ schema:
   # cluster information
   DEBUG_C:
     label: DEBUG (C)
+    default: false
     type:
       dataType: boolean
     constraints: {}

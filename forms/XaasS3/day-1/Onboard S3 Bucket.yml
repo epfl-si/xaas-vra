@@ -198,7 +198,7 @@ schema:
     label: DEBUG (G)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   name:
     label: Bucket Name
@@ -236,7 +236,7 @@ schema:
     label: DEBUG (D)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   deploymentName:
     label: (tmp) Deployment Name

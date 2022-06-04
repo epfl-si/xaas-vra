@@ -79,7 +79,7 @@ schema:
     type:
       dataType: string
     valueList:
-      id: ch.epfl.config/getList
+      id: ch.epfl.iaas.jsonconfig/getList
       type: scriptAction
       parameters:
       - $type:
@@ -87,7 +87,7 @@ schema:
         projectName: '``'
       - $type:
           dataType: string
-        elementName: '`Support_category_XaasS3`'
+        jsonConfigName: '`Support_category_XaasS3`'
       - $type:
           dataType: string
         categoryName: '``'

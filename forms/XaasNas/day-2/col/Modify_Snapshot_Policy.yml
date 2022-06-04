@@ -137,7 +137,7 @@ schema:
     default:
       bind: textField_crtSnapPolicy
     valueList:
-      id: ch.epfl.config/getList
+      id: ch.epfl.iaas.jsonconfig/getList
       type: scriptAction
       parameters:
       - $type:
@@ -147,7 +147,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        elementName: '`XaasNas_snapshot_policies_EPFL`'
+        jsonConfigName: '`XaasNas_snapshot_policies_EPFL`'
       - $type:
           dataType: string
           isMultiple: false

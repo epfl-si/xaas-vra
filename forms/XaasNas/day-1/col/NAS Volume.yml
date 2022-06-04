@@ -688,7 +688,7 @@ schema:
       dataType: string
       isMultiple: false
     default:
-      id: ch.epfl.config/getDefaultValue
+      id: ch.epfl.iaas.jsonconfig/getDefaultValue
       type: scriptAction
       parameters:
       - $type:
@@ -698,7 +698,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        elementName: '`XaasNas_snapshot_policies_EPFL`'
+        jsonConfigName: '`XaasNas_snapshot_policies_EPFL`'
       - $type:
           dataType: string
           isMultiple: false
@@ -708,7 +708,7 @@ schema:
           isMultiple: false
         categoryName: '``'
     valueList:
-      id: ch.epfl.config/getList
+      id: ch.epfl.iaas.jsonconfig/getList
       type: scriptAction
       parameters:
       - $type:
@@ -718,7 +718,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        elementName: '`XaasNas_snapshot_policies_EPFL`'
+        jsonConfigName: '`XaasNas_snapshot_policies_EPFL`'
       - $type:
           dataType: string
           isMultiple: false

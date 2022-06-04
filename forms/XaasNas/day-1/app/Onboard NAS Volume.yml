@@ -260,7 +260,7 @@ schema:
     label: DEBUG (G)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   volName:
     label: Volume Name
@@ -298,7 +298,7 @@ schema:
     label: DEBUG (D)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   deploymentName:
     label: (tmp) Deployment Name

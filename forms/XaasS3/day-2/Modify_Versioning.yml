@@ -45,7 +45,7 @@ schema:
     label: DEBUG
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: { }
   bucket:
     label: bucket

@@ -72,14 +72,14 @@ schema:
     type:
       dataType: string
     valueList:
-      id: ch.epfl.config/getList
+      id: ch.epfl.iaas.jsonconfig/getList
       parameters:
       - $type:
           dataType: string
         projectName: '``'
       - $type:
           dataType: string
-        elementName: '`Support_category_XaasK8s`'
+        jsonConfigName: '`Support_category_XaasK8s`'
       - $type:
           dataType: string
         categoryName: '``'

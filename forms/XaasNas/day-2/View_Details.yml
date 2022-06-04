@@ -321,7 +321,7 @@ layout:
 schema:
   # details - general (loading resource)
   DEBUG_G:
-    label: DEBUG (g)
+    label: DEBUG (G)
     type:
       dataType: boolean
     default: false
@@ -360,7 +360,7 @@ schema:
 
   # deployment - general
   DEBUG_D:
-    label: DEBUG (d)
+    label: DEBUG (D)
     type:
       dataType: boolean
     default: false
@@ -483,7 +483,7 @@ schema:
 
   # volume -general
   DEBUG_V:
-    label: DEBUG (v)
+    label: DEBUG (V)
     type:
       dataType: boolean
     default: false
@@ -544,7 +544,7 @@ schema:
 
   # volume - access
   DEBUG_A:
-    label: DEBUG (a)
+    label: DEBUG (A)
     type:
       dataType: boolean
     default: false
@@ -830,7 +830,7 @@ schema:
     type:
       dataType: string
     default:
-      id: ch.epfl.config/getLabel
+      id: ch.epfl.iaas.jsonconfig/getLabel
       type: scriptAction
       parameters:
         - $type:
@@ -844,7 +844,7 @@ schema:
         - $type:
             dataType: string
             isMultiple: false
-          elementName: '`XaasNas_snapshot_policies_EPFL`'
+          jsonConfigName: '`XaasNas_snapshot_policies_EPFL`'
         - $type:
             dataType: string
             isMultiple: false

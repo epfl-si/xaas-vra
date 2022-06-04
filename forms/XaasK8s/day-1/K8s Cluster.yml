@@ -180,7 +180,7 @@ schema:
     label: DEBUG (D)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   deploymentName:
     label: (tmp) Deployment Name
@@ -430,7 +430,7 @@ schema:
     label: DEBUG (C)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   plan:
     label: Cluster Plan
