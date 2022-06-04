@@ -753,7 +753,11 @@ schema:
           dataType: string
           isMultiple: false
         initValue: minSnapPercent
-    constraints: { }
+    constraints:
+      required:
+      - value: true
+        notEqual:
+          snapPolicy: none
 
   # volume - price
   price:
