@@ -4,28 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecadca2c-5062-4fa8-9777-fe94f7c23896" name="Changes" comment="[K8s] day-1 -&gt; yaml">
-      <change afterPath="$PROJECT_DIR$/docs/install.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms/XaasNas/day-2/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms/XaasS3/day-2/Modify_Deletion_Policy.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forms/XaasS3/day-2/Modify_Object_Data.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms_json/NAS (Public)/Day 2/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Forms_json/NAS (Public)/Day 2/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasK8s/day-1/Onboard K8s Cluster.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasK8s/day-1/Onboard K8s Cluster.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasK8s/day-2/Modify_Deletion_Policy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasK8s/day-2/Modify_Deletion_Policy.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasK8s/day-2/Modify_Object_Data.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasK8s/day-2/Modify_Object_Data.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasNas/day-1/col/NAS Volume.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasNas/day-1/col/NAS Volume.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasNas/day-2/Modify_Deletion_Policy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasNas/day-2/Modify_Deletion_Policy.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasNas/day-2/Modify_Object_Data.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasNas/day-2/Modify_Object_Data.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasNas/day-2/Resize.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasNas/day-2/Resize.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasNas/day-2/View_Details.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasNas/day-2/View_Details.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasNas/day-2/col/Resize.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasNas/day-2/col/Resize.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasS3/day-1/Onboard S3 Bucket.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasS3/day-1/Onboard S3 Bucket.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/XaasS3/day-1/S3 Bucket.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasS3/day-1/S3 Bucket.yml" afterDir="false" />
+    <list default="true" id="ecadca2c-5062-4fa8-9777-fe94f7c23896" name="Changes" comment="[XaasNas] set snapPercent to required if snapPolicy != none">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudTemplates/K8s (Public)/create/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/K8s (Public)/create/blueprint.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudTemplates/K8s (Public)/onbaord/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/K8s (Public)/onbaord/blueprint.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudTemplates/NAS (Public)/create/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/NAS (Public)/create/blueprint.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudTemplates/NAS (Public)/onboard/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/NAS (Public)/onboard/blueprint.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudTemplates/S3 (Public)/create/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/S3 (Public)/create/blueprint.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudTemplates/S3 (Public)/onboard/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/S3 (Public)/onboard/blueprint.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="development" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -42,6 +36,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="28n3HdALKyWwed28PeT4GiFK7ni" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

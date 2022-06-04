@@ -1,5 +1,5 @@
 name: K8s Cluster
-version: 1.1.6
+version: 1.1.7
 formatVersion: 1
 inputs:
   # vRA fields
