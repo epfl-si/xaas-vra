@@ -57,6 +57,20 @@ layout:
                 read-only: true
               submit: false
               signpostPosition: right-middle
+        - id: section_projectName
+          fields:
+          - id: projectName
+            display: textField
+            state:
+              visible: true
+              read-only: true
+            signpostPosition: right-middle
+          - id: projectId
+            display: textField
+            state:
+              visible: true
+              read-only: true
+            signpostPosition: right-middle
         - id: section_deploymentId
           fields:
             - id: textField_deploymentId
@@ -84,20 +98,6 @@ layout:
                 visible: true
                 read-only: true
               signpostPosition: right-middle
-        - id: section_projectName
-          fields:
-            - id: projectName
-              display: textField
-              state:
-                visible: true
-                read-only: true
-              signpostPosition: right-middle
-            - id: projectId
-              display: textField
-              state:
-                visible: true
-                read-only: true
-              signpostPosition: right-middle
         - id: section_requestor
           fields:
             - id: requestor
@@ -106,9 +106,9 @@ layout:
                 visible: true
                 read-only: true
               signpostPosition: right-middle
-        - id: section_deploymentTag
+        - id: section_env
           fields:
-            - id: deploymentTag
+            - id: env
               display: textField
               state:
                 visible: true
@@ -252,7 +252,7 @@ schema:
     label: DEBUG (G)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   object:
     label: Cluster
@@ -325,13 +325,13 @@ schema:
             isMultiple: false
           deploymentId: textField_deploymentId
     constraints: {}
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
       isMultiple: false
     default:
-      bind: _resource.object.deploymentTag
+      bind: _resource.object.env
     constraints: {}
   description:
     label: Description
@@ -423,6 +423,7 @@ schema:
   # cluster information
   DEBUG_C:
     label: DEBUG (C)
+    default: false
     type:
       dataType: boolean
     constraints: {}
@@ -565,7 +566,7 @@ schema:
     label: DEBUG (N)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   cluster_N:
     label: Cluster

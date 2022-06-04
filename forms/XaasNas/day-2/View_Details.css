@@ -8,11 +8,3 @@
 .nav-link.active {
     font-weight: bold !important;
 }
-
-.clr-col-6 {
-    flex: 0 0 60%;
-    max-width: 60%;
-}
-.clr-col-md-4 {
-    flex: 0 0 30% !important;
-}

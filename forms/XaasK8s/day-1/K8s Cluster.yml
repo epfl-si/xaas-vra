@@ -11,6 +11,26 @@ layout:
                 visible: true
                 read-only: false
               signpostPosition: right-middle
+        - id: section_project
+          fields:
+          - id: project
+            display: dropDown
+            state:
+              visible: true
+              read-only: false
+            signpostPosition: right-middle
+          - id: projectName
+            display: textField
+            state:
+              visible: false
+              read-only: true
+            signpostPosition: right-middle
+          - id: projectId
+            display: textField
+            state:
+              visible: true
+              read-only: true
+            signpostPosition: right-middle
         - id: section_deploymentNameHash
           fields:
             - id: deploymentNameHash
@@ -59,26 +79,6 @@ layout:
                 read-only: false
                 visible: true
               signpostPosition: right-middle
-        - id: section_project
-          fields:
-            - id: project
-              display: dropDown
-              state:
-                visible: true
-                read-only: false
-              signpostPosition: right-middle
-            - id: projectName
-              display: textField
-              state:
-                visible: false
-                read-only: true
-              signpostPosition: right-middle
-            - id: projectId
-              display: textField
-              state:
-                visible: true
-                read-only: true
-              signpostPosition: right-middle
         - id: section_reasonsForRequest
           fields:
             - id: reasonsForRequest
@@ -95,9 +95,9 @@ layout:
                 read-only: true
                 visible: true
               signpostPosition: right-middle
-        - id: section_deploymentTag
+        - id: section_env
           fields:
-            - id: deploymentTag
+            - id: env
               display: dropDown
               state:
                 visible: true
@@ -229,18 +229,43 @@ schema:
             isMultiple: false
     placeholder: ''
     constraints: {}
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
       isMultiple: false
+    default:
+      id: ch.epfl.iaas.jsonconfig/getDefaultValue
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - env: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     valueList:
-      - label: Development
-        value: Development
-      - label: Test
-        value: Test
-      - label: Production
-        value: Production
+      id: ch.epfl.iaas.jsonconfig/getList
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - $type:
+          dataType: string
+          isMultiple: false
+        env: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     constraints:
       required: true
   description:
@@ -269,7 +294,10 @@ schema:
       required: true
   notificationMail:
     label: Notification Mail
-    signpost: 'List of valid EPFL emails, one email per line'
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
       isMultiple: false
@@ -388,17 +416,34 @@ schema:
     label: Has Funding?
     type:
       dataType: boolean
-    default: false
-  # cluster
+    default:
+      id: ch.epfl.xaas.utils/hasFunding
+      type: scriptAction
+      parameters:
+        - $type:
+            dataType: string
+            isMultiple: false
+          namespace: '`XaasS3`'
 
+  # cluster
   DEBUG_C:
     label: DEBUG (C)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   plan:
     label: Cluster Plan
+    signpost: |-
+      <b>Available LoadBalancers:</b> 1
+      <br/>
+      <b>Available numbers of workers:</b>
+      <ul>
+        <li><b>Tiny</b>: 1-2</il>
+        <li><b>Small</b>: 2-10</il>
+        <li><b>Medium</b>: 2-10</il>
+        <li><b>Large</b>: 2-10</il>
+      </ul>
     type:
       dataType: string
       isMultiple: false

@@ -11,6 +11,26 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
+    - id: section_project
+      fields:
+      - id: project
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+      - id: projectName
+        display: textField
+        state:
+          visible: false
+          read-only: true
+        signpostPosition: right-middle
+      - id: projectId
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_deploymentNameHash
       fields:
       - id: deploymentNameHash
@@ -56,28 +76,8 @@ layout:
       - id: dplyDescription
         display: textArea
         state:
-          visible: true
           read-only: false
-        signpostPosition: right-middle
-    - id: section_project
-      fields:
-      - id: project
-        display: dropDown
-        state:
           visible: true
-          read-only: false
-        signpostPosition: right-middle
-      - id: projectName
-        display: textField
-        state:
-          visible: false
-          read-only: true
-        signpostPosition: right-middle
-      - id: projectId
-        display: textField
-        state:
-          visible: true
-          read-only: true
         signpostPosition: right-middle
     - id: section_reasonsForRequest
       fields:
@@ -92,12 +92,12 @@ layout:
       - id: requestor
         display: textField
         state:
-          visible: true
           read-only: true
+          visible: true
         signpostPosition: right-middle
-    - id: section_deploymentTag
+    - id: section_env
       fields:
-      - id: deploymentTag
+      - id: env
         display: dropDown
         state:
           visible: true
@@ -383,19 +383,43 @@ schema:
     constraints:
       required: true
       max-value: 80
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
       isMultiple: false
-    default: Test
+    default:
+      id: ch.epfl.iaas.jsonconfig/getDefaultValue
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - env: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     valueList:
-    - label: Development
-      value: Development
-    - label: Test
-      value: Test
-    - label: Production
-      value: Production
+      id: ch.epfl.iaas.jsonconfig/getList
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - $type:
+          dataType: string
+          isMultiple: false
+        env: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     constraints:
       required: true
   description:
@@ -424,7 +448,10 @@ schema:
       max-value: 256
   notificationMail:
     label: Notification Mail
-    signpost: List of valid EPFL emails separated by whitespace or newline.
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
       isMultiple: false
@@ -583,6 +610,11 @@ schema:
       required: true
   IPsRoot:
     label: Root Access Policy
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li> &lt;IP&gt; (e.g. 128.178.200.200)
+      <li> &lt;IP&gt;/&lt;netmask&gt; (e.g. 128.178.200.0/255.255.255.0)
+      <li> &lt;IP&gt;/&lt;cidr&gt;  (e.g. 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
@@ -597,6 +629,11 @@ schema:
     constraints: { }
   IPsRO:
     label: RO Access Policy
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li> &lt;IP&gt; (e.g. 128.178.200.200)
+      <li> &lt;IP&gt;/&lt;netmask&gt; (e.g. 128.178.200.0/255.255.255.0)
+      <li> &lt;IP&gt;/&lt;cidr&gt;  (e.g. 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
@@ -611,6 +648,11 @@ schema:
     constraints: { }
   IPsRW:
     label: RW Access Policy
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li> &lt;IP&gt; (e.g. 128.178.200.200)
+      <li> &lt;IP&gt;/&lt;netmask&gt; (e.g. 128.178.200.0/255.255.255.0)
+      <li> &lt;IP&gt;/&lt;cidr&gt;  (e.g. 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
@@ -646,33 +688,37 @@ schema:
       dataType: string
       isMultiple: false
     default:
-      id: ch.epfl.config/getDefaultValue
+      id: ch.epfl.iaas.jsonconfig/getDefaultValue
       type: scriptAction
       parameters:
       - $type:
           dataType: string
           isMultiple: false
-        deploymentTag: deploymentTag
+        env: env
       - $type:
           dataType: string
           isMultiple: false
-        elementName: '`XaasNas_snapshot_policies_EPFL`'
+        jsonConfigName: '`XaasNas_snapshot_policies_EPFL`'
       - $type:
           dataType: string
           isMultiple: false
         projectName: projectName
+      - $type:
+          dataType: string
+          isMultiple: false
+        categoryName: '``'
     valueList:
-      id: ch.epfl.config/getList
+      id: ch.epfl.iaas.jsonconfig/getList
       type: scriptAction
       parameters:
       - $type:
           dataType: string
           isMultiple: false
-        deploymentTag: deploymentTag
+        env: env
       - $type:
           dataType: string
           isMultiple: false
-        elementName: '`XaasNas_snapshot_policies_EPFL`'
+        jsonConfigName: '`XaasNas_snapshot_policies_EPFL`'
       - $type:
           dataType: string
           isMultiple: false
@@ -707,7 +753,11 @@ schema:
           dataType: string
           isMultiple: false
         initValue: minSnapPercent
-    constraints: { }
+    constraints:
+      required:
+      - value: true
+        notEqual:
+          snapPolicy: none
 
   # volume - price
   price:

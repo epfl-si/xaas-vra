@@ -2,39 +2,52 @@ layout:
   pages:
   - id: page_1
     sections:
-    - fields:
-      - display: valuePicker
-        id: cluster
-        signpostPosition: right-middle
+    - id: section_cluster
+      fields:
+      - id: cluster
+        display: valuePicker
         state:
           read-only: true
           visible: true
         submit: false
-      id: section_cluster
-    - fields:
-      - display: radio
-        id: namespace
         signpostPosition: right-middle
+
+    - id: section_namespace
+      fields:
+      - id: namespace
+        display: radio
         state:
           read-only: false
           visible: true
-      id: section_namespace
-    - fields:
-      - display: decimalField
-        id: decimalField_nbLoadBalacers
         signpostPosition: right-middle
+
+    - id: section_nbLoadBalacers
+      fields:
+      - id: nbLoadBalacers
+        display: decimalField
         state:
           read-only: true
           visible: true
-      id: section_nbLoadBalacers
-    - fields:
-      - display: textField
-        id: textField_status
         signpostPosition: right-middle
+
+    - id: section_status
+      fields:
+      - id: status
+        display: textField
         state:
           read-only: true
           visible: true
-      id: section_status
+        signpostPosition: right-middle
+
+    - id: section_information
+      fields:
+      - id: information
+        display: textArea
+        signpostPosition: right-middle
+        state:
+          visible: true
+          read-only: true
+
     state: {}
     title: General
 options:
@@ -47,7 +60,7 @@ schema:
       dataType: reference
       isMultiple: false
       referenceType: DynamicTypes:XaasK8s.Cluster
-  decimalField_nbLoadBalacers:
+  nbLoadBalacers:
     constraints: {}
     default:
       id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsNumber
@@ -127,10 +140,10 @@ schema:
           isMultiple: false
         jsonSubPath: '``'
       type: scriptAction
-  textField_status:
+  status:
     constraints:
       pattern:
-        message: Cannot add namespace.
+        message: Cannot add LoadBalancer.
         value: ^Ok$
       required: true
     default:
@@ -153,3 +166,13 @@ schema:
     placeholder: ''
     type:
       dataType: string
+
+  information:
+    label: Information
+    type:
+      dataType: string
+    default: |-
+      Caution: You can have at most ONE LoadBalancer in namespace
+    placeholder: ''
+    constraints: { }
+

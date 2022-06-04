@@ -40,6 +40,26 @@ layout:
             visible: true
             read-only: false
           signpostPosition: right-middle
+    - id: section_project
+      fields:
+      - id: project
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+      - id: projectName
+        display: textField
+        state:
+          visible: false
+          read-only: true
+        signpostPosition: right-middle
+      - id: projectId
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_deploymentName
       fields:
       - id: deploymentName
@@ -77,26 +97,6 @@ layout:
           read-only: false
           visible: true
         signpostPosition: right-middle
-    - id: section_project
-      fields:
-        - id: project
-          display: dropDown
-          state:
-            visible: true
-            read-only: false
-          signpostPosition: right-middle
-        - id: projectName
-          display: textField
-          state:
-            visible: false
-            read-only: true
-          signpostPosition: right-middle
-        - id: projectId
-          display: textField
-          state:
-            visible: true
-            read-only: true
-          signpostPosition: right-middle
     - id: section_reasonsForRequest
       fields:
       - id: reasonsForRequest
@@ -113,9 +113,9 @@ layout:
           read-only: true
           visible: true
         signpostPosition: right-middle
-    - id: section_deploymentTag
+    - id: section_env
       fields:
-      - id: deploymentTag
+      - id: env
         display: dropDown
         state:
           visible: true
@@ -160,8 +160,8 @@ layout:
           - value: true
             equals:
               funding: fns
-            read-only: false
-          signpostPosition: right-middle
+          read-only: false
+        signpostPosition: right-middle
       - id: fnsPrjNo
         display: textField
         state:
@@ -225,7 +225,7 @@ layout:
     sections:
     - fields:
       - id: radio_namespace
-      - display: radio
+        display: radio
         signpostPosition: right-middle
         state:
           read-only: false
@@ -249,23 +249,18 @@ schema:
   # onboarding - general
   DEBUG_G:
     constraints: { }
-    default: true
-    label: DEBUG
+    default: false
+    label: DEBUG (G)
     type:
       dataType: boolean
   name:
     constraints: { }
     default: ''
     label: Cluster Name
-    signpost: 'Enter the name of the cluster to be onboarded. It must be
-
-      <ul>
-
-      <li> present in the backend </li>
-
-      <li> not already onboarded</li>
-
-      </ul>'
+    signpost: |- 
+      Enter the name of the cluster to be onboarded. It must be
+        <li> present in the backend </li>
+        <li> not already onboarded</li>
     type:
       dataType: string
       isMultiple: false
@@ -294,7 +289,7 @@ schema:
     label: DEBUG (D)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   deploymentName:
     label: (tmp) Deployment Name
@@ -306,18 +301,43 @@ schema:
     constraints:
       max-value: 80
       required: true
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
       isMultiple: false
+    default:
+      id: ch.epfl.iaas.jsonconfig/getDefaultValue
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - env: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     valueList:
-      - label: Development
-        value: Development
-      - label: Test
-        value: Test
-      - label: Production
-        value: Production
+      id: ch.epfl.iaas.jsonconfig/getList
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - $type:
+          dataType: string
+          isMultiple: false
+        env: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     constraints:
       required: true
   description:
@@ -346,7 +366,10 @@ schema:
       required: true
   notificationMail:
     label: Notification Mail
-    signpost: 'List of valid EPFL emails, one email per line'
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
       isMultiple: false
@@ -475,6 +498,7 @@ schema:
   # cluster information
   DEBUG_C:
     label: DEBUG (C)
+    default: false
     type:
       dataType: boolean
     constraints: {}

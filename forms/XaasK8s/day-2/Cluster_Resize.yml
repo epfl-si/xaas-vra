@@ -58,7 +58,7 @@ schema:
           id: key
         - label: Value
           type:
-            dataType: string
+            dataType: decimal
           constraints: {}
           id: value
       isMultiple: true

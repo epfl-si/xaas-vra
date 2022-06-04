@@ -1,0 +1,107 @@
+layout:
+  pages:
+  - id: page_general
+    sections:
+    - id: section_DEBUG
+      fields:
+      - id: DEBUG
+        display: checkbox
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_bucket
+      fields:
+      - id: bucket
+        display: valuePicker
+        signpostPosition: right-middle
+        state:
+          read-only: true
+          visible: true
+        submit: false
+    - id: section_crtVersioning
+      fields:
+      - id: crtVersioning
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG: true
+          read-only: false
+        signpostPosition: right-middle
+    - id: section_versioning
+      fields:
+      - id: versioning
+        display: dropDown
+        signpostPosition: right-middle
+        state:
+          read-only: false
+          visible: true
+    title: General
+    state: { }
+schema:
+  DEBUG:
+    label: DEBUG
+    type:
+      dataType: boolean
+    default: false
+    constraints: { }
+  bucket:
+    label: bucket
+    type:
+      dataType: reference
+      referenceType: DynamicTypes:XaasS3.Bucket
+    constraints:
+      required: false
+  versioning:
+    label: versioning
+    type:
+      dataType: string
+    default:
+      bind: crtVersioning
+    valueList:
+    - label: Suspended
+      value: Suspended
+    - label: Active
+      value: Active
+  crtVersioning:
+    label: crtVersioning
+    type:
+      dataType: string
+    constraints:
+      required: false
+    default:
+      type: scriptAction
+      id: ch.epfl.xaas.customform.cache/getCacheInfoFldAsString
+      parameters:
+      - jsonPath: '`versioning.status`'
+        $type:
+          dataType: string
+          isMultiple: false
+      - filterValue: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - dtId: _resource.object.name
+        $type:
+          dataType: string
+          isMultiple: false
+      - targetTenant: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - dtName: _resource.object.namespace
+        $type:
+          dataType: string
+          isMultiple: false
+      - filterField: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - jsonSubPath: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+options:
+  externalValidations: [ ]

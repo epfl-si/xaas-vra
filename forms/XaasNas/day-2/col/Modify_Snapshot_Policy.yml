@@ -55,7 +55,10 @@ layout:
         display: dropDown
         state:
           visible: true
-          read-only: false
+          read-only:
+          - value: true
+            equals:
+              snapPolicy: none
         signpostPosition: right-middle
     - id: section_sizeGB
       fields:
@@ -134,17 +137,17 @@ schema:
     default:
       bind: textField_crtSnapPolicy
     valueList:
-      id: ch.epfl.config/getList
+      id: ch.epfl.iaas.jsonconfig/getList
       type: scriptAction
       parameters:
       - $type:
           dataType: string
           isMultiple: false
-        deploymentTag: _resource.object.deploymentTag
+        env: _resource.object.env
       - $type:
           dataType: string
           isMultiple: false
-        elementName: '`XaasNas_snapshot_policies_EPFL`'
+        jsonConfigName: '`XaasNas_snapshot_policies_EPFL`'
       - $type:
           dataType: string
           isMultiple: false

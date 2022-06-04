@@ -11,6 +11,26 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
+    - id: section_project
+      fields:
+      - id: project
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+      - id: projectName
+        display: textField
+        state:
+          visible: false
+          read-only: true
+        signpostPosition: right-middle
+      - id: projectId
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_deploymentNameHash
       fields:
         - id: deploymentNameHash
@@ -56,29 +76,9 @@ layout:
         - id: dplyDescription
           display: textArea
           state:
-            visible: true
             read-only: false
+            visible: true
           signpostPosition: right-middle
-    - id: section_project
-      fields:
-      - id: project
-        display: dropDown
-        state:
-          visible: true
-          read-only: false
-        signpostPosition: right-middle
-      - id: projectName
-        display: textField
-        state:
-          visible: false
-          read-only: true
-        signpostPosition: right-middle
-      - id: projectId
-        display: textField
-        state:
-          visible: true
-          read-only: true
-        signpostPosition: right-middle
     - id: section_reasonsForRequest
       fields:
       - id: reasonsForRequest
@@ -92,12 +92,12 @@ layout:
       - id: requestor
         display: textField
         state:
-          visible: true
           read-only: true
+          visible: true
         signpostPosition: right-middle
-    - id: section_deploymentTag
+    - id: section_env
       fields:
-      - id: deploymentTag
+      - id: env
         display: dropDown
         state:
           visible: true
@@ -177,6 +177,15 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
+      - id: xfix_IPsRoot
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_V: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_IPsRO
       fields:
       - id: IPsRO
@@ -185,6 +194,15 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
+      - id: xfix_IPsRO
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_V: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_IPsRW
       fields:
       - id: IPsRW
@@ -192,6 +210,15 @@ layout:
         state:
           visible: true
           read-only: false
+        signpostPosition: right-middle
+      - id: xfix_IPsRW
+        display: textField
+        state:
+          visible:
+          - value: true
+            equals:
+              DEBUG_V: true
+          read-only: true
         signpostPosition: right-middle
     state: {}
 schema:
@@ -263,19 +290,43 @@ schema:
     constraints:
       required: true
       max-value: 80
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
       isMultiple: false
-    default: Test
+    default:
+      id: ch.epfl.iaas.jsonconfig/getDefaultValue
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - env: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     valueList:
-      - label: Development
-        value: Development
-      - label: Test
-        value: Test
-      - label: Production
-        value: Production
+      id: ch.epfl.iaas.jsonconfig/getList
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - $type:
+          dataType: string
+          isMultiple: false
+        env: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     constraints:
       required: true
   description:
@@ -304,7 +355,10 @@ schema:
       required: true
   notificationMail:
     label: Notification Mail
-    signpost: List of valid EPFL emails separated by whitespace or newline.
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
       isMultiple: false
@@ -434,21 +488,60 @@ schema:
       required: true
   IPsRoot:
     label: Root Access Policy
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li>  &lt;IP&gt; (ex: 128.178.200.200)
+      <li>  &lt;IP&gt;/&lt;netmask&gt;  (ex: 128.178.200.0/255.255.255.0)
+      <li>  &lt;IP&gt;/&lt;cidr&gt;  (ex: 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
     constraints: {}
   IPsRO:
     label: RO Access Policy
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li>  &lt;IP&gt; (ex: 128.178.200.200)
+      <li>  &lt;IP&gt;/&lt;netmask&gt;  (ex: 128.178.200.0/255.255.255.0)
+      <li>  &lt;IP&gt;/&lt;cidr&gt;  (ex: 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
     constraints: {}
   IPsRW:
     label: RW Access Policy
+    signpost: |-
+      Several entries allowed, one with IP per line, using the following format :
+      <li>  &lt;IP&gt; (ex: 128.178.200.200)
+      <li>  &lt;IP&gt;/&lt;netmask&gt;  (ex: 128.178.200.0/255.255.255.0)
+      <li>  &lt;IP&gt;/&lt;cidr&gt;  (ex: 128.178.200.0/24)
     type:
       dataType: string
       isMultiple: false
+  xfix_IPsRoot:
+    label: xfix_IPsRoot
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: IPsRoot
+    constraints: { }
+  xfix_IPsRO:
+    label: xfix_IPsRO
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: IPsRW
+    constraints: { }
+  xfix_IPsRW:
+    label: xfix_IPsRW
+    type:
+      dataType: string
+      isMultiple: false
+    default:
+      bind: IPsRW
+    constraints: { }
 
 options:
   externalValidations:
@@ -486,7 +579,7 @@ options:
       - $type:
           dataType: string
           isMultiple: false
-        IPs: IPsRoot
+        IPs: xfix_IPsRoot
     target:
     - IPsRoot
   - label: RO Access Policy Check
@@ -497,7 +590,7 @@ options:
       - $type:
           dataType: string
           isMultiple: false
-        IPs: IPsRO
+        IPs: xfix_IPsRO
     target:
     - IPsRO
   - label: RW Access Policy Check
@@ -508,6 +601,6 @@ options:
       - $type:
           dataType: string
           isMultiple: false
-        IPs: IPsRW
+        IPs: xfix_IPsRW
     target:
     - IPsRW

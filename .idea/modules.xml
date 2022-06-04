@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/xaas-vra.iml" filepath="$PROJECT_DIR$/.idea/xaas-vra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xaas-vra.iml" filepath="$PROJECT_DIR$/xaas-vra.iml" />
     </modules>
   </component>
 </project>

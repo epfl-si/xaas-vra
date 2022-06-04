@@ -4,8 +4,8 @@ layout:
     sections:
     - id: section_bucket
       fields:
-      - display: valuePicker
-        id: bucket
+      - id: bucket
+        display: valuePicker
         signpostPosition: right-middle
         state:
           read-only: true
@@ -13,24 +13,22 @@ layout:
         submit: false
     - id: section_userType
       fields:
-      - display: dropDown
-        id: userType
+      - id: userType
+        display: dropDown
         signpostPosition: right-middle
         state:
           read-only: false
           visible: true
     state: {}
     title: General
-options:
-  externalValidations: []
 schema:
   bucket:
-    constraints:
-      required: false
     label: bucket
     type:
       dataType: reference
       referenceType: DynamicTypes:XaasS3.Bucket
+    constraints:
+      required: false
   userType:
     constraints:
       required: true
@@ -44,3 +42,5 @@ schema:
       value: rw
     - label: All Keys
       value: all
+options:
+  externalValidations: []

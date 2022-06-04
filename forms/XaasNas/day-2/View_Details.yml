@@ -20,6 +20,20 @@ layout:
             read-only: true
           submit: false
           signpostPosition: right-middle
+    - id: section_projectName
+      fields:
+      - id: projectName
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
+      - id: projectId
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_deploymentName_D
       fields:
       - id: deploymentName_D
@@ -36,20 +50,6 @@ layout:
           visible: true
           read-only: true
         signpostPosition: right-middle
-    - id: section_projectName
-      fields:
-        - id: projectName
-          display: textField
-          state:
-            visible: true
-            read-only: true
-          signpostPosition: right-middle
-        - id: projectId
-          display: textField
-          state:
-            visible: true
-            read-only: true
-          signpostPosition: right-middle
     - id: section_requestor
       fields:
       - id: requestor
@@ -58,9 +58,9 @@ layout:
           visible: true
           read-only: true
         signpostPosition: right-middle
-    - id: section_deploymentTag
+    - id: section_env
       fields:
-      - id: deploymentTag
+      - id: env
         display: textField
         state:
           visible: true
@@ -321,7 +321,7 @@ layout:
 schema:
   # details - general (loading resource)
   DEBUG_G:
-    label: DEBUG (g)
+    label: DEBUG (G)
     type:
       dataType: boolean
     default: false
@@ -360,7 +360,7 @@ schema:
 
   # deployment - general
   DEBUG_D:
-    label: DEBUG (d)
+    label: DEBUG (D)
     type:
       dataType: boolean
     default: false
@@ -397,12 +397,12 @@ schema:
     default:
       bind: _resource.object.deploymentName
     constraints: {}
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
     default:
-      bind: _resource.object.deploymentTag
+      bind: _resource.object.env
     placeholder: ''
     constraints: {}
   notificationMail:
@@ -483,7 +483,7 @@ schema:
 
   # volume -general
   DEBUG_V:
-    label: DEBUG (v)
+    label: DEBUG (V)
     type:
       dataType: boolean
     default: false
@@ -544,7 +544,7 @@ schema:
 
   # volume - access
   DEBUG_A:
-    label: DEBUG (a)
+    label: DEBUG (A)
     type:
       dataType: boolean
     default: false
@@ -830,13 +830,13 @@ schema:
     type:
       dataType: string
     default:
-      id: ch.epfl.config/getLabel
+      id: ch.epfl.iaas.jsonconfig/getLabel
       type: scriptAction
       parameters:
         - $type:
             dataType: string
             isMultiple: false
-          deploymentTag: _resource.object.deploymentTag
+          env: _resource.object.env
         - $type:
             dataType: string
             isMultiple: false
@@ -844,7 +844,7 @@ schema:
         - $type:
             dataType: string
             isMultiple: false
-          elementName: '`XaasNas_snapshot_policies_EPFL`'
+          jsonConfigName: '`XaasNas_snapshot_policies_EPFL`'
         - $type:
             dataType: string
             isMultiple: false

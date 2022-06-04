@@ -11,6 +11,26 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
+    - id: section_project
+      fields:
+      - id: project
+        display: dropDown
+        state:
+          visible: true
+          read-only: false
+        signpostPosition: right-middle
+      - id: projectName
+        display: textField
+        state:
+          visible: false
+          read-only: true
+        signpostPosition: right-middle
+      - id: projectId
+        display: textField
+        state:
+          visible: true
+          read-only: true
+        signpostPosition: right-middle
     - id: section_deploymentNameHash
       fields:
         - id: deploymentNameHash
@@ -56,29 +76,9 @@ layout:
       - id: dplyDescription
         display: textArea
         state:
-          visible: true
           read-only: false
+          visible: true
         signpostPosition: right-middle
-    - id: section_project
-      fields:
-        - id: project
-          display: dropDown
-          state:
-            visible: true
-            read-only: false
-          signpostPosition: right-middle
-        - id: projectName
-          display: textField
-          state:
-            visible: false
-            read-only: true
-          signpostPosition: right-middle
-        - id: projectId
-          display: textField
-          state:
-            visible: true
-            read-only: true
-          signpostPosition: right-middle
     - id: section_reasonsForRequest
       fields:
       - id: reasonsForRequest
@@ -92,12 +92,12 @@ layout:
       - id: requestor
         display: textField
         state:
-          visible: true
           read-only: true
+          visible: true
         signpostPosition: right-middle
-    - id: section_deploymentTag
+    - id: section_env
       fields:
-      - id: deploymentTag
+      - id: env
         display: dropDown
         state:
           visible: true
@@ -177,10 +177,10 @@ layout:
 schema:
   # deployment - general
   DEBUG_D:
-    label: DEBUG
+    label: DEBUG (D)
     type:
       dataType: boolean
-    default: true
+    default: false
     constraints: {}
   deploymentName:
     label: (tmp) Deployment Name
@@ -229,19 +229,43 @@ schema:
             isMultiple: false
     placeholder: ''
     constraints: {}
-  deploymentTag:
+  env:
     label: Environment
     type:
       dataType: string
       isMultiple: false
-    default: Test
+    default:
+      id: ch.epfl.iaas.jsonconfig/getDefaultValue
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - env: '``'
+        $type:
+          dataType: string
+          isMultiple: false
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     valueList:
-      - label: Development
-        value: Development
-      - label: Test
-        value: Test
-      - label: Production
-        value: Production
+      id: ch.epfl.iaas.jsonconfig/getList
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        projectName: projectName
+      - $type:
+          dataType: string
+          isMultiple: false
+        env: '``'
+      - $type:
+          dataType: string
+          isMultiple: false
+        jsonConfigName: '`environments`'
     constraints:
       required: true
   description:
@@ -252,8 +276,15 @@ schema:
     default:
       bind: dplyDescription
     constraints:
-      required: true
       max-value: 256
+      required: true
+  dplyDescription:
+    label: Description
+    type:
+      dataType: string
+    constraints:
+      max-value: 256
+      required: true
   dplyName:
     label: Deployment Name
     type:
@@ -261,13 +292,25 @@ schema:
       isMultiple: false
     constraints:
       required: true
-  dplyDescription:
-    label: Description
+  notificationMail:
+    label: Notification Mail
+    signpost: |-
+      EPFL email addresses only, one email per line.
+      Supports groups mail addresses defined on http://groups.epfl.ch 
+      Emails must be visible in LDAP.
     type:
       dataType: string
+      isMultiple: false
+    default:
+      id: ch.epfl.iaas.ad/getUserMailFromVRAUserPrincipalName
+      type: scriptAction
+      parameters:
+      - $type:
+          dataType: string
+          isMultiple: false
+        userPrincipalName: _requestedBy
     constraints:
       required: true
-      max-value: 256
   project:
     label: Project
     type:
@@ -295,9 +338,10 @@ schema:
             dataType: string
             isMultiple: false
           projectId: project
-    constraints: {}
+    constraints:
+      required: true
   projectName:
-    label: Project name
+    label: Project Name
     type:
       dataType: string
       isMultiple: false
@@ -313,28 +357,13 @@ schema:
             dataType: string
             isMultiple: false
           projectId: project
-  notificationMail:
-    label: Notification Mail
-    signpost: List of valid EPFL emails separated by whitespace or newline.
-    type:
-      dataType: string
-      isMultiple: false
-    default:
-      id: ch.epfl.iaas.utils.mail/getUserEmailFromVRAUserPrincipalName
-      type: scriptAction
-      parameters:
-        - $type:
-            dataType: string
-            isMultiple: false
-          userPrincipalName: _requestedBy
     constraints:
       required: true
   reasonsForRequest:
-    label: Reason for request
+    label: Reasons for request
     type:
       dataType: string
       isMultiple: false
-    default: I need that!
     constraints:
       required: true
   requestor:
@@ -344,7 +373,8 @@ schema:
       isMultiple: false
     default:
       bind: _requestedBy
-    constraints: {}
+    constraints:
+      required: true
 
   # deployment - funding
   fnsPrjName:
@@ -393,7 +423,7 @@ schema:
         - $type:
             dataType: string
             isMultiple: false
-          namespace: '`XaasS3`'
+          namespace: '`XaasK8s`'
 
   # bucket
   linkedTo:
@@ -412,6 +442,10 @@ schema:
     constraints: {}
   versioning:
     label: Versioning?
+    signpost: |-
+      A bucket with versioning protects against object deletion and overwrites, but can also impact the total capacity consumed:
+      <li> when <font color="red"><i>active</i></font> all new objects will be versionined and previously versioned objects will be retained.
+      <li>when <font color="red"><i>suspened</i></font> new objects will not be versioned but previously versions will be retained,
     type:
       dataType: string
       isMultiple: false
