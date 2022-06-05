@@ -21,7 +21,7 @@ layout:
         signpostPosition: right-middle
     - id: section_sizeGB
       fields:
-      - id: textField_sizeGB
+      - id: sizeGB
         display: textField
         state:
           visible: true
@@ -37,7 +37,7 @@ layout:
         signpostPosition: right-middle
     - id: section_newSizeGB
       fields:
-      - id: textField_newSizeGB
+      - id: newSizeGB
         display: textField
         state:
           visible: true
@@ -45,7 +45,7 @@ layout:
         signpostPosition: right-middle
     - id: section_snapPercent
       fields:
-      - id: textField_snapPercent
+      - id: snapPercent
         display: textField
         state:
           visible: true
@@ -75,7 +75,7 @@ schema:
       referenceType: DynamicTypes:XaasNas.Volume
     constraints:
       required: false
-  textField_sizeGB:
+  sizeGB:
     label: Volume Size (GB)
     type:
       dataType: string
@@ -121,7 +121,7 @@ schema:
     constraints:
       required: true
       min-value: 1
-  textField_newSizeGB:
+  newSizeGB:
     label: New Size (GB)
     type:
       dataType: string
@@ -129,7 +129,7 @@ schema:
       id: ch.epfl.iaas.js/sumAsNumbers
       type: scriptAction
       parameters:
-      - a: textField_sizeGB
+      - a: sizeGB
         $type:
           dataType: string
           isMultiple: false
@@ -139,7 +139,7 @@ schema:
           isMultiple: false
     placeholder: ''
     constraints: {}
-  textField_snapPercent:
+  snapPercent:
     label: Snapshot Percent
     type:
       dataType: string
@@ -192,7 +192,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        sizeGB: textField_sizeGB
+        sizeGB: sizeGB
       - $type:
           dataType: decimal
           isMultiple: false
@@ -200,7 +200,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        snapPercent: textField_snapPercent
+        snapPercent: snapPercent
     placeholder: ''
     constraints: {}
 options:

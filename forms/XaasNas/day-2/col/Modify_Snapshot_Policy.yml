@@ -13,7 +13,7 @@ layout:
         signpostPosition: right-middle
     - id: section_DEBUG
       fields:
-      - id: textField_DEBUG
+      - id: DEBUG
         display: checkbox
         state:
           visible: false
@@ -21,13 +21,13 @@ layout:
         signpostPosition: right-middle
     - id: section_crtSnapPolicy
       fields:
-      - id: textField_crtSnapPolicy
+      - id: crtSnapPolicy
         display: textField
         state:
           visible:
           - value: true
             equals:
-              textField_DEBUG: true
+              DEBUG: true
           read-only: false
         signpostPosition: right-middle
     - id: section_snapPolicy
@@ -40,13 +40,13 @@ layout:
         signpostPosition: right-middle
     - id: section_crtSnapPercent
       fields:
-      - id: textField_crtSnapPercent
+      - id: crtSnapPercent
         display: textField
         state:
           visible:
           - value: true
             equals:
-              textField_DEBUG: true
+              DEBUG: true
           read-only: false
         signpostPosition: right-middle
     - id: section_snapPercent
@@ -62,7 +62,7 @@ layout:
         signpostPosition: right-middle
     - id: section_sizeGB
       fields:
-      - id: textField_sizeGB
+      - id: sizeGB
         display: textField
         state:
           visible: true
@@ -70,7 +70,7 @@ layout:
         signpostPosition: right-middle
     - id: section_price
       fields:
-      - id: textField_price
+      - id: price
         display: textField
         state:
           visible: true
@@ -86,13 +86,13 @@ schema:
       referenceType: DynamicTypes:XaasNas.Volume
     constraints:
       required: false
-  textField_DEBUG:
+  DEBUG:
     label: DEBUG
     type:
       dataType: boolean
     default: false
     constraints: {}
-  textField_crtSnapPolicy:
+  crtSnapPolicy:
     label: crtSnapPolicy
     type:
       dataType: string
@@ -135,7 +135,7 @@ schema:
     type:
       dataType: string
     default:
-      bind: textField_crtSnapPolicy
+      bind: crtSnapPolicy
     valueList:
       id: ch.epfl.iaas.jsonconfig/getList
       type: scriptAction
@@ -154,7 +154,7 @@ schema:
         projectName: _resource.object.projectName
     constraints:
       required: true
-  textField_crtSnapPercent:
+  crtSnapPercent:
     label: crtSnapPercent
     type:
       dataType: string
@@ -197,7 +197,7 @@ schema:
     type:
       dataType: string
     default:
-      bind: textField_crtSnapPercent
+      bind: crtSnapPercent
     valueList:
       id: ch.epfl.xaas.nas/getSnapPercentList
       type: scriptAction
@@ -205,13 +205,18 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        initValue: textField_crtSnapPercent
+        initValue: crtSnapPercent
+      - $type:
+          dataType: string
+          isMultiple: false
+        snapPolicy: snapPolicy
+
     constraints:
       required:
       - value: true
         notEqual:
           snapPolicy: none
-  textField_sizeGB:
+  sizeGB:
     label: Volume Size (GB)
     type:
       dataType: string
@@ -249,7 +254,7 @@ schema:
         jsonSubPath: '``'
     placeholder: ''
     constraints: {}
-  textField_price:
+  price:
     label: Price
     type:
       dataType: string
@@ -264,7 +269,7 @@ schema:
       - $type:
           dataType: string
           isMultiple: false
-        sizeGB: textField_sizeGB
+        sizeGB: sizeGB
       - $type:
           dataType: decimal
           isMultiple: false

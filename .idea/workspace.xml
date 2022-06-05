@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecadca2c-5062-4fa8-9777-fe94f7c23896" name="Changes" comment="[XaasNas] set snapPercent to required if snapPolicy != none">
+    <list default="true" id="ecadca2c-5062-4fa8-9777-fe94f7c23896" name="Changes" comment="[Xaas] CT: incremented version number">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudTemplates/K8s (Public)/create/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/K8s (Public)/create/blueprint.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudTemplates/K8s (Public)/onbaord/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/K8s (Public)/onbaord/blueprint.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudTemplates/NAS (Public)/create/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/NAS (Public)/create/blueprint.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudTemplates/NAS (Public)/onboard/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/NAS (Public)/onboard/blueprint.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudTemplates/S3 (Public)/create/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/S3 (Public)/create/blueprint.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudTemplates/S3 (Public)/onboard/blueprint.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudTemplates/S3 (Public)/onboard/blueprint.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/XaasNas/day-2/col/Modify_Snapshot_Policy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasNas/day-2/col/Modify_Snapshot_Policy.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/XaasNas/day-2/col/Resize.yml" beforeDir="false" afterPath="$PROJECT_DIR$/forms/XaasNas/day-2/col/Resize.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +75,7 @@
       <workItem from="1651912137024" duration="4906000" />
       <workItem from="1651924167893" duration="15000" />
       <workItem from="1652080208143" duration="31933000" />
+      <workItem from="1654405754233" duration="1758000" />
     </task>
     <task id="LOCAL-00001" summary="[Nas+K8s] day-1 forms in yaml">
       <created>1651869142500</created>
@@ -122,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651914654065</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="[Xaas] CT: incremented version number">
+      <created>1654375556130</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1654375556130</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +150,7 @@
     <MESSAGE value="[K8s+NAS] day-2 View_Details: yaml unification + cleanup" />
     <MESSAGE value="[K8s+NAS] day-1 + day-2: cosmetics, reordering yaml entries" />
     <MESSAGE value="[K8s] day-1 -&gt; yaml" />
-    <option name="LAST_COMMIT_MESSAGE" value="[K8s] day-1 -&gt; yaml" />
+    <MESSAGE value="[Xaas] CT: incremented version number" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Xaas] CT: incremented version number" />
   </component>
 </project>
