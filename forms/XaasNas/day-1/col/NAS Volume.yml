@@ -151,17 +151,17 @@ layout:
           visible: true
           read-only: false
         signpostPosition: right-middle
-    - id: section_deletionPolicy
-      fields:
-      - id: deletionPolicy
-        display: dropDown
-        state:
-          visible:
-          - value: true
-            equals:
-              DEBUG_V: true
-          read-only: false
-        signpostPosition: right-middle
+#    - id: section_deletionPolicy
+#      fields:
+#      - id: deletionPolicy
+#        display: dropDown
+#        state:
+#          visible:
+#          - value: true
+#            equals:
+#              DEBUG_V: true
+#          read-only: false
+#        signpostPosition: right-middle
     - id: section_volType
       fields:
       - id: volType
@@ -322,19 +322,19 @@ schema:
       dataType: boolean
     default: false
     constraints: { }
-  deletionPolicy:
-    label: Deletion Policy
-    type:
-      dataType: string
-      isMultiple: false
-    default: outboard
-    valueList:
-    - label: delete
-      value: delete
-    - label: outboard
-      value: outboard
-    constraints:
-      required: true
+#  deletionPolicy:
+#    label: Deletion Policy
+#    type:
+#      dataType: string
+#      isMultiple: false
+#    default: delete
+#    valueList:
+#    - label: delete
+#      value: delete
+#    - label: outboard
+#      value: outboard
+#    constraints:
+#      required: true
   deploymentNameHash:
     label: deploymentNameHash
     type:
