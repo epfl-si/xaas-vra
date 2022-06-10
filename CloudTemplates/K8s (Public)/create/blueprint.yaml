@@ -1,5 +1,5 @@
 name: K8s Cluster
-version: 1.1.7
+version: 1.1.8
 formatVersion: 1
 inputs:
   # vRA fields
@@ -66,7 +66,7 @@ resources:
       projectName: '${input.projectName}'
       env: '${input.env}'
       creationPolicy: request
-      deletionPolicy: outboard
+      deletionPolicy: delete
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
       reasonsForRequest: '${input.reasonsForRequest}'

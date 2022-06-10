@@ -1,5 +1,5 @@
 name: NAS Volume
-version: 1.1.10
+version: 1.1.11
 formatVersion: 1
 inputs:
   # vRA fields
@@ -99,7 +99,7 @@ resources:
       projectName: '${input.projectName}'
       env: '${input.env}'
       creationPolicy: request
-      deletionPolicy: outboard
+      deletionPolicy: delete
       notificationMail: '${input.notificationMail}'
       requestor: '${input.requestor}'
       reasonsForRequest: '${input.reasonsForRequest}'
