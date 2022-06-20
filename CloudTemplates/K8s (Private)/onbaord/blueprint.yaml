@@ -1,0 +1,77 @@
+name: Onboard K8s Cluster
+version: 1.1.8
+formatVersion: 1
+inputs:
+  # vRA fields
+  dplyName:
+    type: string
+    title: Deployment name
+  dplyDescription:
+    type: string
+    title: Deployment Description
+
+  projectName:
+    type: string
+    title: Project name
+  projectId:
+    type: string
+    title: Project Id
+  env:
+    type: string
+    title: Environment
+    enum:
+      - development
+      - test
+      - production
+    default: test
+  notificationMail:
+    type: string
+    title: Notification Mail
+  requestor:
+    type: string
+    title: Requestor
+  reasonsForRequest:
+    type: string
+    title: Requestor
+    default: ''
+
+  # funding (optional)
+  fnsPrjName:
+    type: string
+    title: FNS Project Name
+    default: ''
+  fnsPrjNo:
+    type: string
+    title: FNS Project Number
+    default: ''
+
+  # cluster
+  plan:
+    type: string
+    title: Cluster Plan
+
+  name: # used for onboarding
+    type: string
+    title: Cluster Name
+
+resources:
+  Cluster:
+    type: Custom.XaasK8s.Cluster
+    properties:
+      # vRA fields
+      dplyName: '${input.dplyName}'
+      dplyDescription: '${input.dplyDescription}'
+      projectId: '${input.projectId}'
+      projectName: '${input.projectName}'
+      env: '${input.env}'
+      creationPolicy: onboard
+      deletionPolicy: delete
+      notificationMail: '${input.notificationMail}'
+      requestor: '${input.requestor}'
+      reasonsForRequest: '${input.reasonsForRequest}'
+      # funding (optional):
+      fnsPrjName: '${input.fnsPrjName}'
+      fnsPrjNo: '${input.fnsPrjNo}'
+      # cluster
+      name: '${input.name}'
+      plan: '${input.plan}'
