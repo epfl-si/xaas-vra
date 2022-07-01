@@ -1,7 +1,7 @@
 # Fonctions utilisables partout
 #!/bin/bash
 
-touch /tmp/myfunclulu
+touch /root/cloud-init/myfunclulu
 
 function testLC
 {
