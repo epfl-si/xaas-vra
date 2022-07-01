@@ -3,15 +3,15 @@
 # Constantes
 localFuncScript="/tmp/func.sh"
 localScript="/tmp/cloudinit.sh"
-debugFile="/tmp/cloudinit.debug"
+debugFile="/root/cloud-init/cloud-init.debug"
 
 # Attente que l'application du tag dans NSX soit bien effective
 echo "Sleeping until network is available in NSX..."
 sleep 30
 
 # Récupération des infos
-gitBranch=`cat /tmp/cloud-init_repo-branch`
-cloudInitBaseImage=`cat /tmp/cloud-init_base-image`
+gitBranch=`cat /root/cloud-init/_repo-branch`
+cloudInitBaseImage=`cat /root/cloud-init/_base-image`
 
 # Récupération du script
 wget https://raw.githubusercontent.com/epfl-si/xaas-vra/${gitBranch}/CloudInit/${cloudInitBaseImage}/cloudinit.sh -O ${localScript}
