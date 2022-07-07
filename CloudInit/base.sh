@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Constantes
-localFuncScript="/root/cloud-init/func.sh"
-localScript="/root/cloud-init/cloudinit.sh"
-debugFile="/root/cloud-init/cloud-init.debug"
+localFuncScript="/tmp/func.sh"
+localScript="/tmp/cloudinit.sh"
+debugFile="/tmp/cloud-init.debug"
 
 # Si on n'est pas en mode debug
 if [ -f ${debugFile} ]
@@ -11,13 +11,10 @@ then
     set -x
 fi
 
-# Attente que l'application du tag dans NSX soit bien effective
-#echo "Sleeping until network is available in NSX..."
-#sleep 30
 
 # Récupération des infos
-gitBranch=`cat /root/cloud-init/_repo-branch`
-cloudInitBaseImage=`cat /root/cloud-init/_base-image`
+gitBranch=`cat /tmp/_repo-branch`
+cloudInitBaseImage=`cat /tmp/_base-image`
 
 # Récupération du script
 wget https://raw.githubusercontent.com/epfl-si/xaas-vra/${gitBranch}/CloudInit/${cloudInitBaseImage}/cloudinit.sh -O ${localScript}
@@ -39,4 +36,8 @@ then
     rm ${$localScript}
 fi
 
-echo "CloudInit execution done"
+echo "Creating file to deny CloudInit future executions"
+touch /etc/cloud/cloud-init.disabled
+
+echo "CloudInit execution done, rebooting"
+reboot
