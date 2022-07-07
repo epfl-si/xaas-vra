@@ -3,14 +3,6 @@
 # Constantes
 localFuncScript="/tmp/func.sh"
 localScript="/tmp/cloudinit.sh"
-debugFile="/tmp/cloud-init.debug"
-
-# Si on n'est pas en mode debug
-if [ -f ${debugFile} ]
-then
-    set -x
-fi
-
 
 # Récupération des infos
 gitBranch=`cat /tmp/_repo-branch`
@@ -27,14 +19,6 @@ chmod u+x ${localScript}
 chmod u+x ${localFuncScript}
 source ${localFuncScript}
 source ${localScript}
-
-# Si on n'est pas en mode debug
-if [ ! -f ${debugFile} ]
-then
-    echo "Cleaning scripts..."
-    rm ${$localFuncScript}
-    rm ${$localScript}
-fi
 
 echo "Creating file to deny CloudInit future executions"
 touch /etc/cloud/cloud-init.disabled
