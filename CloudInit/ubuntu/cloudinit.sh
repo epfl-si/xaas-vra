@@ -1,13 +1,11 @@
 #!/bin/bash
 
-function holdUnHoldPackages
-{
-    let action=$1
-
+function holdUnHoldPackages {
+    
     for p in "unattended-upgrades"
     do
-        echo "${action} ${p} package..."
-        apt-mark ${action} $p
+        echo "$1 ${p} package..."
+        apt-mark $1 $p
     done
 }
 
