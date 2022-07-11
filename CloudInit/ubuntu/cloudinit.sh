@@ -1,10 +1,14 @@
 #!/bin/bash
 
+# BUT: Fait en sorte d'empêcher/libérer des packages d'être mis à jour car 
+#       cela peut dans de rares cas poser problème
+# 
+# PARAMETRES
+#   $1 -> "hold" ou "unhold" pour dire quelle action faire
 function holdUnHoldPackages {
-    
-    for p in "unattended-upgrades"
+
+    for p in "unattended-upgrades cloud-init"
     do
-        echo "$1 ${p} package..."
         apt-mark $1 $p
     done
 }
